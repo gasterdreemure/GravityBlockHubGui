@@ -115,7 +115,7 @@ Gui4.TextSize = 14.000
 Gui4.MouseButton1Click:Connect(function()
 Gui4:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/CRvMRBqi'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/44444444N'),true))()
 end)
 
 Gui3.Name = "Gui3"
@@ -131,7 +131,7 @@ Gui3.TextSize = 14.000
 Gui3.MouseButton1Click:Connect(function()
 Gui3:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/DcUw2Fav'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/3333333N'),true))()
 end)
 
 Gui2.Name = "Gui2"
@@ -147,7 +147,7 @@ Gui2.TextSize = 14.000
 Gui2.MouseButton1Click:Connect(function()
 Gui2:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/JeRcQ70s'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/2222222222U'),true))()
 end)
 
 Gui1.Name = "Gui1"
@@ -163,7 +163,7 @@ Gui1.TextSize = 14.000
 Gui1.MouseButton1Click:Connect(function()
 Gui1:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/fcRaFKMk'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/1111SSssss'),true))()
 end)
 
 Gui5.Name = "Gui5"
@@ -179,7 +179,7 @@ Gui5.TextSize = 14.000
 Gui5.MouseButton1Click:Connect(function()
 Gui5:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/kQ7byuAs'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/55555555N'),true))()
 end)
 
 Gui6.Name = "Gui6"
@@ -195,7 +195,7 @@ Gui6.TextSize = 14.000
 Gui6.MouseButton1Click:Connect(function()
 Gui6:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/Ntp2vKTY'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/66mmmmm'),true))()
 end)
 
 Gui7.Name = "Gui7"
@@ -211,7 +211,7 @@ Gui7.TextSize = 14.000
 Gui7.MouseButton1Click:Connect(function()
 Gui7:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/hK89Pc9M'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/777777777NO'),true))()
 end)
 
 Gui8.Name = "Gui8"
@@ -227,7 +227,7 @@ Gui8.TextSize = 14.000
 Gui8.MouseButton1Click:Connect(function()
 Gui8:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/6FZ9Tucy'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/88888888888I'),true))()
 end)
 
 Gui9.Name = "Gui9"
@@ -243,10 +243,10 @@ Gui9.TextSize = 14.000
 Gui9.MouseButton1Click:Connect(function()
 Gui9:Destroy()
 wait("0.0001")
-loadstring(game:HttpGet(('https://pastebin.com/raw/cwQWG7M0'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/9999999999999999999999999999NM'),true))()
 end)
 
 wait "0.001"
 
-loadstring(game:HttpGet(('https://pastebin.com/raw/0SgqjG9W'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/00000000000000000000H'),true))()
 print "Finnished Loading!"
