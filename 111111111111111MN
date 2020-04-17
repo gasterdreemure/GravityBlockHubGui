@@ -1,6 +1,11 @@
 -- Gui to Lua
 -- Version: 3.2
 
+game:GetService("CoreGui"):FindFirstChild("BlockHub"):Destroy()
+game:GetService("CoreGui"):FindFirstChild("Gui Hider"):Destroy()
+
+wait "0.01"
+
 spawn(function()
 while true do
 game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
@@ -8,6 +13,7 @@ game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.h
 game:GetService("RunService").Stepped:wait()
 end
 end)
+
 wait "0.01"
 
 spawn(function()
