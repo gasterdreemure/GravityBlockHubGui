@@ -1,15 +1,17 @@
 -- Gui to Lua
 -- Version: 3.2
 
-for _, instance in pairs(game:GetService("CoreGui"):GetDescendants()) do
+for _, instance in pairs(game.CoreGui:GetDescendants()) do
 	if instance:FindFirstChild("BlockHub") then
 		instance:Destroy()
+		else print ""
 	end
 end
 
-for _, instance in pairs(game:GetService("CoreGui"):GetDescendants()) do
+for _, instance in pairs(game.CoreGui:GetDescendants()) do
 	if instance:FindFirstChild("Gui Hider") then
 		instance:Destroy()
+		else print ""
 	end
 end
 
