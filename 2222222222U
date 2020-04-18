@@ -284,7 +284,7 @@ for i,v in ipairs(workspace:GetDescendants()) do
        end
    end
 end
-end
+end)
 
 workspace.DescendantAdded:Connect(function(part)
    if part:IsA("MeshPart") and part.Anchored == false then
