@@ -160,9 +160,9 @@ Shot.TextColor3 = Color3.fromRGB(255, 255, 255)
 Shot.TextSize = 14.000
 Shot.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game.workspace.LocalPlayer:GetDescendants()) do
+for _, instance in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 	if instance:IsA("Part") then
-		instance.Parent.CanCollide = false
+		instance.CanCollide = false
 	end
 end
 wait "0.05"
