@@ -110,6 +110,15 @@ workspace.DescendantAdded:Connect(function(part)
    end
 end
 end)
+
+workspace.DescendantAdded:Connect(function(part)
+   if part:IsA("MeshPart") and part.Anchored == false then
+       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then if(part.Name ~= "HumanoidRootPart")and(part.Name ~= "LeftArm")and(part.Name ~= "RightArm")and(part.Name ~= "Tip")and(part.Name ~= "Weld")and(part.Name ~= "Light")and(part.Name ~= "Ammo")and(part.Name ~= "Body")and(part.Name ~= "Center")and(part.Name ~= "Taser")and(part.Name ~= "Handcuffs")and(part.Name ~= "Head")and(part.Name ~= "UpperTorso")and(part.Name ~= "LowerTorso")and(part.Name ~= "LeftFoot")and(part.Name ~= "RightFoot")and(part.Name ~= "LeftHand")and(part.Name ~= "RightHand")and(part.Name ~= "RightUpperArm")and(part.Name ~= "LeftLowerArm")and(part.Name ~= "RightLowerArm")and(part.Name ~= "RightUpperLeg")and(part.Name ~= "LeftUpperLeg")and(part.Name ~= "LeftLowerLeg")and(part.Name ~= "RightLowerLeg")and(part.Name ~= "Head")and(part.Name ~= "HumanoidRootPart")and(part.Name ~= "Torso")and(part.Name ~= "Right Leg")and(part.Name ~= "Right Arm")and(part.Name ~= "Left Arm")and(part.Name ~= "Left Leg")and(part.Name ~= "Handle")then
+           zeroGrav(part)
+       end
+   end
+end
+end)
  
 workspace.DescendantAdded:Connect(function(part)
    if part:IsA("TrussPart") and part.Anchored == false then
