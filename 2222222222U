@@ -1,7 +1,7 @@
 -- Gui to Lua
 -- Version: 3.2
 
--- Instances
+-- Instances:
 
 local TheForceGui = Instance.new("ScreenGui")
 local TFG = Instance.new("Frame")
@@ -11,11 +11,12 @@ local Player = Instance.new("TextBox")
 local Mover = Instance.new("TextButton")
 local Remover = Instance.new("TextButton")
 local Luancher = Instance.new("TextButton")
+local HatLuanch = Instance.new("TextButton")
 
 --Properties:
 
 TheForceGui.Name = "TheForceGui"
-TheForceGui.Parent = game.CoreGui.BlockHub
+TheForceGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 TheForceGui.ResetOnSpawn = false
 
 TFG.Name = "TFG"
@@ -42,15 +43,15 @@ Move.Name = "Move"
 Move.Parent = Title
 Move.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 Move.Position = UDim2.new(-0.000900148414, 0, 0.980999947, 0)
-Move.Size = UDim2.new(0, 127, 0, 106)
+Move.Size = UDim2.new(0, 127, 0, 124)
 
 Player.Name = "Player"
 Player.Parent = Move
 Player.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Player.Position = UDim2.new(0.0236220472, 0, 0.0476190485, 0)
+Player.Position = UDim2.new(0.0236220472, 0, -0.00280112028, 0)
 Player.Size = UDim2.new(0, 121, 0, 26)
 Player.Font = Enum.Font.SourceSans
-Player.Text = "Short Name here "
+Player.Text = "Short Name Here"
 Player.TextColor3 = Color3.fromRGB(0, 0, 0)
 Player.TextSize = 14.000
 Player.TextWrapped = true
@@ -65,7 +66,7 @@ end)
 Mover.Name = "Mover"
 Mover.Parent = Move
 Mover.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Mover.Position = UDim2.new(0.0314960629, 0, 0.338086873, 0)
+Mover.Position = UDim2.new(0.0314960629, 0, 0.270859987, 0)
 Mover.Size = UDim2.new(0, 120, 0, 20)
 Mover.Font = Enum.Font.SourceSans
 Mover.Text = "Use The Force!"
@@ -149,7 +150,7 @@ end)
 Remover.Name = "Remover"
 Remover.Parent = Move
 Remover.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Remover.Position = UDim2.new(0.0314960629, 0, 0.768758237, 0)
+Remover.Position = UDim2.new(0.0309999995, 0, 0.800000012, 0)
 Remover.Size = UDim2.new(0, 120, 0, 20)
 Remover.Font = Enum.Font.SourceSans
 Remover.Text = "Remove (Buggy)"
@@ -218,7 +219,7 @@ end)
 Luancher.Name = "Luancher"
 Luancher.Parent = Move
 Luancher.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Luancher.Position = UDim2.new(0.0314960629, 0, 0.526766121, 0)
+Luancher.Position = UDim2.new(0.0314960629, 0, 0.424638152, 0)
 Luancher.Size = UDim2.new(0, 120, 0, 20)
 Luancher.Font = Enum.Font.SourceSans
 Luancher.Text = "Luanch Them!"
@@ -316,4 +317,77 @@ end)
 wait"0.1"
 print "Luanching!"
 
+end)
+
+HatLuanch.Name = "HatLuanch"
+HatLuanch.Parent = Move
+HatLuanch.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+HatLuanch.Position = UDim2.new(0.0314960629, 0, 0.58592844, 0)
+HatLuanch.Size = UDim2.new(0, 120, 0, 20)
+HatLuanch.Font = Enum.Font.SourceSans
+HatLuanch.Text = "Hat Attack!"
+HatLuanch.TextColor3 = Color3.fromRGB(255, 255, 255)
+HatLuanch.TextSize = 14.000
+HatLuanch.MouseButton1Click:Connect(function()
+
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if (v:IsA("Accessory")) then
+v.Parent = workspace
+end
+end
+wait "0.001"
+for _, instance in pairs(game:GetDescendants()) do
+	if instance:IsA("RocketPropulsion") then
+		instance:Destroy()
+	end
+end
+
+wait "0.001"
+
+local targetname = Player.Text
+local arget = game:GetService("Players")[targetname]
+local save = arget.Character.HumanoidRootPart
+local PLRS = game.Players.LocalPlayer
+
+spawn(function()
+while true do
+game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game:GetService("RunService").Stepped:wait()
+end
+end)
+
+local function zeroGrav(part)
+   if part:FindFirstChild("RocketPropulsion") then return end
+   local temp = Instance.new("RocketPropulsion")
+   temp.Target = save
+   temp.MaxSpeed = part:GetMass() *400000
+   temp.MaxThrust = part:GetMass() *400000
+   temp.ThrustD = 0.12
+   temp.ThrustP = part:GetMass() *10000
+   temp.Parent = part
+   temp:fire()
+   temp.Parent.CanCollide = false
+end
+
+for i,v in ipairs(workspace:GetDescendants()) do
+   if v:IsA("Part") and v.Anchored == false and(v.Name == "Handle")then
+       if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then
+           zeroGrav(v)
+       end
+   end
+end
+end
+
+workspace.DescendantAdded:Connect(function(part)
+   if part:IsA("Part") and part.Anchored == false and(part.Name == "Handle")then
+       if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then
+           zeroGrav(part)
+       end
+    end
+end
+end)
+
+wait"0.1"
+print "Luanching!"
 end)
