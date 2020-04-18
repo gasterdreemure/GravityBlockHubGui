@@ -1,8 +1,8 @@
 -- Gui to Lua
 -- Version: 3.2
 
-game.CoreGui:FindFirstChild("BlockHub")
-game.CoreGui:FindFirstChild("Hider Gui")
+game.CoreGui:FindFirstChild("BlockHub"):Destroy()
+game.CoreGui:FindFirstChild("Hider Gui"):Destroy()
 
 wait "0.01"
 
