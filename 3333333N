@@ -148,7 +148,7 @@ end
 print "Teleporting!"
 end
 end)
-
+local noclipp = false
 Shot.Name = "Shot"
 Shot.Parent = P
 Shot.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
@@ -159,6 +159,16 @@ Shot.Text = "Mini Gun Mode!"
 Shot.TextColor3 = Color3.fromRGB(255, 255, 255)
 Shot.TextSize = 14.000
 Shot.MouseButton1Click:Connect(function()
+
+    if noclipp then
+        for _, v in pairs(character:GetDescendants()) do
+            pcall(function()
+                if v:IsA("BasePart") then
+                    v.CanCollide = false
+                end
+            end)
+        end
+    end
 
 wait "0.05"
 print "Firing!"
@@ -203,14 +213,14 @@ if not StealthMode then
     Indicator.Text = "Noclip: Enabled"
 end
 
-local noclip = true
+local noclip = false
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 
 local mouse = player:GetMouse()
 
 mouse.KeyDown:Connect(function(key)
-    if key == "q" then
+    if key == "p" then
         noclip = not noclip
 
         if not StealthMode then
