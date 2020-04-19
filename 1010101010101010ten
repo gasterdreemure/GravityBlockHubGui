@@ -65,7 +65,7 @@ end)
 Spawn.Name = "Spawn"
 Spawn.Parent = EEE
 Spawn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Spawn.Position = UDim2.new(0.031496048, 0, 0.641827703, 0)
+Spawn.Position = UDim2.new(0.031, 0, 0.75, 0)
 Spawn.Size = UDim2.new(0, 120, 0, 20)
 Spawn.Font = Enum.Font.SourceSans
 Spawn.Text = "Spawn The Hats!"
@@ -96,7 +96,7 @@ end)
 Remover.Name = "Remover"
 Remover.Parent = EEE
 Remover.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Remover.Position = UDim2.new(0.0309999995, 0, 0.420967728, 0)
+Remover.Position = UDim2.new(0.031, 0, 0.452, 0)
 Remover.Size = UDim2.new(0, 120, 0, 20)
 Remover.Font = Enum.Font.SourceSans
 Remover.Text = "Stop! (Buggy)"
