@@ -73,6 +73,14 @@ Spawn.Text = "Spawn The Hats!"
 Spawn.TextColor3 = Color3.fromRGB(255, 255, 255)
 Spawn.TextSize = 14.000
 Spawn.MouseButton1Click:Connect(function()
+spawn(function()
+while true do
+game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game:GetService("RunService").Stepped:wait()
+end
+end)
+wait "0.001"
 for i = 1, Times.Text do
     while wait() do
     for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
@@ -141,6 +149,14 @@ HatLuanch.TextColor3 = Color3.fromRGB(255, 255, 255)
 HatLuanch.TextSize = 14.000
 HatLuanch.MouseButton1Click:Connect(function()
 
+spawn(function()
+while true do
+game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game:GetService("RunService").Stepped:wait()
+end
+end)
+
 for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 if (v:IsA("Accessory")) then
 v.Parent = workspace
@@ -159,14 +175,6 @@ local targetname = Player.Text
 local arget = game:GetService("Players")[targetname]
 local save = arget.Character.HumanoidRootPart
 local PLRS = game.Players.LocalPlayer
-
-spawn(function()
-while true do
-game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
-game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
-game:GetService("RunService").Stepped:wait()
-end
-end)
 
 local function zeroGrav(part)
    if part:FindFirstChild("RocketPropulsion") then return end
