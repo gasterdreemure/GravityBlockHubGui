@@ -1518,6 +1518,7 @@ OGravity.Font = Enum.Font.SourceSans
 OGravity.TextColor3 = Color3.fromRGB(0, 0, 0)
 OGravity.TextSize = 14.000
 OGravity.TextWrapped = true
+OGravity.Text = game.workspace.Gravity
 
 OneWayChange.Name = "OneWayChange"
 OneWayChange.Parent = S7
@@ -2413,7 +2414,4 @@ while true do
 end
 wait "0.3"
 
-game:GetService("CoreGui").BlockHub.Title.Scrip.List.Script7.S7.OGravity.Text = game.Workspace.Gravity
-
-wait "0.1"
-print "Finished"
+print "Finished Loading"
