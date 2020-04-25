@@ -138,6 +138,7 @@ local InfoText2 = Instance.new("TextLabel")
 local InfoText3 = Instance.new("TextLabel")
 local InfoText4 = Instance.new("TextLabel")
 local OpenButton = Instance.new("TextButton")
+local RemoverBlocks = Instance.new("TextButton")
 
 --Properties:
 
@@ -777,6 +778,36 @@ S3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 S3.BackgroundTransparency = 1.000
 S3.Size = UDim2.new(0, 90, 0, 15)
 S3.Visible = false
+
+RemoverBlocks.Name = "RemoverBlocks"
+RemoverBlocks.Parent = S3
+RemoverBlocks.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+RemoverBlocks.Position = UDim2.new(-1.86903882, 0, 4.19999981, 0)
+RemoverBlocks.Size = UDim2.new(0, 140, 0, 15)
+RemoverBlocks.Font = Enum.Font.SourceSans
+RemoverBlocks.Text = "Remove All Blocks"
+RemoverBlocks.TextColor3 = Color3.fromRGB(255, 255, 255)
+RemoverBlocks.TextSize = 14.000
+RemoverBlocks.MouseButton1Click:Connect(function()
+local PLRS = game.Players.LocalPlayer
+local check = game.workspace:GetDescendants()
+for i = 1, 1 do
+       spawn(function()
+       while true do
+       game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+       game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+       game:GetService("RunService").Stepped:wait()
+       end
+       end)
+       for i, v in ipairs(check) do
+        if v:IsA('Part') and v.Anchored == false then
+        if not (v:IsDescendantOf(PLRS.Character)) then
+ 				v.CFrame = v.CFrame + Vector3.new(0, -50000, 0)
+			end
+	 	end
+    end
+end
+end)
 
 TelePlayerName.Name = "TelePlayerName"
 TelePlayerName.Parent = S3
