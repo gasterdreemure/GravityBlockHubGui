@@ -1605,7 +1605,7 @@ for i,v in ipairs(PLLL:GetDescendants()) do
    end
 end
 
-PLLL.DescendantAdded:Connect(function(part)
+PL.DescendantAdded:Connect(function(part)
    if part:IsA("Part") and part.Anchored == false then
           zeroGrav(part)
    end
