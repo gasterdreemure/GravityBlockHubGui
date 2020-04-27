@@ -2020,6 +2020,7 @@ Infoo.Visible = true
 end)
 
 BetterFPSButton.Name = "BetterFPSButton"
+BetterFPSButton.Parent = Title
 BetterFPSButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 BetterFPSButton.BackgroundTransparency = 0.200
 BetterFPSButton.BorderColor3 = Color3.fromRGB(50, 50, 50)
@@ -2029,7 +2030,6 @@ BetterFPSButton.Font = Enum.Font.SourceSans
 BetterFPSButton.Text = "Get Better FPS(Perm)"
 BetterFPSButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 BetterFPSButton.TextSize = 14.000
-BetterFPSButton.Parent = Title
 BetterFPSButton.MouseButton1Click:Connect(function()
 
 local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
