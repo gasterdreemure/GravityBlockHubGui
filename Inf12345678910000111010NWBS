@@ -2063,7 +2063,7 @@ if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect
 e.Enabled = false
 end
 end
-
+print "Fixed"
 end)
 
 Infoo.Name = "Infoo"
