@@ -1,0 +1,16 @@
+local tsss = game:GetService("TeleportService")
+local pll = game:GetService("Players").LocalPlayer
+local whitelistechec = loadstring(game:HttpGet("https://pastebin.com/raw/IDHERE", true))()
+if whitelistechec[game:service('Players').LocalPlayer.UserId] then
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/gasterdreemure/hgfh7q4fn8f487fm8uuqf53t8qtfm8tvm8vtmh9qtfchm97qtf43987c4ty90q4tf0mkdq4tfcm9q4t-94tac-9xf-9jx4-98a4t/master/Inf12345678910000111010NWBS'),true))()
+else
+spawn(function()
+local message = Instance.new("Message",workspace)
+message.Text = "Sorry But You Are Not Authorised To Use This Script If You Think This Is Incorrect Contact drgaster"
+wait ("3")
+message:Destroy()
+end)
+      wait "2.5"
+      tsss:Teleport(game.PlaceId, pll)
+	  print "test"
+end

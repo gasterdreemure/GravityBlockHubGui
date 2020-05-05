@@ -104,28 +104,6 @@ BlockHub.ResetOnSpawn = false
 --Properties:
 local tsss = game:GetService("TeleportService")
 local pll = game:GetService("Players").LocalPlayer
-spawn(function()
-while true do
-for _, instance in pairs(game.Players:GetDescendants()) do
-    v:IsA("Player")
-   wait "1"
-   if(game.Players.LocalPlayer ~= "Therealoofery"or"Likemyunclejerry"or"Agent_ThicxkMan"or"OPdragonslayer105"or"drgaseter"or"Willomin_Aracde")then
-    if(instance.Name == "Therealoofery"or"Likemyunclejerry"or"Agent_ThicxkMan"or"OPdragonslayer105"or"drgaseter"or"Willomin_Aracde")then
-	  BlockHub:Destroy()
-spawn(function()
-local message = Instance.new("Message",workspace)
-message.Text = "WhiteListed Player Has Joined The Game Get Ready To Rejoin"
-wait ("2")
-message:Destroy()
-end)
-      wait "1.5"
-      tsss:Teleport(game.PlaceId, pll)
-	  print "test"
-      end
-    end
-  end
-end
-end)
 
 spawn(function()
 while true do
