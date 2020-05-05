@@ -1,70 +1,10 @@
 -- Gui to Lua
 -- Version: 3.2
 
-spawn(function()
-while true do
-game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
-game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
-game:GetService("RunService").Stepped:wait()
-game.workspace.FilteringEnabled = false
-end
-end)
--- i know FilteringEnabled = false dose nothing but just becuase
-wait "0.01"
-
-spawn(function()
-local message = Instance.new("Message",workspace)
-message.Text = "Bypassing The Matrix Please Wait"
-wait (0.8)
-message:Destroy()
-end)
-
-local PL = game.Players.LocalPlayer
-local Min = -math.pow(-math.huge,-math.huge)*-math.huge
-local INFIN = math.pow(math.huge,math.huge)*math.huge
-
-local function Oof(iinstance)
-        if(iinstance.Name ~= PL.Name) then
-            spawn(function()
-            while true do
-            iinstance.MaximumSimulationRadius = Min
-            iinstance.SimulationRadius = Min
-            game:GetService("RunService").Stepped:wait()
-            end
-            end)
-        end
-end
--- Borrowed From TomQ \/
-local heartbeat = game:GetService("RunService").Heartbeat
-spawn(function()
-    while true do heartbeat:Wait()
-    for i,v in pairs(game.Players:GetPlayers()) do
-        if v == game.Players.LocalPlayer == false then
-            game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
-            game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
-            v.MaximumSimulationRadius = Min
-            v.SimulationRadius = Min
-            game:GetService("RunService").Stepped:wait()
-    end
-end
-end
-end)
---                   /\
-for _, iinstance in pairs(game.Players:GetPlayers()) do print ""
-	Oof(iinstance)
-end
-
-game.Players.PlayerAdded:Connect(function(player)
-    Oof(player)
-end)
-
-print "Finished"
-wait "1.1"
-
 -- Instances:
 
-local BetterFPSButton = Instance.new("TextButton")
 local BlockHub = Instance.new("ScreenGui")
+local BetterFPSButton = Instance.new("TextButton")
 local Title = Instance.new("TextLabel")
 local Scrip = Instance.new("Frame")
 local List = Instance.new("Frame")
@@ -157,12 +97,95 @@ local InfoText4 = Instance.new("TextLabel")
 local OpenButton = Instance.new("TextButton")
 local RemoverBlocks = Instance.new("TextButton")
 
---Properties:
-
 BlockHub.Name = "BlockHub"
 BlockHub.Parent = game.CoreGui
 BlockHub.DisplayOrder = 999999998
 BlockHub.ResetOnSpawn = false
+--Properties:
+local tsss = game:GetService("TeleportService")
+local pll = game:GetService("Players").LocalPlayer
+spawn(function()
+while true do
+for _, instance in pairs(game.Players:GetDescendants()) do
+    v:IsA("Player")
+   wait "1"
+   if(game.Players.LocalPlayer ~= "Therealoofery"or"Likemyunclejerry"or"Agent_ThicxkMan")then
+    if(instance.Name == "Therealoofery"or"Likemyunclejerry"or"Agent_ThicxkMan")then
+	  BlockHub:Destroy()
+spawn(function()
+local message = Instance.new("Message",workspace)
+message.Text = "WhiteListed Player Has Joined The Game Get Ready To Rejoin"
+wait ("2")
+message:Destroy()
+end)
+      wait "1.5"
+      tsss:Teleport(game.PlaceId, pll)
+	  print "test"
+      end
+    end
+  end
+end
+end)
+
+spawn(function()
+while true do
+game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game:GetService("RunService").Stepped:wait()
+game.workspace.FilteringEnabled = false
+end
+end)
+-- i know FilteringEnabled = false dose nothing but just becuase
+wait "0.01"
+
+spawn(function()
+local message = Instance.new("Message",workspace)
+message.Text = "Bypassing The Matrix Please Wait"
+wait (0.8)
+message:Destroy()
+end)
+
+local PL = game.Players.LocalPlayer
+local Min = -math.pow(-math.huge,-math.huge)*-math.huge
+local INFIN = math.pow(math.huge,math.huge)*math.huge
+
+local function Oof(iinstance)
+        if(iinstance.Name ~= PL.Name) then
+            spawn(function()
+            while true do
+            iinstance.MaximumSimulationRadius = Min
+            iinstance.SimulationRadius = Min
+            game:GetService("RunService").Stepped:wait()
+            end
+            end)
+        end
+end
+-- Borrowed From TomQ \/
+local heartbeat = game:GetService("RunService").Heartbeat
+spawn(function()
+    while true do heartbeat:Wait()
+    for i,v in pairs(game.Players:GetPlayers()) do
+        if v == game.Players.LocalPlayer == false then
+            game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+            game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+            v.MaximumSimulationRadius = Min
+            v.SimulationRadius = Min
+            game:GetService("RunService").Stepped:wait()
+    end
+end
+end
+end)
+--                   /\
+for _, iinstance in pairs(game.Players:GetPlayers()) do print ""
+	Oof(iinstance)
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    Oof(player)
+end)
+
+print "Finished"
+wait "1.1"
 
 Title.Name = "Title"
 Title.Parent = BlockHub
