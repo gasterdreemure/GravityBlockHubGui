@@ -1,6 +1,10 @@
 -- Gui to Lua
--- Version: 3.2
-
+-- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
+local VersionNumberV = "1.5"
+local ChangeLine1 = "*Fixed Gui For Smooth Dragging"
+local ChangeLine2 = ""
+local ChangeLine3 = ""
+local ChangeLine4 = ""
 -- Instances:
 print "Starting"
 local BlockHub = Instance.new("ScreenGui")
@@ -2143,7 +2147,7 @@ Version.BackgroundTransparency = 0.500
 Version.Position = UDim2.new(0.057, 0, 0, 0)
 Version.Size = UDim2.new(0, 142, 0, 91)
 Version.Font = Enum.Font.SourceSans
-Version.Text = "Version V1.3"
+Version.Text = "Version V1.5"
 Version.TextColor3 = Color3.fromRGB(255, 255, 255)
 Version.TextSize = 14.000
 Version.TextYAlignment = Enum.TextYAlignment.Top
@@ -2155,7 +2159,7 @@ ChangeText.BackgroundTransparency = 0.990
 ChangeText.Position = UDim2.new(0.057, 0,0.163, 0)
 ChangeText.Size = UDim2.new(0, 142, 0, 16)
 ChangeText.Font = Enum.Font.SourceSans
-ChangeText.Text = "* New Gui "
+ChangeText.Text = ChangeLine1
 ChangeText.TextColor3 = Color3.fromRGB(255, 255, 255)
 ChangeText.TextSize = 14.000
 ChangeText.TextWrapped = true
@@ -2169,7 +2173,7 @@ ChangeText1.BackgroundTransparency = 0.990
 ChangeText1.Position = UDim2.new(0.057, 0,0.327, 0)
 ChangeText1.Size = UDim2.new(0, 142, 0, 16)
 ChangeText1.Font = Enum.Font.SourceSans
-ChangeText1.Text = ""
+ChangeText1.Text = ChangeLine2
 ChangeText1.TextColor3 = Color3.fromRGB(255, 255, 255)
 ChangeText1.TextSize = 14.000
 ChangeText1.TextWrapped = true
@@ -2183,7 +2187,7 @@ ChangeText2.BackgroundTransparency = 0.990
 ChangeText2.Position = UDim2.new(0.057, 0,0.49, 0)
 ChangeText2.Size = UDim2.new(0, 142, 0, 16)
 ChangeText2.Font = Enum.Font.SourceSans
-ChangeText2.Text = ""
+ChangeText2.Text = ChangeLine3
 ChangeText2.TextColor3 = Color3.fromRGB(255, 255, 255)
 ChangeText2.TextSize = 14.000
 ChangeText2.TextWrapped = true
@@ -2197,7 +2201,7 @@ ChangeText3.BackgroundTransparency = 0.990
 ChangeText3.Position = UDim2.new(0.057, 0,0.653, 0)
 ChangeText3.Size = UDim2.new(0, 142, 0, 16)
 ChangeText3.Font = Enum.Font.SourceSans
-ChangeText3.Text = ""
+ChangeText3.Text = ChangeLine4
 ChangeText3.TextColor3 = Color3.fromRGB(255, 255, 255)
 ChangeText3.TextSize = 14.000
 ChangeText3.TextWrapped = true
