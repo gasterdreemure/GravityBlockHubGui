@@ -2131,7 +2131,7 @@ Infoo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Infoo.BackgroundTransparency = 1.000
 Infoo.Position = UDim2.new(0.00373707642, 0, 0, 0)
 Infoo.Size = UDim2.new(0, 90, 0, 15)
-Infoo.Visible = false
+Infoo.Visible = true
 
 Versionnn.Name = "Versionnn"
 Versionnn.Parent = Infoo
