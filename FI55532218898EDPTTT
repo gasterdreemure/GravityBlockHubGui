@@ -167,18 +167,55 @@ wait "1.1"
 
 Title.Name = "Title"
 Title.Parent = BlockHub
-Title.Active = true
 Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 Title.BorderColor3 = Color3.fromRGB(20, 20, 20)
-Title.Draggable = true
 Title.Position = UDim2.new(0.439782172, 12, 0.32158646, -80)
-Title.Selectable = true
 Title.Size = UDim2.new(0, 197, 0, 20)
 Title.Font = Enum.Font.SourceSans
 Title.Text = "Mega Block Hub"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 15.000
 Title.TextWrapped = true
+
+local UserInputService = game:GetService("UserInputService")
+
+local gui = Title
+
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+local delta = input.Position - dragStart
+gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+gui.InputBegan:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+dragging = true
+dragStart = input.Position
+startPos = gui.Position
+
+input.Changed:Connect(function()
+if input.UserInputState == Enum.UserInputState.End then
+dragging = false
+end
+end)
+end
+end)
+
+gui.InputChanged:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+dragInput = input
+end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+if input == dragInput and dragging then
+update(input)
+end
+end)
 
 Scrip.Name = "Scrip"
 Scrip.Parent = Title
