@@ -2163,6 +2163,7 @@ ChangeText.Text = ChangeLine1
 ChangeText.TextColor3 = Color3.fromRGB(255, 255, 255)
 ChangeText.TextSize = 14.000
 ChangeText.TextWrapped = true
+ChangeText.TextScaled = true
 ChangeText.TextXAlignment = Enum.TextXAlignment.Left
 ChangeText.TextYAlignment = Enum.TextYAlignment.Top
 
@@ -2177,6 +2178,7 @@ ChangeText1.Text = ChangeLine2
 ChangeText1.TextColor3 = Color3.fromRGB(255, 255, 255)
 ChangeText1.TextSize = 14.000
 ChangeText1.TextWrapped = true
+ChangeText1.TextScaled = true
 ChangeText1.TextXAlignment = Enum.TextXAlignment.Left
 ChangeText1.TextYAlignment = Enum.TextYAlignment.Top
 
@@ -2191,6 +2193,7 @@ ChangeText2.Text = ChangeLine3
 ChangeText2.TextColor3 = Color3.fromRGB(255, 255, 255)
 ChangeText2.TextSize = 14.000
 ChangeText2.TextWrapped = true
+ChangeText2.TextScaled = true
 ChangeText2.TextXAlignment = Enum.TextXAlignment.Left
 ChangeText2.TextYAlignment = Enum.TextYAlignment.Top
 
@@ -2205,6 +2208,7 @@ ChangeText3.Text = ChangeLine4
 ChangeText3.TextColor3 = Color3.fromRGB(255, 255, 255)
 ChangeText3.TextSize = 14.000
 ChangeText3.TextWrapped = true
+ChangeText3.TextScaled = true
 ChangeText3.TextXAlignment = Enum.TextXAlignment.Left
 ChangeText3.TextYAlignment = Enum.TextYAlignment.Top
 
