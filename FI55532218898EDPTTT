@@ -8,7 +8,6 @@ local ChangeLine4 = ""
 -- Instances:
 print "Starting"
 local BlockHub = Instance.new("ScreenGui")
-local BetterFPSButton = Instance.new("TextButton")
 local Title = Instance.new("TextLabel")
 local Scrip = Instance.new("Frame")
 local List = Instance.new("Frame")
@@ -100,7 +99,11 @@ local InfoText3 = Instance.new("TextLabel")
 local InfoText4 = Instance.new("TextLabel")
 local OpenButton = Instance.new("TextButton")
 local RemoverBlocks = Instance.new("TextButton")
-
+local BlockSettings = Instance.new("TextButton")
+local BHGS = Instance.new("Frame")
+local BetterFPSButton = Instance.new("TextButton")
+local BlockDiscarder = Instance.new("TextButton")
+-- /\
 BlockHub.Name = "BlockHub"
 BlockHub.Parent = game.CoreGui
 BlockHub.DisplayOrder = 999999998
@@ -271,6 +274,111 @@ Back.Font = Enum.Font.SourceSans
 Back.Text = "<"
 Back.TextColor3 = Color3.fromRGB(255, 255, 255)
 Back.TextSize = 14.000
+
+BlockSettings.Name = "BlockSettings"
+BlockSettings.Parent = List
+BlockSettings.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+BlockSettings.BorderColor3 = Color3.fromRGB(50, 50, 50)
+BlockSettings.BorderSizePixel = 0
+BlockSettings.Position = UDim2.new(0, 0, 0.87369746, 0)
+BlockSettings.Size = UDim2.new(0, 92, 0, 15)
+BlockSettings.Font = Enum.Font.SourceSans
+BlockSettings.Text = "Lag Settings"
+BlockSettings.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlockSettings.TextSize = 14.000
+BlockSettings.MouseButton1Click:Connect(function()
+for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+	if instance:IsA("Frame") then
+		instance.Visible = false
+	end
+end
+wait "0.0001"
+BHGS.Visible = true
+end)
+
+BHGS.Name = "BHGS"
+BHGS.Parent = BlockSettings
+BHGS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BHGS.BackgroundTransparency = 1.000
+BHGS.Size = UDim2.new(0, 90, 0, 15)
+BHGS.Visible = false
+
+BetterFPSButton.Name = "BetterFPSButton"
+BetterFPSButton.Parent = BHGS
+BetterFPSButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BetterFPSButton.Position = UDim2.new(-1.86899996, 0, -12.8670006, 0)
+BetterFPSButton.Size = UDim2.new(0, 140, 0, 15)
+BetterFPSButton.Font = Enum.Font.SourceSans
+BetterFPSButton.Text = "FPS Helper(Semi-Perm)"
+BetterFPSButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+BetterFPSButton.TextSize = 14.000
+BetterFPSButton.MouseButton1Click:Connect(function()
+
+local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0.3
+settings().Rendering.QualityLevel = "Level05"
+for i,v in pairs(g:GetDescendants()) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model") then
+       v.Material = "Plastic"
+v.Reflectance = 0
+elseif v:IsA("Decal") and decalsyeeted then
+v.Transparency = 1
+elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+v.Lifetime = NumberRange.new(0)
+elseif v:IsA("Explosion") then
+v.BlastPressure = 1
+v.BlastRadius = 1
+   end
+end
+for i,e in pairs(l:GetChildren()) do
+if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+e.Enabled = false
+end
+end
+print "Fixed"
+end)
+
+BlockDiscarder.Name = "BlockDiscarder"
+BlockDiscarder.Parent = BHGS
+BlockDiscarder.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BlockDiscarder.Position = UDim2.new(-1.86899996, 0, -11.3336678, 0)
+BlockDiscarder.Size = UDim2.new(0, 140, 0, 15)
+BlockDiscarder.Font = Enum.Font.SourceSans
+BlockDiscarder.Text = "Recover Full FPS(Temp)"
+BlockDiscarder.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlockDiscarder.TextSize = 14.000
+BlockDiscarder.MouseButton1Click:Connect(function()
+local PLRS = game.Players.LocalPlayer
+local check = game.workspace:GetDescendants()
+local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
+for i = 1, 1 do
+       spawn(function()
+       while true do
+       game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+       game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+       game:GetService("RunService").Stepped:wait()
+       end
+       end)
+       wait "0.1"
+       for i, v in ipairs(check) do
+        if v:IsA("BasePart" or "UnionOperation" or "Model") and v.Anchored == false then
+        if not (v:IsDescendantOf(PLRS.Character)) then
+ 				v.CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+-20,v.CFrame.Z)
+			end
+	 	end
+       end
+end
+end)
 
 Script1.Name = "Script1"
 Script1.Parent = List
@@ -2004,7 +2112,6 @@ ClosedList.MouseButton1Click:Connect(function()
 OpenedList.Visible = true
 ClosedList.Visible = false
 List.Visible = false
-Infoo.Visible = false
 end)
 
 Line_2.Name = "Line"
@@ -2063,7 +2170,7 @@ Info.BackgroundTransparency = 0.200
 Info.BorderColor3 = Color3.fromRGB(50, 50, 50)
 Info.Position = UDim2.new(0, 0,12.05, 0)
 Info.Selectable = false
-Info.Size = UDim2.new(0, 66, 0, 17)
+Info.Size = UDim2.new(0, 176, 0, 17)
 Info.Font = Enum.Font.SourceSans
 Info.Text = "Information"
 Info.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -2078,52 +2185,6 @@ wait "0.0001"
 Infoo.Visible = true
 end)
 
-BetterFPSButton.Name = "BetterFPSButton"
-BetterFPSButton.Parent = Title
-BetterFPSButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-BetterFPSButton.BackgroundTransparency = 0.200
-BetterFPSButton.BorderColor3 = Color3.fromRGB(50, 50, 50)
-BetterFPSButton.Position = UDim2.new(0.365482241, 0, 12.0500002, 0)
-BetterFPSButton.Size = UDim2.new(0, 105, 0, 16)
-BetterFPSButton.Font = Enum.Font.SourceSans
-BetterFPSButton.Text = "Get Better FPS(Perm)"
-BetterFPSButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-BetterFPSButton.TextSize = 14.000
-BetterFPSButton.MouseButton1Click:Connect(function()
-
-local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-local g = game
-local w = g.Workspace
-local l = g.Lighting
-local t = w.Terrain
-t.WaterWaveSize = 0
-t.WaterWaveSpeed = 0
-t.WaterReflectance = 0
-t.WaterTransparency = 0
-l.GlobalShadows = false
-l.FogEnd = 9e9
-l.Brightness = 0.3
-settings().Rendering.QualityLevel = "Level05"
-for i,v in pairs(g:GetDescendants()) do
-   if v:IsA("BasePart" or "UnionOperation" or "Model") then
-       v.Material = "Plastic"
-v.Reflectance = 0
-elseif v:IsA("Decal") and decalsyeeted then
-v.Transparency = 1
-elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-v.Lifetime = NumberRange.new(0)
-elseif v:IsA("Explosion") then
-v.BlastPressure = 1
-v.BlastRadius = 1
-   end
-end
-for i,e in pairs(l:GetChildren()) do
-if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-e.Enabled = false
-end
-end
-print "Fixed"
-end)
 
 Infoo.Name = "Infoo"
 Infoo.Parent = Info
@@ -2287,7 +2348,9 @@ CloseButton.Visible = true
 Scrip.Visible = true
 Info.Visible = true
 end)
+-- things i forgot when i first made the gui
 
+-- Ye
 wait "0.1"
 local StealthMode = true -- If game has an anticheat that checks the logs
 
