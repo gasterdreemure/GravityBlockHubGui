@@ -858,7 +858,7 @@ wait "1.5"
 for _, instance in pairs(game:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		local Partt = instance.Parent
-		instance.Force = Partt:GetMass() * Vector3.new(0,workspace.Gravity*-3,0)
+		instance.Force = Partt:GetMass() * Vector3.new(0,workspace.Gravity*-4.2,0)
 	end
 end
 wait "1.3"
