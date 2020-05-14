@@ -327,7 +327,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 BHGS.Visible = true
 end)
 
@@ -432,7 +432,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S1.Visible = true
 end)
 
@@ -645,7 +645,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S2.Visible = true
 end)
 
@@ -974,7 +974,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S3.Visible = true
 end)
 
@@ -1172,7 +1172,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S4.Visible = true
 end)
 
@@ -1304,7 +1304,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S5.Visible = true
 end)
 
@@ -1466,7 +1466,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S6.Visible = true
 end)
 
@@ -1628,7 +1628,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S7.Visible = true
 end)
 
@@ -1771,7 +1771,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S8.Visible = true
 end)
 
@@ -1923,7 +1923,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S9.Visible = true
 end)
 
@@ -2024,7 +2024,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 S10.Visible = true
 end)
 
@@ -2084,7 +2084,7 @@ for _, instance in pairs(game:GetDescendants()) do
 	end
 end
 
-wait "0.0001"
+wait "0"
 
 local targetname = BlockPlayerName_2.Text
 local arget = game:GetService("Players")[targetname]
@@ -2219,8 +2219,8 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
-S10.Visible = true
+wait "0"
+S11.Visible = true
 end)
 
 S11.Name = "S11"
@@ -2398,7 +2398,7 @@ for _, instance in pairs(game:GetDescendants()) do
 		instance.Parent.CanCollide = true
 	end
 end
-wait "0.0001"
+wait "0"
 for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		instance:Destroy()
@@ -2502,7 +2502,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 		instance.Visible = false
 	end
 end
-wait "0.0001"
+wait "0"
 Infoo.Visible = true
 end)
 
