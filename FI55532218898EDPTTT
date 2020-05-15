@@ -544,7 +544,7 @@ GravityRemover.TextColor3 = Color3.fromRGB(255, 255, 255)
 GravityRemover.TextSize = 14.000
 GravityRemover.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		instance:Destroy()
 	end
@@ -583,7 +583,7 @@ GravityChanger.TextColor3 = Color3.fromRGB(255, 255, 255)
 GravityChanger.TextSize = 14.000
 GravityChanger.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		instance:Destroy()
 	end
@@ -601,8 +601,8 @@ end
 end)
 local function zeroGrav(part)
    if part:FindFirstChild("BodyForce") then return end
-   temp.Parent = part
    local temp = Instance.new("BodyForce")
+   temp.Parent = part
    temp.Force = part:GetMass() * Vector3.new(GravityX.Text,workspace.Gravity*GravityY.Text,GravityZ.Text)
 end
 
@@ -751,7 +751,7 @@ BlockMover.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockMover.TextSize = 14.000
 BlockMover.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		instance:Destroy()
 	end
@@ -793,7 +793,7 @@ end)
 
 wait "0.005"
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		local Partt = instance.Parent
 		instance.MaxForce = Partt:GetMass() * Vector3.new(40000,100000,40000)
@@ -818,7 +818,7 @@ BlockRKO.Text = "RKO Out Of NoWhere"
 BlockRKO.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockRKO.TextSize = 14.000
 BlockRKO.MouseButton1Click:Connect(function()
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		instance:Destroy()
 	end
@@ -858,14 +858,14 @@ end)
 
 wait "1.5"
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		local Partt = instance.Parent
 		instance.Force = Partt:GetMass() * Vector3.new(0,workspace.Gravity*-7.5,0)
 	end
 end
 wait "1.3"
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		instance:Destroy()
 	end
@@ -893,13 +893,13 @@ ForceRemover.TextColor3 = Color3.fromRGB(255, 255, 255)
 ForceRemover.TextSize = 14.000
 ForceRemover.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("RocketPropulsion") then
 		instance.Parent.CanCollide = true
 	end
 end
 wait "0.05"
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		instance:Destroy()
 	end
@@ -923,7 +923,7 @@ for _, instance in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 	end
 end
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("RocketPropulsion") then
 		instance:Destroy()
 	end
@@ -947,7 +947,7 @@ for _, instance in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 	end
 end
 wait "0.05"
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		instance:Destroy()
 	end
@@ -1193,7 +1193,7 @@ GyroUp.TextColor3 = Color3.fromRGB(255, 255, 255)
 GyroUp.TextSize = 14.000
 GyroUp.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyGyro") then
 		instance:Destroy()
 	end
@@ -1233,7 +1233,7 @@ end)
 
 wait "0.01"
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyGyro") then
 	    instance.D = "500"
 		instance.P = "3000"
@@ -1257,7 +1257,7 @@ NoGyro.TextColor3 = Color3.fromRGB(255, 255, 255)
 NoGyro.TextSize = 14.000
 NoGyro.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyGyro") then
 		instance:Destroy()
 	end
@@ -1355,7 +1355,7 @@ BlockSpin.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockSpin.TextSize = 14.000
 BlockSpin.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyAngularVelocity") then
 		instance:Destroy()
 	end
@@ -1394,7 +1394,7 @@ end)
 
 wait "0.005"
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyAngularVelocity") then
 		local Partt = instance.Parent
 		instance.MaxTorque = Partt:GetMass() * Vector3.new(4000,4000,4000)
@@ -1420,7 +1420,7 @@ NoBlockSpin.TextColor3 = Color3.fromRGB(255, 255, 255)
 NoBlockSpin.TextSize = 14.000
 NoBlockSpin.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyAngularVelocity") then
 		instance:Destroy()
 	end
@@ -1517,7 +1517,7 @@ BlockBoost.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockBoost.TextSize = 14.000
 BlockBoost.MouseButton1Click:Connect(function()
  
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
     if instance:IsA("BodyForce") then
         instance:Destroy()
     end
@@ -1569,7 +1569,7 @@ BlockRotBoost.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockRotBoost.TextSize = 14.000
 BlockRotBoost.MouseButton1Click:Connect(function()
  
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
     if instance:IsA("BodyForce") then
         instance:Destroy()
     end
@@ -1822,7 +1822,7 @@ NoBlockSpeed.TextColor3 = Color3.fromRGB(255, 255, 255)
 NoBlockSpeed.TextSize = 14.000
 NoBlockSpeed.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyThrust") then
 		instance:Destroy()
 	end
@@ -1861,7 +1861,7 @@ BlockSpeed.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockSpeed.TextSize = 14.000
 BlockSpeed.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyThrust") then
 		instance:Destroy()
 	end
@@ -1943,14 +1943,14 @@ UnAnchor.Text = "Move Blocks!"
 UnAnchor.TextColor3 = Color3.fromRGB(255, 255, 255)
 UnAnchor.TextSize = 14.000
 UnAnchor.MouseButton1Click:Connect(function()
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
     if instance:IsA("BodyForce") then
         local Partt = instance.Parent
 		Partt.Anchored = false
     end
 end
 wait "0.05"
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
     if instance:IsA("BodyForce") then
 		instance:Destroy()
     end
@@ -2077,7 +2077,7 @@ v.Handle.SpecialMesh:remove()
 end
 end
 wait "0.00001"
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("RocketPropulsion") then
 		instance:Destroy()
 	end
@@ -2173,7 +2173,7 @@ for _, instance in pairs(game:GetDescendants()) do
 	end
 end
 wait "0.05"
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("RocketPropulsion") then
 		instance:Destroy()
 	end
@@ -2257,7 +2257,7 @@ MiscMover2.TextColor3 = Color3.fromRGB(255, 255, 255)
 MiscMover2.TextSize = 14.000
 MiscMover2.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		instance:Destroy()
 	end
@@ -2299,7 +2299,7 @@ end)
 
 wait "0.00001"
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		local Partt = instance.Parent
 		instance.MaxForce = Partt:GetMass() * Vector3.new(40000,100000,40000)
@@ -2310,7 +2310,7 @@ for _, instance in pairs(game:GetDescendants()) do
 end
 
 wait "4"
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		local Partt = instance.Parent
 		instance.MaxForce = Partt:GetMass() * Vector3.new(40000,100000,40000)
@@ -2339,7 +2339,7 @@ MiscMover.TextColor3 = Color3.fromRGB(255, 255, 255)
 MiscMover.TextSize = 14.000
 MiscMover.MouseButton1Click:Connect(function()
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		instance:Destroy()
 	end
@@ -2381,7 +2381,7 @@ end)
 
 wait "0.005"
 
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		local Partt = instance.Parent
 		instance.MaxForce = Partt:GetMass() * Vector3.new(40000,100000,40000)
@@ -2392,7 +2392,7 @@ for _, instance in pairs(game:GetDescendants()) do
 end
 
 wait "4"
-for _, instance in pairs(game:GetDescendants()) do
+for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("RocketPropulsion") then
 		instance.Parent.CanCollide = true
 	end
