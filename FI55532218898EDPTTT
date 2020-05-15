@@ -434,6 +434,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S1.Visible = true
+GravityTextBox.Visible = true
 end)
 
 S1.Name = "S1"
