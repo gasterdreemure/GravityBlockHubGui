@@ -34,10 +34,10 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
 end
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.6"
-local ChangeLine1 = "*Added Block Nuke"
-local ChangeLine2 = "*Added Super Nova"
-local ChangeLine3 = "*All In the Misc Launcher*"
+local VersionNumberV = "1.61"
+local ChangeLine1 = "*Fixed Bug"
+local ChangeLine2 = ""
+local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
