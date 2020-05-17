@@ -993,7 +993,7 @@ for i = 1, 1 do
        for i, v in ipairs(check) do
         if v:IsA("BasePart" or "UnionOperation" or "Model") and v.Anchored == false then
         if not (v:IsDescendantOf(PLRS.Character)) then
- 				v.CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+-10,v.CFrame.Z)
+ 				v.CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+10,v.CFrame.Z)
 			end
 	 	end
        end
