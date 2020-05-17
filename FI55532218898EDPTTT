@@ -2723,4 +2723,67 @@ while true do
 end
 wait "0.3"
 
+local PLLL = game.Players.LocalPlayer.Character
+for _, instance in pairs(PL:GetDescendants()) do
+	if instance:IsA("BodyForce") then
+		instance:Destroy()
+	end
+end
+
+wait "0.01"
+
+spawn(function()
+while true do
+game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game:GetService("RunService").Stepped:wait()
+end
+end)
+
+local function zeroGrav(part)
+   if part:FindFirstChild("BodyForce") then return end
+   local temp = Instance.new("BodyForce")
+   temp.Force = part:GetMass() * Vector3.new(0,OGravity.Text*-1,0)
+   temp.Parent = part
+end
+
+for i,v in ipairs(PLLL:GetDescendants()) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model") and v.Anchored == false then
+           zeroGrav(v)
+        
+   end
+end
+
+PL.DescendantAdded:Connect(function(part)
+   if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false then
+          zeroGrav(part)
+   end
+end)
+
+wait "0.2"
+
+workspace.Gravity = OneWay.Text
+
+wait "0.1"
+
+local PL = game.Players.LocalPlayer.Character
+for _, instance in pairs(PL:GetDescendants()) do
+	if instance:IsA("BodyForce") then
+		instance:Destroy()
+	end
+end
+
+wait "0.01"
+spawn(function()
+while true do
+game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge
+game:GetService("RunService").Stepped:wait()
+end
+end)
+
+wait"0.01"
+
+workspace.Gravity = OGravity.Text
+wait "0.01"
 print "Finished Loading"
