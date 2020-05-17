@@ -841,7 +841,7 @@ workspace.DescendantAdded:Connect(function(part)
    end
 end)
 
-wait "0.2"
+wait "1.2"
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
