@@ -436,6 +436,7 @@ end
 wait "0"
 S1.Visible = true
 GravityTextBox.Visible = true
+Infoo.Visible = false
 end)
 
 S1.Name = "S1"
@@ -648,6 +649,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S2.Visible = true
+Infoo.Visible = false
 end)
 
 S2.Name = "S2"
@@ -1014,6 +1016,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S3.Visible = true
+Infoo.Visible = false
 end)
 
 S3.Name = "S3"
@@ -1212,6 +1215,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S4.Visible = true
+Infoo.Visible = false
 end)
 
 S4.Name = "S4"
@@ -1344,6 +1348,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S5.Visible = true
+Infoo.Visible = false
 end)
 
 S5.Name = "S5"
@@ -1506,6 +1511,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S6.Visible = true
+Infoo.Visible = false
 end)
 
 S6.Name = "S6"
@@ -1668,6 +1674,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S7.Visible = true
+Infoo.Visible = false
 end)
 
 S7.Name = "S7"
@@ -1813,6 +1820,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S8.Visible = true
+Infoo.Visible = false
 end)
 
 S8.Name = "S8"
@@ -1965,6 +1973,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S9.Visible = true
+Infoo.Visible = false
 end)
 
 S9.Name = "S9"
@@ -2066,6 +2075,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S10.Visible = true
+Infoo.Visible = false
 end)
 
 S10.Name = "S10"
@@ -2261,6 +2271,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 S11.Visible = true
+Infoo.Visible = false
 end)
 
 S11.Name = "S11"
