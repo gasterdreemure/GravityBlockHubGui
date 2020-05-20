@@ -7,7 +7,7 @@ local PLRS = game.Players.LocalPlayer
 local check = game.workspace:GetDescendants()
 local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
 local PL = game.Players.LocalPlayer
-local Min = -math.pow(-math.huge,-math.huge)*-math.huge
+local Min = "-1e6"
 local INFIN = math.pow(math.huge,math.huge)*math.huge
 
 for _, iinstance in pairs(game.Players:GetPlayers()) do
@@ -693,7 +693,7 @@ for _, instance in pairs(game:GetDescendants()) do
 		instance:Destroy()
 	end
 end
-
+ 
 wait "0.1"
 
 local targetname = BlockPlayerName.Text
