@@ -379,7 +379,6 @@ for i, v in pairs(g:GetDescendants()) do
     elseif v:IsA("MeshPart") then
         v.Material = "Plastic"
         v.Reflectance = 0
-        v.TextureID = 10385902758728957
     end
 end
 for i, e in pairs(l:GetChildren()) do
@@ -793,14 +792,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
    end
 end
 
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
-           zeroGrav(part)
-       end
-   end
-end)
-
 wait "0.005"
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
@@ -858,14 +849,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
    end
 end
 
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
-           zeroGrav(part)
-       end
-   end
-end)
-
 for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		local Partt = instance.Parent
@@ -912,14 +895,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
        end
    end
 end
-
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
-           Fix(part)
-       end
-   end
-end)
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyForce") then
@@ -1275,14 +1250,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
    end
 end
 
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
-           zeroGrav(part)
-       end
-   end
-end)
-
 wait "0.01"
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
@@ -1427,6 +1394,9 @@ local function zeroGrav(part)
    if part:FindFirstChild("BodyAngularVelocity") then return end
    local temp = Instance.new("BodyAngularVelocity")
    temp.Parent = part
+   temp.MaxTorque = Partt:GetMass() * Vector3.new(4000,4000,4000)
+   temp.P = 2000
+   temp.AngularVelocity = Vector3.new(SpinX.Text,SpinY.Text,SpinZ.Text)
 end
 
 for i,v in ipairs(workspace:GetDescendants()) do
@@ -2350,14 +2320,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
    end
 end
 
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
-           zeroGrav(part)
-       end
-   end
-end)
-
 wait "0.00001"
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
@@ -2431,14 +2393,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
        end
    end
 end
-
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
-           zeroGrav(part)
-       end
-   end
-end)
 
 wait "0.005"
 
