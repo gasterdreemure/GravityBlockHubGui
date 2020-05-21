@@ -43,7 +43,7 @@ end)
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
 local VersionNumberV = "1.66"
 local ChangeLine1 = "*Update SemiPerm Lag Help script"
-local ChangeLine2 = ""
+local ChangeLine2 = "*Updated Scripts"
 local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
