@@ -41,9 +41,9 @@ end
 end)
 --            /\ Part Made by TomQ
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.66"
-local ChangeLine1 = "*Update SemiPerm Lag Help script"
-local ChangeLine2 = "*Updated Scripts"
+local VersionNumberV = "1.67"
+local ChangeLine1 = "*Fixed Bug"
+local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
