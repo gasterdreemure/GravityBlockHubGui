@@ -611,7 +611,7 @@ local function zeroGrav(part)
    if part:FindFirstChild("BodyForce") then return end
    local temp = Instance.new("BodyForce")
    temp.Parent = part
-   temp.Force = part:GetMass() * Vector3.new(GravityX.Text,workspace.Gravity*GravityY.Text,GravityZ.Text)
+   temp.Force = part:GetMass() * Vector3.new(GravityX.Text*10,workspace.Gravity*GravityY.Text,GravityZ.Text*10)
 end
 
 for i,v in ipairs(workspace:GetDescendants()) do
@@ -1906,7 +1906,7 @@ end)
 local function zeroGrav(part)
    if part:FindFirstChild("BodyThrust") then return end
    local temp = Instance.new("BodyThrust")
-   temp.Force = part:GetMass() * Vector3.new(GravityX_2.Text,GravityY_2.Text,GravityZ_2.Text)
+   temp.Force = part:GetMass() * Vector3.new(GravityX_2.Text*10,GravityY_2.Text*10,GravityZ_2.Text*10)
    temp.Parent = part
 end
 
@@ -2018,15 +2018,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
    end
 end
 end
- 
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then if(part.Name ~= "HumanoidRootPart")and(part.Name ~= "LeftArm")and(part.Name ~= "RightArm")and(part.Name ~= "Tip")and(part.Name ~= "Weld")and(part.Name ~= "Light")and(part.Name ~= "Ammo")and(part.Name ~= "Body")and(part.Name ~= "Center")and(part.Name ~= "Taser")and(part.Name ~= "Handcuffs")and(part.Name ~= "Head")and(part.Name ~= "UpperTorso")and(part.Name ~= "LowerTorso")and(part.Name ~= "LeftFoot")and(part.Name ~= "RightFoot")and(part.Name ~= "LeftHand")and(part.Name ~= "RightHand")and(part.Name ~= "RightUpperArm")and(part.Name ~= "LeftLowerArm")and(part.Name ~= "RightLowerArm")and(part.Name ~= "RightUpperLeg")and(part.Name ~= "LeftUpperLeg")and(part.Name ~= "LeftLowerLeg")and(part.Name ~= "RightLowerLeg")and(part.Name ~= "Head")and(part.Name ~= "HumanoidRootPart")and(part.Name ~= "Torso")and(part.Name ~= "Right Leg")and(part.Name ~= "Right Arm")and(part.Name ~= "Left Arm")and(part.Name ~= "Left Leg")and(part.Name ~= "Handle")and(Part.Name ~= "LeftUpperArm")then
-           zeroGrav(part)
-       end
-   end
-end
-end)
 
 wait"0.1"
 print "Freezing Blocks"
