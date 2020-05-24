@@ -42,7 +42,7 @@ end)
 --            /\ Part Made by TomQ
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
 local VersionNumberV = "1.69"
-local ChangeLine1 = "*Updated Just Becuase"
+local ChangeLine1 = "*Updated Just Becuase "
 local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
