@@ -45,7 +45,7 @@ end)
 local VersionNumberV = "1.70"
 local ChangeLine1 = "*Smoothend Script Code"
 local ChangeLine2 = "*Game Specific Scripts Soon*"
-local ChangeLine3 = ""
+local ChangeLine3 = "*"
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
