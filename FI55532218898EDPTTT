@@ -41,8 +41,8 @@ end
 end)
 --            /\ Part Made by TomQ
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.67"
-local ChangeLine1 = "*Fixed Bug"
+local VersionNumberV = "1.68"
+local ChangeLine1 = "*Fixed Hat Blocks"
 local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
@@ -2097,11 +2097,15 @@ game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.h
 game:GetService("RunService").Stepped:wait()
 end
 end)
-
+for _,v in pairs(game.Players.LocalPlayer.Character.Humanoid:GetAccessories()) do
+	if v:FindFirstChild('Handle') and v.Handle:FindFirstChildOfClass('SpecialMesh') then
+		v.Handle:FindFirstChildOfClass("SpecialMesh"):Destroy()
+	end
+end
+wait ()
 for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 if (v:IsA("Accessory")) then
 v.Parent = workspace
-v.Handle.SpecialMesh:remove()
 end
 end
 wait "0.00001"
@@ -2170,18 +2174,24 @@ game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.h
 game:GetService("RunService").Stepped:wait()
 end
 end)
+
+for _,v in pairs(game.Players.LocalPlayer.Character.Humanoid:GetAccessories()) do
+	if v:FindFirstChild('Handle') and v.Handle:FindFirstChildOfClass('SpecialMesh') then
+		v.Handle:FindFirstChildOfClass("SpecialMesh"):Destroy()
+	end
+end
+wait ()
 wait "0.001"
     do
     for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
     if (v:IsA("Accessory")) then
     v.Parent = workspace
-    v.Handle.SpecialMesh:remove()
     end
     end
     wait "0.01"
+    game.Players.LocalPlayer.Character:BreakJoints()
     game.Players.LocalPlayer.Character.Humanoid.Health = "0"
     game.Players.LocalPlayer.Character.Humanoid.MaxHealth = "0"
-    game.Players.LocalPlayer.Character:BreakJoints()
     end
 end)
 
