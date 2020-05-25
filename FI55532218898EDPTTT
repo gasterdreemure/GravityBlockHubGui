@@ -167,7 +167,7 @@ local MiscMover = Instance.new("TextButton")
 for _, instance in pairs(game.CoreGui:GetDescendants()) do
 	if instance:IsA("ScreenGui") then
 	    if instance.Name == "BlockHub" == true then
-        workspace.Gravity = OGravity.Text
+        workspace.Gravity = game:GetService("CoreGui").BlockHub.Title.Scrip.List.Script7.S7.OGravity
         wait ()
 		instance:Destroy()
         game.StarterGui:SetCore("SendNotification", {
