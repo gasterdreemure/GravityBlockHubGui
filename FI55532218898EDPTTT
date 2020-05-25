@@ -59,7 +59,7 @@ end)
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
 local VersionNumberV = "1.72"
-local ChangeLine1 = "*Updated Script Power!"
+local ChangeLine1 = "*Updated Script Power*"
 local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
@@ -2854,7 +2854,6 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
     end
 end
 
-workspace.Gravity = OGravity.Text
 wait "0.01"
 
 game.StarterGui:SetCore("SendNotification", {
