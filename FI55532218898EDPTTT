@@ -11,6 +11,17 @@ local PL = game.Players.LocalPlayer
 local Min = -math.pow(-math.huge,-math.huge)*-math.huge*-math.pow(-math.huge,-math.huge)*-math.huge
 local INFIN = math.pow(math.huge,math.huge)*math.huge
 
+local NetworkAccess = coroutine.create(function()
+    spawn(function()
+    while true do
+    settings().Physics.AllowSleep = false
+    game:GetService("Players").LocalPlayer.MaximumSimulationRadius = INFIN
+    game:GetService("Players").LocalPlayer.SimulationRadius = INFIN
+    end
+    end)
+    coroutine.resume(NetworkAccess)
+end)
+
 for _, iinstance in pairs(game.Players:GetPlayers()) do
         if(iinstance ~= PL) then
             spawn(function()
@@ -20,6 +31,7 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
             game.workspace.FilteringEnabled = false
             iinstance.MaximumSimulationRadius = Min
             iinstance.SimulationRadius = Min
+            settings().Physics.AllowSleep = false
             game:GetService("RunService").Stepped:wait()
             end
         end)
@@ -42,10 +54,10 @@ spawn(function()
 end)
 --            /\ Part Made by TomQ
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.70"
-local ChangeLine1 = "*Smoothend Script Code"
-local ChangeLine2 = "*Game Specific Scripts Soon*"
-local ChangeLine3 = "*"
+local VersionNumberV = "1.72"
+local ChangeLine1 = "*Updated Script Power!"
+local ChangeLine2 = ""
+local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
@@ -209,6 +221,12 @@ end
 for _, iinstance in pairs(game.Players:GetPlayers()) do print ""
 	Oof(iinstance)
 end
+
+game.Players.PlayerAdded:Connect(function(player)
+    Oof(player)
+end)
+
+wait ()
 
 game.Players.PlayerAdded:Connect(function(player)
     Oof(player)
@@ -2791,8 +2809,42 @@ game:GetService("RunService").Stepped:wait()
 end
 end)
 
+local NetworkAccess = coroutine.create(function()
+    spawn(function()
+    while true do
+    settings().Physics.AllowSleep = false
+    game:GetService("Players").LocalPlayer.MaximumSimulationRadius = INFIN
+    game:GetService("Players").LocalPlayer.SimulationRadius = INFIN
+    end
+    end)
+end)
+
 wait"0.01"
+
+for _, iinstance in pairs(game.Players:GetPlayers()) do
+        if(iinstance ~= PL) then
+            spawn(function()
+            while true do
+            game.Players.LocalPlayer.MaximumSimulationRadius = INFIN
+            game.Players.LocalPlayer.SimulationRadius = INFIN
+            game.workspace.FilteringEnabled = false
+            iinstance.MaximumSimulationRadius = Min
+            iinstance.SimulationRadius = Min
+            settings().Physics.AllowSleep = false
+            game:GetService("RunService").Stepped:wait()
+            end
+        end)
+    end
+end
 
 workspace.Gravity = OGravity.Text
 wait "0.01"
+
+game.StarterGui:SetCore("SendNotification", {
+Title = "Block Hub"; 
+Text = "Loaded!"; 
+Duration = 0.5; 
+})
+wait (0.8)
+
 print "Finished Loading"
