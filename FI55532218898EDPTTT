@@ -1191,7 +1191,6 @@ local PLRS = game.Players.LocalPlayer
 local targetname = TelePlayerName.Text
 local arget = game:GetService("Players")[targetname]
 local check = game.workspace:GetDescendants()
-
 for i = 1, 1 do
        spawn(function()
        while true do
@@ -1202,9 +1201,9 @@ for i = 1, 1 do
        end)
        for i, v in ipairs(check) do
         if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
-            if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then if(v.Name == "HumanoidRootPart")and(v.Name == "LeftArm")and(v.Name == "RightArm")and(v.Name == "Tip")and(v.Name == "Weld")and(v.Name == "light")and(v.Name == "Ammo")and(v.Name == "Body")and(v.Name == "Center")and(v.Name == "Taser")and(v.Name == "Handcuffs")and(v.Name == "UpperTorso")and(v.Name == "LowerTorso")and(v.Name == "LeftFoot")and(v.Name == "RightFoot")and(v.Name == "LeftHand")and(v.Name == "RightHand")and(v.Name == "RightUpperArm")and(v.Name == "LeftLowerArm")and(v.Name == "RightLowerArm")and(v.Name == "RightUpperLeg")and(v.Name == "LeftUpperLeg")and(v.Name == "LeftLowerLeg")and(v.Name == "RightLowerLeg")and(v.Name == "HumanoidRootPart")and(v.Name == "Torso")and(v.Name == "Right Leg")and(v.Name == "Right Arm")and(v.Name == "Left Arm")and(v.Name == "Left Leg") then
- 			 v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
-              v.Velocity = Vector3.new(0,0,0)
+            if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then if (v.Name == "Torso") then
+                v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 7, 0)
+              v.Velocity = Vector3.new(0,1,0)
 			end
 	 	  end
         end
