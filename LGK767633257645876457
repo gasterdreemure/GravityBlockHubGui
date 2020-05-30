@@ -1,9 +1,9 @@
 keys = { 
-[nos7aBEDfs3fXD] = true, 
-[M8ffi54YBiSJ] = true,
-[zjDJ96kbPTBK] = true,
-[RsA5hbpn7Rzb] = true,
-[oiEay4DeBzi6] = true,
-[KCtiHXTiT73L] = true,
-[kD7ac5DKyGSF] = true
+nos7aBEDfs3fX = true, 
+M8ffi54YBiSJ = true,
+zjDJ96kbPTBK = true,
+RsA5hbpn7Rzb = true,
+oiEay4DeBzi6 = true,
+KCtiHXTiT73L = true,
+kD7ac5DKyGSF = true
 }return keys
