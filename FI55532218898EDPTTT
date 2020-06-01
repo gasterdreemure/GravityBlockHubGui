@@ -1,6 +1,28 @@
 if not game:IsLoaded() then 
     game.Loaded:Wait()
 end
+wait ()
+spawn(function()
+while true do
+wait "0.5"
+for _, instance in pairs(workspace:GetDescendants()) do
+	if instance:IsA("LocalScript") then
+        instance:Destroy()
+	  end
+   end
+end
+end)
+
+spawn(function()
+while true do
+wait "0.5"
+for _, instance in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
+	if instance:IsA("LocalScript") then
+        instance:Destroy()
+	  end
+   end
+end
+end)
 -- Gui to Lua
 game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge
 wait ()
@@ -60,8 +82,8 @@ end)
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
 local VersionNumberV = "1.76"
 local ChangeLine1 = "*Strengthened Remove Blocks"
-local ChangeLine2 = "*Sorry for not updating im just lazy*"
-local ChangeLine3 = "*Starting to work on Game scripts*"
+local ChangeLine2 = "*Fixed So Game Cant Detect Script"
+local ChangeLine3 = "*May Be Buggy*"
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
