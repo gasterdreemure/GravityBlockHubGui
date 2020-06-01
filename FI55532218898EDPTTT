@@ -8,8 +8,6 @@ for _, instance in pairs(game:GetService("Workspace"):GetDescendants()) do
 	end
 end
 
-wait(0.4)
-
 for _, instance in pairs(game:GetService("Workspace"):GetDescendants()) do
 	if instance:IsA("LocalScript") then
         instance.RobloxLocked = true
@@ -23,7 +21,7 @@ wait "1.2"
 for _, instance in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
 	if instance:IsA("LocalScript") then if(instance.Name ~= "ChatScript")and(instance.Name ~= "BubbleChat")and(instance.Name ~= "FindItemsAndAssignListeners")and(instance.Name ~= "SetUpRagdollLS")and(instance.Name ~= "PlayerScriptsLoader")and(instance.Name ~= "RbxCharacterSounds")and(instance.Name ~= "RequestRecievedScript")and(instance.Name ~= "RequestRecievedScript")
         instance.RobloxLocked = true
-        instance.Disabled = true
+        instance:Destroy()
 	  end
    end
 end
