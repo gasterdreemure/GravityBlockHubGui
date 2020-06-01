@@ -2940,6 +2940,7 @@ for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDes
 	  end
    end
 end
+end
 end)
 
 game.StarterGui:SetCore("SendNotification", {
