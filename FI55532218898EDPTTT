@@ -1,7 +1,6 @@
 if not game:IsLoaded() then 
     game.Loaded:Wait()
 end
-wait ()
 
 for _, instance in pairs(game:GetService("Workspace"):GetDescendants()) do
 	if instance:IsA("LocalScript") then
