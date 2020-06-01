@@ -2930,6 +2930,17 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
 end
 
 wait "0.01"
+spawn(function()
+while true do
+wait "1.2"
+for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+	if instance:IsA("LocalScript") then if(instance.Name ~= "Animate") then
+        instance.RobloxLocked = true
+        instance:Destroy()
+	  end
+   end
+end
+end)
 
 game.StarterGui:SetCore("SendNotification", {
 Title = "Block Hub"; 
