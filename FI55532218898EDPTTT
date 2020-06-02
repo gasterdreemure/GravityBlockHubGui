@@ -1,6 +1,7 @@
 if not game:IsLoaded() then 
     game.Loaded:Wait()
 end
+wait ()
 -- Ye
 for _, instance in pairs(game:GetService("Workspace"):GetDescendants()) do
 	if instance:IsA("LocalScript") then
@@ -1104,8 +1105,6 @@ for i = 1, 2 do
  				v.CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+15,v.CFrame.Z)
                 v.Velocity = Vector3.new(0,0,0)
                 v.CanCollide = false
-                wait "1.4"
-                v.CanCollide = true
 			end
 	 	end
        end
@@ -1665,14 +1664,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
        end
    end
 end
- 
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
-           v.Velocity = Velocityyy
-       end
-   end
-end)
 
 wait"0.1"
 print "Velocity Changed!"
@@ -1824,15 +1815,8 @@ end
 for i,v in ipairs(PLLL:GetDescendants()) do
    if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
            zeroGrav(v)
-        
    end
 end
-
-PL.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and part.Anchored == false then
-          zeroGrav(part)
-   end
-end)
 
 wait "0.2"
 
@@ -1878,6 +1862,23 @@ workspace.Gravity = OGravity.Text
 print "Undoing!"
 
 end)
+
+local function PlayerGravity(part)
+   if part:FindFirstChild("BodyForce") then return end
+   local temp = Instance.new("BodyForce")
+   temp.Parent = part
+   temp.Force = part:GetMass() * Vector3.new(0,OGravity.Text*-1 - OneWay.Text,0)
+end
+
+local Players = game:GetService("Players")
+ 
+local function haracterAdded(character)
+   if character:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and character.Anchored == false then
+          PlayerGravity(character)
+      end
+end
+
+Players.LocalPlayer.CharacterAdded:Connect(haracterAdded)
 
 Script8.Name = "Script8"
 Script8.Parent = List
