@@ -104,7 +104,7 @@ end)
 local VersionNumberV = "1.76"
 local ChangeLine1 = "*Strengthened Remove Blocks"
 local ChangeLine2 = "*Fixed So Games Cant Detect Script"
-local ChangeLine3 = "*May Be Buggy*"
+local ChangeLine3 = "*Semi Buggy*"
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
