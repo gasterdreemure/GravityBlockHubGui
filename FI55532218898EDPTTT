@@ -17,7 +17,7 @@ end
 
 spawn(function()
 while true do
-wait "1.2"
+wait "2"
 for _, instance in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
 	if instance:IsA("LocalScript") then if(instance.Name ~= "ChatScript")and(instance.Name ~= "BubbleChat")and(instance.Name ~= "FindItemsAndAssignListeners")and(instance.Name ~= "SetUpRagdollLS")and(instance.Name ~= "PlayerScriptsLoader")and(instance.Name ~= "RbxCharacterSounds")and(instance.Name ~= "RequestRecievedScript")and(instance.Name ~= "RequestRecievedScript") then
         instance.RobloxLocked = true
@@ -30,7 +30,7 @@ end)
 
 spawn(function()
 while true do print "Check"
-wait "1"
+wait "2"
 for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
 	if instance:IsA("LocalScript") then if(instance.Name ~= "Animate")and(instance.Name ~= "Animatee") then
         instance.RobloxLocked = true
@@ -105,7 +105,7 @@ local VersionNumberV = "1.76"
 local ChangeLine1 = "*Strengthened Remove Blocks"
 local ChangeLine2 = "*Fixed So Games Cant Detect Script"
 local ChangeLine3 = "*Semi Buggy*"
-local ChangeLine4 = ""
+local ChangeLine4 = "*"
 -- Instances:
 print "Starting"
 local Valuee = Instance.new("NumberValue")
