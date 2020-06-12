@@ -52,6 +52,7 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
         end)
     end
 end
+
 --             \/
 local heartbeat = game:GetService("RunService").Heartbeat
 spawn(function()
@@ -71,10 +72,10 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.85"
-local ChangeLine1 = "*Made Block Feching Better"
-local ChangeLine2 = "*Added EarthQuake"
-local ChangeLine3 = "(In Misc Luancher)"
+local VersionNumberV = "1.86"
+local ChangeLine1 = "*Earth Quake Is More Random"
+local ChangeLine2 = ""
+local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
@@ -2558,7 +2559,8 @@ local function zeroGrav(part)
    if part:FindFirstChild("BodyVelocity") then return end
    local temp = Instance.new("BodyVelocity")
    temp.Parent = part
-   temp.Velocity = Vector3.new(0,part:GetMass()*100,0)
+   temp.MaxForce = Vector3.new(5000,part:GetMass()*2000*0.8,5000)
+   temp.Velocity = part:GetMass()*Vector3.new(math.random(-40,40),-50*0.8,math.random(-40,40))
 end
 
 for i,v in ipairs(workspace:GetDescendants()) do
@@ -2569,19 +2571,20 @@ for i,v in ipairs(workspace:GetDescendants()) do
    end
 end
 for i = 1, 70 do
-wait (0.08)
+wait (0.07)
 for i,v in ipairs(workspace:GetDescendants()) do
    if v:IsA("BodyVelocity") then
        if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then 
-           v.Velocity = Vector3.new(0,v.Parent:GetMass()*-100,0)
+           v.Velocity = v.Parent:GetMass()*Vector3.new(math.random(-40,40),-140*0.8,math.random(-40,40))
        end
    end
 end
-wait (0.08)
+wait (0.07)
 for i,v in ipairs(workspace:GetDescendants()) do
    if v:IsA("BodyVelocity") then
        if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then 
-           v.Velocity = Vector3.new(0,v.Parent:GetMass()*100,0)
+           v.MaxForce = Vector3.new(8000,v.Parent:GetMass()*1000*0.8,8000)
+           v.Velocity = v.Parent:GetMass()*Vector3.new(math.random(-40,40),100*0.8,math.random(-40,40))
        end
    end
 end
