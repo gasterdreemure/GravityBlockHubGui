@@ -74,7 +74,7 @@ end)
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
 local VersionNumberV = "1.86"
 local ChangeLine1 = "*Earth Quake Is More Random"
-local ChangeLine2 = ""
+local ChangeLine2 = "*Earth Quake Wont Interact With Player"
 local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
@@ -2541,7 +2541,9 @@ MiscMover3.MouseButton1Click:Connect(function()
 print "Starting EarthQuake!"
 for _, instance in pairs(game:GetDescendants()) do
 	if instance:IsA("BodyVelocity") then
-		instance:Destroy()
+        if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+		   instance:Destroy()
+        end
 	end
 end
  
@@ -2592,7 +2594,9 @@ end
 wait (0)
 for _, instance in pairs(game:GetDescendants()) do
 	if instance:IsA("BodyVelocity") then
-		instance:Destroy()
+        if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+		   instance:Destroy()
+        end
 	end
 end
 print "Finnished EarthQuake!"
