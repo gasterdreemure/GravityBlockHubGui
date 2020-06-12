@@ -2541,7 +2541,7 @@ MiscMover3.MouseButton1Click:Connect(function()
 print "Starting EarthQuake!"
 for _, instance in pairs(game:GetDescendants()) do
 	if instance:IsA("BodyVelocity") then
-        if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+        if not (instance:IsDescendantOf(game.Players.LocalPlayer.Character)) then
 		   instance:Destroy()
         end
 	end
@@ -2594,7 +2594,7 @@ end
 wait (0)
 for _, instance in pairs(game:GetDescendants()) do
 	if instance:IsA("BodyVelocity") then
-        if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+        if not (instance:IsDescendantOf(game.Players.LocalPlayer.Character)) then
 		   instance:Destroy()
         end
 	end
