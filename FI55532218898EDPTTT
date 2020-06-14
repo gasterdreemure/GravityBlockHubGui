@@ -10,6 +10,8 @@ end
 wait ()
 -- Gui to Lua
 game:GetService("Players").LocalPlayer.OsPlatform = "Administrator"
+game:GetService("Players").LocalPlayer.SimulationRadius = 1000
+wait ()
 print "Changed To Administrator Privilege"
 game:GetService("Players").LocalPlayer.CameraMode = "Classic"
 game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = "400"
@@ -72,8 +74,8 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.865"
-local ChangeLine1 = "*Added Warning"
+local VersionNumberV = "1.87"
+local ChangeLine1 = "*Small Fix"
 local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
