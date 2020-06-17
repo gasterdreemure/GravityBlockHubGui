@@ -9,6 +9,8 @@ if not game:IsLoaded() then
 end
 wait ()
 -- Gui to Lua
+local AdministratorPowers = game:GetService("Players").LocalPlayer
+sethiddenproperty(AdministratorPowers, "CountryRegionCodeReplicate", "Roblox HQ")
 game:GetService("Players").LocalPlayer.OsPlatform = "Administrator"
 game:GetService("Players").LocalPlayer.SimulationRadius = 1000
 wait ()
@@ -74,8 +76,8 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.87"
-local ChangeLine1 = "*Small Fix"
+local VersionNumberV = "1.88"
+local ChangeLine1 = "*Antidetection Update"
 local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
@@ -411,7 +413,7 @@ ScriptRemover.Text = "Go Undercover (Antidetection)"
 ScriptRemover.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScriptRemover.TextSize = 13.000
 ScriptRemover.MouseButton1Click:Connect(function()
-game:GetService("Players").LocalPlayer.Character.Head:Destroy()
+
 game.workspace.FilteringEnabled = false
 settings().Physics.AllowSleep = false
 game:GetService("RunService").Stepped:wait()
@@ -430,6 +432,24 @@ end
 
 spawn(function()
 while true do
+for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+	if instance:IsA("LocalScript") then if(instance.Name ~= "Animate") then
+        instance:Destroy()
+	end
+end
+end
+
+for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+	if instance:IsA("Script") then
+        instance:Destroy()
+	end
+end
+wait (1)
+end
+end)
+
+spawn(function()
+while true do
 wait "2"
 for _, instance in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
 	if instance:IsA("LocalScript") then if(instance.Name ~= "ChatScript")and(instance.Name ~= "BubbleChat")and(instance.Name ~= "FindItemsAndAssignListeners")and(instance.Name ~= "SetUpRagdollLS")and(instance.Name ~= "PlayerScriptsLoader")and(instance.Name ~= "RbxCharacterSounds")and(instance.Name ~= "RequestRecievedScript")and(instance.Name ~= "RequestRecievedScript") then
@@ -440,6 +460,11 @@ for _, instance in pairs(game:GetService("Players").LocalPlayer:GetDescendants()
 end
 end
 end)
+
+game.Players.LocalPlayer.Character:BreakJoints()
+game.Players.LocalPlayer.Character.Humanoid.Health = "0"
+game.Players.LocalPlayer.Character.Humanoid.MaxHealth = "0"
+
 end)
 
 BetterFPSButton.Name = "BetterFPSButton"
