@@ -76,7 +76,7 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.88"
+local VersionNumberV = "1.875"
 local ChangeLine1 = "*Antidetection Update"
 local ChangeLine2 = ""
 local ChangeLine3 = ""
@@ -433,7 +433,7 @@ end
 spawn(function()
 while true do
 for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-	if instance:IsA("LocalScript") then if(instance.Name ~= "Animate") then
+	if instance:IsA("LocalScript") then if(instance.Name == "Animate" == false) then
         instance:Destroy()
 	end
 end
