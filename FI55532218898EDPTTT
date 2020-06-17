@@ -76,8 +76,8 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.875"
-local ChangeLine1 = "*Antidetection Update"
+local VersionNumberV = "1.88"
+local ChangeLine1 = "*Antidetection Fixed"
 local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
@@ -418,16 +418,18 @@ game.workspace.FilteringEnabled = false
 settings().Physics.AllowSleep = false
 game:GetService("RunService").Stepped:wait()
 for _, instance in pairs(game:GetService("Workspace"):GetDescendants()) do
-	if instance:IsA("LocalScript") then
+	if instance:IsA("LocalScript") then if(instance.Name == "Animate" == false) then
         instance:Destroy()
 	end
 end
+end
 
 for _, instance in pairs(game:GetService("Workspace"):GetDescendants()) do
-	if instance:IsA("LocalScript") then
+	if instance:IsA("LocalScript") then if(instance.Name == "Animate" == false) then
         instance.RobloxLocked = true
         instance.Disabled = true
 	end
+end
 end
 
 spawn(function()
@@ -440,9 +442,10 @@ end
 end
 
 for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-	if instance:IsA("Script") then
+	if instance:IsA("Script") then if(instance.Name == "Health" == false) then
         instance:Destroy()
 	end
+end
 end
 wait (1)
 end
