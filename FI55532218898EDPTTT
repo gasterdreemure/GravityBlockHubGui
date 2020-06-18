@@ -6,6 +6,7 @@ if not game:IsLoaded() then
     game:GetService("Players").LocalPlayer.OsPlatform = "Administrator"
     wait ()
     game.workspace.FilteringEnabled = false
+	game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 end
 wait ()
 -- Gui to Lua
@@ -21,6 +22,7 @@ game:GetService("Workspace").Camera.CameraType = "Custom"
 game:GetService("Workspace").StreamingEnabled = true
 
 game:GetService("RunService").RenderStepped:Connect(function()
+game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 end)
@@ -76,11 +78,11 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.9"
-local ChangeLine1 = "*Added Other Warning"
-local ChangeLine2 = "*Added FreeCam"
-local ChangeLine3 = "*Another Update On Antidetection"
-local ChangeLine4 = "*Added More Strength"
+local VersionNumberV = "1.91"
+local ChangeLine1 = "*Found Another Exploit"
+local ChangeLine2 = ""
+local ChangeLine3 = ""
+local ChangeLine4 = ""
 -- Instances:
 print "Starting"
 local Valuee = Instance.new("NumberValue")
@@ -225,7 +227,7 @@ Valuee.Value = game.workspace.Gravity
 wait (0.001)
 BlockHub.Name = "BlockHub"
 BlockHub.Parent = game.CoreGui
-BlockHub.DisplayOrder = 999999998
+BlockHub.DisplayOrder = 999999997
 BlockHub.ResetOnSpawn = false
 --Properties:
 local tsss = game:GetService("TeleportService")
@@ -236,7 +238,7 @@ while true do
 game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 game:GetService("RunService").Stepped:wait()
-game.workspace.FilteringEnabled = false
+game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 end
 end)
 -- i know FilteringEnabled = false dose nothing but just becuase
