@@ -95,7 +95,7 @@ local VersionNumberV = "1.91"
 local ChangeLine1 = "*Found Another Exploit"
 local ChangeLine2 = "*Will Cause Small Lag*"
 local ChangeLine3 = "*Fixed Spin Player Bug"
-local ChangeLine4 = "*Fixed Other Bug"
+local ChangeLine4 = ""
 -- Instances:
 print "Starting"
 local Valuee = Instance.new("NumberValue")
