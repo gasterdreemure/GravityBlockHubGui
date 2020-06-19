@@ -36,7 +36,7 @@ for _ = 1,#TBL do local Players = TBL[_]
 if Players ~= game:GetService("Players").LocalPlayer then
 Players.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2 Players.SimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2 end end
 game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
+game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5 end end)
 coroutine.resume(NetworkAccess)
 -- /\
 
@@ -95,7 +95,7 @@ local VersionNumberV = "1.91"
 local ChangeLine1 = "*Found Another Exploit"
 local ChangeLine2 = "*Will Cause Small Lag*"
 local ChangeLine3 = "*Fixed Spin Player Bug"
-local ChangeLine4 = "*Testing Broken Loadstring"
+local ChangeLine4 = "*Fixed Other Bug"
 -- Instances:
 print "Starting"
 local Valuee = Instance.new("NumberValue")
