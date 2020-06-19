@@ -27,13 +27,26 @@ game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.h
 game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 end)
 
+-- \/ Riptxde's Script
+local NetworkAccess = coroutine.create(function()
+settings().Physics.AllowSleep = false
+while true do game:GetService("RunService").RenderStepped:Wait()
+local TBL = game:GetService("Players"):GetChildren() 
+for _ = 1,#TBL do local Players = TBL[_]
+if Players ~= game:GetService("Players").LocalPlayer then
+Players.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2 Players.SimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2 end end
+game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
+game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
+coroutine.resume(NetworkAccess)
+-- /\
+
 wait ()
 
 local PLRS = game.Players.LocalPlayer
 local check = game.workspace:GetDescendants()
 local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
 local PL = game.Players.LocalPlayer
-local NetworkAccess = coroutine.create(function()
+local NetworkAcces = coroutine.create(function()
     spawn(function()
     while true do
     game:GetService("RunService").Stepped:wait()
@@ -42,7 +55,7 @@ local NetworkAccess = coroutine.create(function()
     game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
     end
     end)
-    coroutine.resume(NetworkAccess)
+    coroutine.resume(NetworkAcces)
 end)
 
 for _, iinstance in pairs(game.Players:GetPlayers()) do
@@ -81,7 +94,7 @@ end)
 local VersionNumberV = "1.91"
 local ChangeLine1 = "*Found Another Exploit"
 local ChangeLine2 = "*Will Cause Small Lag*"
-local ChangeLine3 = ""
+local ChangeLine3 = "*Fixed Spin Player Bug"
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
@@ -2183,10 +2196,11 @@ end
 
 workspace.DescendantAdded:Connect(function(part)
    if part:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")then
            zeroGrav(part)
        end
-   end
+    end
+end
 end)
 
 wait"0.01"
@@ -3620,7 +3634,7 @@ game:GetService("RunService").Stepped:wait()
 end
 end)
 
-local NetworkAccess = coroutine.create(function()
+local NetworkAccesss = coroutine.create(function()
     spawn(function()
     while true do
     settings().Physics.AllowSleep = false
@@ -3628,7 +3642,7 @@ local NetworkAccess = coroutine.create(function()
     game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
     end
     end)
-    coroutine.resume(NetworkAccess)
+    coroutine.resume(NetworkAccesss)
 end)
 
 wait"0.01"
