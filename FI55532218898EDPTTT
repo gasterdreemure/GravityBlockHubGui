@@ -82,7 +82,7 @@ end)
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
 local VersionNumberV = "1.92"
 local ChangeLine1 = "*Made a bit smoother"
-local ChangeLine2 = ""
+local ChangeLine2 = "*Added Auto Block Fetching"
 local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
@@ -220,6 +220,47 @@ for _, instance in pairs(game.CoreGui:GetDescendants()) do
 	 end
    end
  end
+
+print "Fetching Blocks"
+local LOPLAPOS = game.Players.LocalPlayer.Character.HumanoidRootPart
+local LOPLA = game.Players.LocalPlayer
+
+local function BlockFetchers(part)
+   local temp = Instance.new("RocketPropulsion")
+   temp.Parent = part
+   temp.Name = "BlockFecher"
+   temp.Target = LOPLAPOS
+   temp.MaxSpeed = 0
+   temp.MaxThrust = 0
+   temp.ThrustD = 0
+   temp.ThrustP = 0
+   -- turn
+   temp.MaxTorque = 0,0,0
+   temp.TurnD = 0
+   temp.TurnP = 0
+   -- fire
+   temp:fire()
+end
+
+for i,v in ipairs(workspace:GetDescendants()) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+       if not (v:IsDescendantOf(LOPLA.Character)) then
+           BlockFetchers(v)
+       end
+   end
+end
+
+workspace.DescendantAdded:Connect(function(part)
+   if part:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and part.Anchored == false then
+       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+           BlockFetchers(part)
+       end
+   end
+end)
+
+wait"0.1"
+print "Fetched Blocks"
+
 wait (0.001)
 Valuee.Name = "GravityValue"
 Valuee.Parent = game.CoreGui
@@ -1421,9 +1462,10 @@ BlockMover2.TextSize = 14.000
 BlockMover2.MouseButton1Click:Connect(function()
 
 for _, instance in pairs(game:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
+	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
 		instance:Destroy()
-	end
+	  end
+   end
 end
  
 wait "0.1"
@@ -1440,15 +1482,15 @@ game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.h
 game:GetService("RunService").Stepped:wait()
 end
 end)
+
 local function zeroGrav(part)
-   if part:FindFirstChild("RocketPropulsion") then return end
    local temp = Instance.new("RocketPropulsion")
+   temp.Parent = part
    temp.Target = save
    temp.MaxSpeed = part:GetMass() *1000
    temp.MaxThrust = part:GetMass() *4000
    temp.ThrustD = 0.05
    temp.ThrustP = part:GetMass() *1000
-   temp.Parent = part
    temp:fire()
    temp.Parent.CanCollide = false
 end
@@ -1461,15 +1503,6 @@ for i,v in ipairs(workspace:GetDescendants()) do
    end
 end
 end
-
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and part.Anchored == false then
-       if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then
-           zeroGrav(part)
-       end
-    end
-end
-end)
 
 wait"0.1"
 print "Luanching!"
@@ -1511,6 +1544,10 @@ local function zeroGrav(part)
    local temp = Instance.new("BodyPosition")
    temp.Position = savepos
    temp.Parent = part
+   temp.MaxForce = part:GetMass() * Vector3.new(40000,100000,40000)
+   temp.D = 2500
+   temp.P = 32000
+   temp.Name = "Movemet"
 end
 
 for i,v in ipairs(workspace:GetDescendants()) do
@@ -1520,20 +1557,8 @@ for i,v in ipairs(workspace:GetDescendants()) do
        end
    end
 end
-
 wait "0.005"
 
-for _, instance in pairs(game.workspace:GetDescendants()) do
-	if instance:IsA("BodyPosition") then
-		local Partt = instance.Parent
-		instance.MaxForce = Partt:GetMass() * Vector3.new(40000,100000,40000)
-		instance.D = 2500
-		instance.P = 32000
-		instance.Name = "Movemet"
-	end
-end
-
-wait"0.1"
 print "Moving Blocks"
 
 end)
@@ -1651,8 +1676,9 @@ ForceRemover.TextSize = 14.000
 ForceRemover.MouseButton1Click:Connect(function()
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
+	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
 		instance.Parent.CanCollide = true
+		end
 	end
 end
 wait "0.05"
@@ -1681,26 +1707,16 @@ for _, instance in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 end
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
+	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
 		instance:Destroy()
+		end
 	end
 end
 wait "0.05"
 for _, instance in pairs(workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
+	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
 		instance:Destroy()
-	end
-end
-wait "0.05"
-for _, instance in pairs(game.Players:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
-		instance:Destroy()
-	end
-end
-wait "0.05"
-for _, instance in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
-		instance:Destroy()
+		end
 	end
 end
 wait "0.05"
@@ -2844,8 +2860,9 @@ end
 end
 wait "0.00001"
 for _, instance in pairs(game.workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
+	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
 		instance:Destroy()
+		end
 	end
 end
 
@@ -2857,7 +2874,6 @@ local save = arget.Character.HumanoidRootPart
 local PLRS = game.Players.LocalPlayer
 
 local function zeroGrav(part)
-   if part:FindFirstChild("RocketPropulsion") then return end
    local temp = Instance.new("RocketPropulsion")
    temp.Target = save
    temp.MaxSpeed = 1e6
@@ -2939,35 +2955,19 @@ ForceRemover_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 ForceRemover_2.TextSize = 14.000
 ForceRemover_2.MouseButton1Click:Connect(function()
 for _, instance in pairs(game:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
+	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
 		instance.Parent.CanCollide = true
+		end
 	end
 end
-wait "0.05"
+wait "0.005"
 for _, instance in pairs(game.workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
+	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
 		instance:Destroy()
+		end
 	end
 end
 wait "0.05"
-for _, instance in pairs(workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
-		instance:Destroy()
-	end
-end
-wait "0.05"
-for _, instance in pairs(game.Players:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
-		instance:Destroy()
-	end
-end
-wait "0.05"
-for _, instance in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
-		instance:Destroy()
-	end
-end
-
 print "Removed!"
 
 end)
@@ -3149,8 +3149,9 @@ end
 
 wait "4"
 for _, instance in pairs(game.workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then
+	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
 		instance.Parent.CanCollide = true
+		end
 	end
 end
 wait "0"
