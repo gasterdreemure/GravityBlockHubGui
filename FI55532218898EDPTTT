@@ -6,7 +6,7 @@ if not game:IsLoaded() then
     game:GetService("Players").LocalPlayer.OsPlatform = "Administrator"
     wait ()
     game.workspace.FilteringEnabled = false
-	game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
+	game:GetService("Players").LocalPlayer.ReplicationFocus = game
 end
 wait ()
 -- Gui to Lua
@@ -20,9 +20,9 @@ game:GetService("Players").LocalPlayer.CameraMode = "Classic"
 game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = "400"
 game:GetService("Workspace").Camera.CameraType = "Custom"
 game:GetService("Workspace").StreamingEnabled = true
+game:GetService("Players").LocalPlayer.ReplicationFocus = game
 
 game:GetService("RunService").RenderStepped:Connect(function()
-game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 end)
@@ -54,7 +54,6 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
             game.workspace.FilteringEnabled = false
             iinstance.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
             iinstance.SimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
-            settings().Physics.AllowSleep = false
             game:GetService("RunService").Stepped:wait()
             end
         end)
@@ -71,7 +70,6 @@ spawn(function()
             game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
             v.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
             v.SimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
-            settings().Physics.AllowSleep = false
             game:GetService("RunService").Stepped:wait()
             end
         end
@@ -80,10 +78,10 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.92"
-local ChangeLine1 = "*Made a bit smoother"
-local ChangeLine2 = "*Added Auto Block Fetching"
-local ChangeLine3 = "*Fixed Bug in this update*"
+local VersionNumberV = "1.93"
+local ChangeLine1 = "*Removed Block Fetching Becuase Lag"
+local ChangeLine2 = "*Reduced Even More Lag"
+local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
@@ -221,46 +219,6 @@ for _, instance in pairs(game.CoreGui:GetDescendants()) do
    end
  end
 
-print "Fetching Blocks"
-local LOPLAPOS = game.Players.LocalPlayer.Character.HumanoidRootPart
-local LOPLA = game.Players.LocalPlayer
-
-local function BlockFetchers(part)
-   local temp = Instance.new("RocketPropulsion")
-   temp.Parent = part
-   temp.Name = "BlockFecher"
-   temp.Target = LOPLAPOS
-   temp.MaxSpeed = 0
-   temp.MaxThrust = 0
-   temp.ThrustD = 0
-   temp.ThrustP = 0
-   -- turn
-   temp.MaxTorque = Vector3.new(0, 0, 0)
-   temp.TurnD = 0
-   temp.TurnP = 0
-   -- fire
-   temp:fire()
-end
-
-for i,v in ipairs(workspace:GetDescendants()) do
-   if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
-       if not (v:IsDescendantOf(LOPLA.Character)) then
-           BlockFetchers(v)
-       end
-   end
-end
-
-workspace.DescendantAdded:Connect(function(part)
-   if part:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and part.Anchored == false then
-       if not (part:IsDescendantOf(game.Players.LocalPlayer.Character)) then
-           BlockFetchers(part)
-       end
-   end
-end)
-
-wait"0.1"
-print "Fetched Blocks"
-
 wait (0.001)
 Valuee.Name = "GravityValue"
 Valuee.Parent = game.CoreGui
@@ -280,8 +238,8 @@ spawn(function()
 while true do
 game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
+game:GetService("Players").LocalPlayer.ReplicationFocus = game
 game:GetService("RunService").Stepped:wait()
-game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 end
 end)
 -- i know FilteringEnabled = false dose nothing but just becuase
