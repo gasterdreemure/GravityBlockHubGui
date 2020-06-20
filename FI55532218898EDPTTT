@@ -46,17 +46,6 @@ local PLRS = game.Players.LocalPlayer
 local check = game.workspace:GetDescendants()
 local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
 local PL = game.Players.LocalPlayer
-local NetworkAcces = coroutine.create(function()
-    spawn(function()
-    while true do
-    game:GetService("RunService").Stepped:wait()
-    settings().Physics.AllowSleep = false
-    game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-    game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-    end
-    end)
-    coroutine.resume(NetworkAcces)
-end)
 
 for _, iinstance in pairs(game.Players:GetPlayers()) do
         if(iinstance ~= PL) then
@@ -91,10 +80,10 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.91"
-local ChangeLine1 = "*Found Another Exploit"
-local ChangeLine2 = "*Will Cause Small Lag*"
-local ChangeLine3 = "*Fixed Spin Player Bug"
+local VersionNumberV = "1.92"
+local ChangeLine1 = "*Made a bit smoother"
+local ChangeLine2 = ""
+local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
