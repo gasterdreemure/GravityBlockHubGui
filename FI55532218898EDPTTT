@@ -27,17 +27,18 @@ game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.h
 game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 end)
 
--- \/ Riptxde's Script
-local NetworkAccess = coroutine.create(function()
-settings().Physics.AllowSleep = false
-while true do game:GetService("RunService").RenderStepped:Wait()
-local TBL = game:GetService("Players"):GetChildren() 
-for _ = 1,#TBL do local Players = TBL[_]
-if Players ~= game:GetService("Players").LocalPlayer then
-Players.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2 Players.SimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2 end end
-game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5 end end)
-coroutine.resume(NetworkAccess)
+-- \/ Part Of Riptxde's Script
+local NetworkAcces = coroutine.create(function()
+    spawn(function()
+    while true do
+    game:GetService("RunService").Stepped:wait()
+    settings().Physics.AllowSleep = false
+    game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
+    game:GetService("Players").LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
+    end
+    end)
+    coroutine.resume(NetworkAcces)
+end)
 -- /\
 
 wait ()
@@ -71,7 +72,6 @@ spawn(function()
             game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
             v.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
             v.SimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
-            game:GetService("RunService").Stepped:wait()
             end
         end
     end
