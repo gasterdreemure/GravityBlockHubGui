@@ -6,7 +6,7 @@ if not game:IsLoaded() then
     game:GetService("Players").LocalPlayer.OsPlatform = "Administrator"
     wait ()
     game.workspace.FilteringEnabled = false
-	game:GetService("Players").LocalPlayer.ReplicationFocus = game
+	game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 end
 wait ()
 -- Gui to Lua
@@ -20,7 +20,7 @@ game:GetService("Players").LocalPlayer.CameraMode = "Classic"
 game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = "400"
 game:GetService("Workspace").Camera.CameraType = "Custom"
 game:GetService("Workspace").StreamingEnabled = true
-game:GetService("Players").LocalPlayer.ReplicationFocus = game
+game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 
 game:GetService("RunService").RenderStepped:Connect(function()
 game:GetService("Players").LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
@@ -238,7 +238,7 @@ spawn(function()
 while true do
 game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
 game.Players.LocalPlayer.SimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-game:GetService("Players").LocalPlayer.ReplicationFocus = game
+game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 game:GetService("RunService").Stepped:wait()
 end
 end)
