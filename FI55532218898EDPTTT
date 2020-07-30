@@ -279,6 +279,13 @@ end)
 print "Finished"
 wait "1.1"
 
+game.StarterGui:SetCore("SendNotification", {
+Title = "Block Hub"; 
+Text = "Welcome Back!"; 
+Duration = 1; 
+})
+wait (0.8)
+
 Title.Name = "Title"
 Title.Parent = BlockHub
 Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
