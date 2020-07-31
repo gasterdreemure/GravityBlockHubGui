@@ -11,9 +11,8 @@ end
 wait ()
 -- Gui to Lua
 local AdministratorPowers = game:GetService("Players").LocalPlayer
-sethiddenproperty(AdministratorPowers, "CountryRegionCodeReplicate", "Roblox HQ")
 game:GetService("Players").LocalPlayer.OsPlatform = "Administrator"
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "1000")
+sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "100000000")
 wait ()
 print "Changed To Administrator Privilege"
 game:GetService("Players").LocalPlayer.CameraMode = "Classic"
@@ -43,6 +42,7 @@ end)
 
 wait ()
 
+local player = game.Players.LocalPlayer
 local PLRS = game.Players.LocalPlayer
 local check = game.workspace:GetDescendants()
 local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
@@ -52,7 +52,6 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
         if(iinstance ~= PL) then
             spawn(function()
             while true do
-			game:GetService("Workspace").StreamingEnabled = true
             game.workspace.FilteringEnabled = false
             iinstance.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
             sethiddenproperty(iinstance, "SimulationRadius", -math.pow(-math.huge,-math.huge)*-math.huge*2)
@@ -79,9 +78,9 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.95"
-local ChangeLine1 = "*Welcome Back!*"
-local ChangeLine2 = "*Added Newest Patch"
+local VersionNumberV = "1.96"
+local ChangeLine1 = "*Script Runs Smoother"
+local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
@@ -1331,8 +1330,7 @@ for _, instance in pairs(game.workspace:GetDescendants()) do
 	end
 end
 
-wait "0.4"
-
+wait "0.2"
 
 spawn(function()
 while true do
@@ -2287,14 +2285,6 @@ BlockBoost.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockBoost.TextSize = 14.000
 BlockBoost.MouseButton1Click:Connect(function()
 
-spawn(function()
-while true do
-game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
-game:GetService("RunService").Stepped:wait()
-end
-end)
-
 local Velocityyy = Vector3.new(BoostX.Text,BoostY.Text,BoostZ.Text)
 for i,v in ipairs(workspace:GetDescendants()) do
    if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
@@ -2319,14 +2309,6 @@ BlockRotBoost.Text = "Change RotVelocity"
 BlockRotBoost.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockRotBoost.TextSize = 14.000
 BlockRotBoost.MouseButton1Click:Connect(function()
-
-spawn(function()
-while true do
-game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
-game:GetService("RunService").Stepped:wait()
-end
-end)
 
 local RotVelocityyy = Vector3.new(BoostX.Text,BoostY.Text,BoostZ.Text)
 for i,v in ipairs(workspace:GetDescendants()) do
@@ -2410,25 +2392,22 @@ OneWayChange.Text = "Change Gravity!!"
 OneWayChange.TextColor3 = Color3.fromRGB(255, 255, 255)
 OneWayChange.TextSize = 14.000
 OneWayChange.MouseButton1Click:Connect(function()
+local PLL = game.Players.LocalPlayer
 
-local PLLL = game.Players.LocalPlayer.Character
 for _, instance in pairs(PL:GetDescendants()) do
 	if instance:IsA("BodyForce") then
 		instance:Destroy()
 	end
 end
 
-wait "0.01"
+wait "0.1"
 
-spawn(function()
-while true do
-game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
-game:GetService("RunService").Stepped:wait()
-end
-end)
+workspace.Gravity = OneWay.Text
 
-local function zeroGrav(part)
+wait (0.01)
+
+
+local function GravChange(part)
    if part:FindFirstChild("BodyForce") then return end
    local temp = Instance.new("BodyForce")
    temp.Parent = part
@@ -2437,15 +2416,11 @@ end
 
 for i,v in ipairs(PLLL:GetDescendants()) do
    if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
-           zeroGrav(v)
+        GravChange(v)
    end
 end
 
-wait "0.2"
-
-workspace.Gravity = OneWay.Text
-	
-wait"0.01"
+wait ()
 
 print "Changing!"
 
@@ -2469,15 +2444,6 @@ for _, instance in pairs(PL:GetDescendants()) do
 	end
 end
 
-wait "0.01"
-spawn(function()
-while true do
-game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
-game:GetService("RunService").Stepped:wait()
-end
-end)
-
 wait"0.01"
 
 workspace.Gravity = OGravity.Text
@@ -2485,23 +2451,6 @@ workspace.Gravity = OGravity.Text
 print "Undoing!"
 
 end)
-
-local function PlayerGravity(part)
-   if part:FindFirstChild("BodyForce") then return end
-   local temp = Instance.new("BodyForce")
-   temp.Parent = part
-   temp.Force = part:GetMass() * Vector3.new(0,OGravity.Text*-1 - OneWay.Text,0)
-end
-
-local Players = game:GetService("Players")
- 
-local function haracterAdded(character)
-   if character:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and character.Anchored == false then
-          PlayerGravity(character)
-      end
-end
-
-Players.LocalPlayer.CharacterAdded:Connect(haracterAdded)
 
 Script8.Name = "Script8"
 Script8.Parent = List
@@ -3499,7 +3448,6 @@ if not StealthMode then
 end
 
 local noclip = false
-local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 
 local mouse = player:GetMouse()
@@ -3618,10 +3566,8 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
             while true do
             game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
-            game.workspace.FilteringEnabled = false
             iinstance.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
             sethiddenproperty(iinstance, "SimulationRadius", -math.pow(-math.huge,-math.huge)*-math.huge*2)
-            settings().Physics.AllowSleep = false
             game:GetService("RunService").Stepped:wait()
             end
         end)
