@@ -51,8 +51,8 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
         if(iinstance ~= PL) then
             spawn(function()
             while true do
-            iinstance.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
-            sethiddenproperty(iinstance, "SimulationRadius", -math.pow(-math.huge,-math.huge)*-math.huge*2)
+            iinstance.MaximumSimulationRadius = "-math.pow(-math.huge,-math.huge)*-math.huge*2"
+            sethiddenproperty(iinstance, "SimulationRadius", "-99999999999999")
             game:GetService("RunService").Stepped:wait()
             end
         end)
@@ -67,8 +67,8 @@ spawn(function()
         if v == game.Players.LocalPlayer == false then
             game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
-            v.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
-            sethiddenproperty(v, "SimulationRadius", -math.pow(-math.huge,-math.huge)*-math.huge*2)
+            v.MaximumSimulationRadius = "-math.pow(-math.huge,-math.huge)*-math.huge*2"
+            sethiddenproperty(v, "SimulationRadius", "-99999999999999")
             end
         end
     end
@@ -76,9 +76,9 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "1.97"
-local ChangeLine1 = "*Added Simulation Focus"
-local ChangeLine2 = ""
+local VersionNumberV = "2"
+local ChangeLine1 = "*Added BlackHole"
+local ChangeLine2 = "*Bit Less Lag"
 local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
@@ -260,8 +260,8 @@ wait (0.8)
 local function Oof(iinstance)
         if(iinstance ~= PL) then
             game:GetService("RunService").RenderStepped:Connect(function()
-            iinstance.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
-            sethiddenproperty(iinstance, "SimulationRadius", -math.pow(-math.huge,-math.huge)*-math.huge*2)
+            iinstance.MaximumSimulationRadius = "-math.pow(-math.huge,-math.huge)*-math.huge*2"
+            sethiddenproperty(iinstance, "SimulationRadius", "-99999999999999")
 			wait()
             end)
         end
@@ -3803,8 +3803,8 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
             while true do
             game.Players.LocalPlayer.MaximumSimulationRadius = math.pow(math.huge,math.huge)*math.huge*1.5
             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
-            iinstance.MaximumSimulationRadius = -math.pow(-math.huge,-math.huge)*-math.huge*2
-            sethiddenproperty(iinstance, "SimulationRadius", -math.pow(-math.huge,-math.huge)*-math.huge*2)
+            iinstance.MaximumSimulationRadius = "-math.pow(-math.huge,-math.huge)*-math.huge*2"
+            sethiddenproperty(iinstance, "SimulationRadius", "-99999999999999")
             game:GetService("RunService").Stepped:wait()
             end
         end)
