@@ -181,8 +181,8 @@ local BlockRKO = Instance.new("TextButton")
 local BHGS = Instance.new("Frame")
 local BetterFPSButton = Instance.new("TextButton")
 local BlockDiscarder = Instance.new("TextButton")
-local Script11 = Instance.new("TextButton")
-local S11 = Instance.new("Frame")
+local Script12 = Instance.new("TextButton")
+local S12 = Instance.new("Frame")
 local MiscPlayerName = Instance.new("TextBox")
 local MiscMover2 = Instance.new("TextButton")
 local MiscMover = Instance.new("TextButton")
@@ -199,6 +199,14 @@ local TheYesButtonUnder = Instance.new("TextButton")
 local TheNoButtonUnder = Instance.new("TextButton")
 local FreeCam = Instance.new("TextButton")
 local FreeHelper = Instance.new("TextLabel")
+local Script11 = Instance.new("TextButton")
+local S11 = Instance.new("Frame")
+local BlackHolePlayerName = Instance.new("TextBox")
+local BlackHoleNoClip = Instance.new("TextButton")
+local BlackHoleClip = Instance.new("TextButton")
+local NoBlackHole = Instance.new("TextButton")
+local BlackHolePower = Instance.new("TextBox")
+local BlackHoleLable = Instance.new("TextLabel")
 -- /\
 for _, instance in pairs(game.CoreGui:GetDescendants()) do
 	if instance:IsA("ScreenGui") then
@@ -1230,6 +1238,11 @@ GravityY.Font = Enum.Font.SourceSans
 GravityY.Text = "1"
 GravityY.TextColor3 = Color3.fromRGB(0, 0, 0)
 GravityY.TextSize = 15.000
+GravityY.FocusLost:connect(function()
+if GravityY.Text == "" == true then
+GravityY.Text = "0"
+end
+end)
 
 GravityX.Name = "GravityX"
 GravityX.Parent = S1
@@ -1240,6 +1253,11 @@ GravityX.Font = Enum.Font.SourceSans
 GravityX.Text = "0"
 GravityX.TextColor3 = Color3.fromRGB(0, 0, 0)
 GravityX.TextSize = 15.000
+GravityX.FocusLost:connect(function()
+if GravityX.Text == "" == true then
+GravityX.Text = "0"
+end
+end)
 
 GravityZ.Name = "GravityZ"
 GravityZ.Parent = S1
@@ -1250,6 +1268,11 @@ GravityZ.Font = Enum.Font.SourceSans
 GravityZ.Text = "0"
 GravityZ.TextColor3 = Color3.fromRGB(0, 0, 0)
 GravityZ.TextSize = 15.000
+GravityZ.FocusLost:connect(function()
+if GravityZ.Text == "" == true then
+GravityZ.Text = "0"
+end
+end)
 
 GravityTextBox.Name = "GravityTextBox"
 GravityTextBox.Parent = S1
@@ -1655,9 +1678,8 @@ ForceRemover.TextSize = 14.000
 ForceRemover.MouseButton1Click:Connect(function()
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
+	if instance:IsA("RocketPropulsion") then 
 		instance.Parent.CanCollide = true
-		end
 	end
 end
 wait "0.05"
@@ -1686,9 +1708,8 @@ for _, instance in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 end
 
 for _, instance in pairs(game.workspace:GetDescendants()) do
-	if instance:IsA("RocketPropulsion") then if instance.Name == "BlockFecher" == false then
+	if instance:IsA("RocketPropulsion") then
 		instance:Destroy()
-		end
 	end
 end
 wait "0.05"
@@ -2918,10 +2939,10 @@ Script11.Parent = List
 Script11.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 Script11.BackgroundTransparency = 0.200
 Script11.BorderColor3 = Color3.fromRGB(50, 50, 50)
-Script11.Position = UDim2.new(0, 0, 0.630252123, 0)
+Script11.Position = UDim2.new(6.23986125e-08, 0, 0.630252123, 0)
 Script11.Size = UDim2.new(0, 92, 0, 15)
 Script11.Font = Enum.Font.SourceSans
-Script11.Text = "Misc Laucher"
+Script11.Text = "BlackHole Maker"
 Script11.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script11.TextSize = 14.000
 Script11.MouseButton1Click:Connect(function()
@@ -2941,9 +2962,199 @@ S11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 S11.BackgroundTransparency = 1.000
 S11.Size = UDim2.new(0, 90, 0, 15)
 S11.Visible = false
+_G.BlockCheck = "false"
+BlackHolePlayerName.Name = "BlackHolePlayerName"
+BlackHolePlayerName.Parent = S11
+BlackHolePlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BlackHolePlayerName.Position = UDim2.new(-1.87411141, 0, -9.03733253, 0)
+BlackHolePlayerName.Size = UDim2.new(0, 141, 0, 27)
+BlackHolePlayerName.Font = Enum.Font.SourceSans
+BlackHolePlayerName.Text = "Short Player Name Here"
+BlackHolePlayerName.TextColor3 = Color3.fromRGB(0, 0, 0)
+BlackHolePlayerName.TextSize = 15.000
+BlackHolePlayerName.FocusLost:connect(function()
+for i,v in pairs(game.Players:GetChildren()) do
+if (string.sub(string.lower(v.Name),1,string.len(BlackHolePlayerName.Text))) == string.lower(BlackHolePlayerName.Text) then
+BlackHolePlayerName.Text = v.Name
+end
+end
+end)
+
+BlackHoleNoClip.Name = "BlackHoleNoClip"
+BlackHoleNoClip.Parent = S11
+BlackHoleNoClip.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BlackHoleNoClip.Position = UDim2.new(-1.87399995, 0, -5.80000019, 0)
+BlackHoleNoClip.Size = UDim2.new(0, 140, 0, 15)
+BlackHoleNoClip.Font = Enum.Font.SourceSans
+BlackHoleNoClip.Text = "Spawn BlackHole (NoClip)"
+BlackHoleNoClip.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlackHoleNoClip.TextSize = 14.000
+BlackHoleNoClip.MouseButton1Click:Connect(function()
+local targetname = BlackHolePlayerName.Text
+local arget = game:GetService("Players")[targetname]
+local tor = arget.Character.HumanoidRootPart
+local PLRS = game.Players.LocalPlayer
+local attackrange = BlackHolePower.Text
+
+local function BlackHole(part)
+   local temp = Instance.new("RocketPropulsion")
+   temp.Name = "BlackHoleForce"
+   temp.Parent = part
+   temp.Target = tor
+   temp.MaxSpeed = part:GetMass() *222
+   temp.MaxThrust = part:GetMass() *888
+   temp.ThrustD = 0.055
+   temp.ThrustP = part:GetMass() *222
+   temp:fire()
+   temp.Parent.CanCollide = false
+end
+
+local near = coroutine.resume(coroutine.create(function()
+game:GetService("RunService").RenderStepped:Connect(function()
+	local region = Region3.new(
+	  Vector3.new(tor.Position.X - tor.Size.X/2 - attackrange, tor.Position.Y - tor.Size.Y/2 - attackrange, tor.Position.Z - tor.Size.Z/2 - attackrange),
+	  Vector3.new(tor.Position.X + tor.Size.X/2 + attackrange, tor.Position.Y + tor.Size.Y/2 + attackrange, tor.Position.Z + tor.Size.Z/2 + attackrange)
+	)
+for i,v in ipairs(workspace:FindPartsInRegion3(region)) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+       if not (v:IsDescendantOf(PLRS.Character)) then if not v:FindFirstChild("BlackHoleForce") then
+           BlackHole(v)
+       end
+   end
+end
+end
+end)
+end))
+
+print "BlackHole Created"
+
+end)
+
+BlackHoleClip.Name = "BlackHoleClip"
+BlackHoleClip.Parent = S11
+BlackHoleClip.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BlackHoleClip.Position = UDim2.new(-1.87399995, 0, -7.01900005, 0)
+BlackHoleClip.Size = UDim2.new(0, 140, 0, 15)
+BlackHoleClip.Font = Enum.Font.SourceSans
+BlackHoleClip.Text = "Spawn BlackHole (Clip)"
+BlackHoleClip.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlackHoleClip.TextSize = 14.000
+BlackHoleClip.MouseButton1Click:Connect(function()
+local targetname = BlackHolePlayerName.Text
+local arget = game:GetService("Players")[targetname]
+local tor = arget.Character.HumanoidRootPart
+local PLRS = game.Players.LocalPlayer
+local attackrange = BlackHolePower.Text
+
+local function BlackHolee(part)
+   local temp = Instance.new("RocketPropulsion")
+   temp.Name = "BlackHoleForceClip"
+   temp.Parent = part
+   temp.Target = tor
+   temp.MaxSpeed = part:GetMass() *222
+   temp.MaxThrust = part:GetMass() *888
+   temp.ThrustD = 0.055
+   temp.ThrustP = part:GetMass() *222
+   temp:fire()
+end
+
+local near = coroutine.resume(coroutine.create(function()
+game:GetService("RunService").RenderStepped:Connect(function()
+	local region = Region3.new(
+	  Vector3.new(tor.Position.X - tor.Size.X/2 - attackrange, tor.Position.Y - tor.Size.Y/2 - attackrange, tor.Position.Z - tor.Size.Z/2 - attackrange),
+	  Vector3.new(tor.Position.X + tor.Size.X/2 + attackrange, tor.Position.Y + tor.Size.Y/2 + attackrange, tor.Position.Z + tor.Size.Z/2 + attackrange)
+	)
+for i,v in ipairs(workspace:FindPartsInRegion3(region)) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+       if not (v:IsDescendantOf(PLRS.Character)) then if not v:FindFirstChild("BlackHoleForce") then
+           BlackHolee(v)
+       end
+   end
+end
+end
+end)
+end))
+
+print "BlackHole Created"
+
+end)
+
+NoBlackHole.Name = "NoBlackHole"
+NoBlackHole.Parent = S11
+NoBlackHole.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NoBlackHole.Position = UDim2.new(-1.87399995, 0, -4.5999999, 0)
+NoBlackHole.Size = UDim2.new(0, 140, 0, 15)
+NoBlackHole.Font = Enum.Font.SourceSans
+NoBlackHole.Text = "Remove BlackHole"
+NoBlackHole.TextColor3 = Color3.fromRGB(255, 255, 255)
+NoBlackHole.TextSize = 14.000
+NoBlackHole.MouseButton1Click:Connect(function()
+_G.BlockCheck = "false"
+
+for _, instance in pairs(game.workspace:GetDescendants()) do
+	if instance:IsA("RocketPropulsion") then 
+		instance.Parent.CanCollide = true
+	end
+end
+
+for _, instance in pairs(game.workspace:GetDescendants()) do
+	if instance:IsA("RocketPropulsion") then
+		instance:Destroy()
+	end
+end
+end)
+
+BlackHolePower.Name = "BlackHolePower"
+BlackHolePower.Parent = S11
+BlackHolePower.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BlackHolePower.Position = UDim2.new(-1.86296725, 0, -1.97066653, 0)
+BlackHolePower.Size = UDim2.new(0, 139, 0, 21)
+BlackHolePower.Font = Enum.Font.SourceSans
+BlackHolePower.Text = "50"
+BlackHolePower.TextColor3 = Color3.fromRGB(0, 0, 0)
+BlackHolePower.TextSize = 16.000
+
+BlackHoleLable.Name = "BlackHoleLable"
+BlackHoleLable.Parent = S11
+BlackHoleLable.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BlackHoleLable.Position = UDim2.new(-1.87399971, 0, -3, 0)
+BlackHoleLable.Size = UDim2.new(0, 140, 0, 15)
+BlackHoleLable.Font = Enum.Font.SourceSans
+BlackHoleLable.Text = "Recommended Range is 50"
+BlackHoleLable.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlackHoleLable.TextSize = 14.000
+
+Script12.Name = "Script12"
+Script12.Parent = List
+Script12.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Script12.BackgroundTransparency = 0.200
+Script12.BorderColor3 = Color3.fromRGB(50, 50, 50)
+Script12.Position = UDim2.new(0, 0, 0.693, 0)
+Script12.Size = UDim2.new(0, 92, 0, 15)
+Script12.Font = Enum.Font.SourceSans
+Script12.Text = "Misc Laucher"
+Script12.TextColor3 = Color3.fromRGB(255, 255, 255)
+Script12.TextSize = 14.000
+Script12.MouseButton1Click:Connect(function()
+for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+	if instance:IsA("Frame") then
+		instance.Visible = false
+	end
+end
+wait "0"
+S12.Visible = true
+Infoo.Visible = false
+end)
+
+S12.Name = "S12"
+S12.Parent = Script12
+S12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+S12.BackgroundTransparency = 1.000
+S12.Size = UDim2.new(0, 90, 0, 15)
+S12.Visible = false
 
 MiscPlayerName.Name = "MiscPlayerName"
-MiscPlayerName.Parent = S11
+MiscPlayerName.Parent = S12
 MiscPlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 MiscPlayerName.Position = UDim2.new(-1.87411141, 0, -9.03733253, 0)
 MiscPlayerName.Size = UDim2.new(0, 141, 0, 27)
@@ -2960,7 +3171,7 @@ end
 end)
 
 MiscMover2.Name = "MiscMover2"
-MiscMover2.Parent = S11
+MiscMover2.Parent = S12
 MiscMover2.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 MiscMover2.Position = UDim2.new(-1.87399995, 0, -5.8, 0)
 MiscMover2.Size = UDim2.new(0, 140, 0, 15)
@@ -3034,7 +3245,7 @@ print "Super Nova Spawned"
 end)
 
 MiscMover.Name = "MiscMover"
-MiscMover.Parent = S11
+MiscMover.Parent = S12
 MiscMover.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 MiscMover.Position = UDim2.new(-1.87399995, 0, -7.01900005, 0)
 MiscMover.Size = UDim2.new(0, 140, 0, 15)
@@ -3106,7 +3317,7 @@ print "Nuked"
 end)
 
 MiscMover3.Name = "MiscMover3"
-MiscMover3.Parent = S11
+MiscMover3.Parent = S12
 MiscMover3.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 MiscMover3.Position = UDim2.new(-1.87399995, 0, -4.5999999, 0)
 MiscMover3.Size = UDim2.new(0, 140, 0, 15)
