@@ -76,10 +76,10 @@ end)
 --            /\ Part Made by TomQ
 
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "2"
-local ChangeLine1 = "*Added BlackHole"
-local ChangeLine2 = "*Bit Less Lag"
-local ChangeLine3 = ""
+local VersionNumberV = "2.05"
+local ChangeLine1 = "*Added Btools"
+local ChangeLine2 = "*Added Total Velocity"
+local ChangeLine3 = "*Bug Fixes"
 local ChangeLine4 = ""
 -- Instances:
 print "Starting"
@@ -207,6 +207,9 @@ local BlackHoleClip = Instance.new("TextButton")
 local NoBlackHole = Instance.new("TextButton")
 local BlackHolePower = Instance.new("TextBox")
 local BlackHoleLable = Instance.new("TextLabel")
+local BlockRotBoostTotal = Instance.new("TextButton")
+local BlockBoostTotal = Instance.new("TextButton")
+local MiscMover4 = Instance.new("TextButton")
 -- /\
 for _, instance in pairs(game.CoreGui:GetDescendants()) do
 	if instance:IsA("ScreenGui") then
@@ -2134,6 +2137,11 @@ SpinY.Font = Enum.Font.SourceSans
 SpinY.Text = "0"
 SpinY.TextColor3 = Color3.fromRGB(0, 0, 0)
 SpinY.TextSize = 15.000
+SpinY.FocusLost:connect(function()
+if SpinY.Text == "" == true then
+SpinY.Text = "0"
+end
+end)
 
 SpinX.Name = "SpinX"
 SpinX.Parent = S5
@@ -2144,6 +2152,11 @@ SpinX.Font = Enum.Font.SourceSans
 SpinX.Text = "0"
 SpinX.TextColor3 = Color3.fromRGB(0, 0, 0)
 SpinX.TextSize = 15.000
+SpinX.FocusLost:connect(function()
+if SpinX.Text == "" == true then
+SpinX.Text = "0"
+end
+end)
 
 SpinZ.Name = "SpinZ"
 SpinZ.Parent = S5
@@ -2154,6 +2167,11 @@ SpinZ.Font = Enum.Font.SourceSans
 SpinZ.Text = "0"
 SpinZ.TextColor3 = Color3.fromRGB(0, 0, 0)
 SpinZ.TextSize = 15.000
+SpinZ.FocusLost:connect(function()
+if SpinZ.Text == "" == true then
+SpinZ.Text = "0"
+end
+end)
 
 BlockSpin.Name = "BlockSpin"
 BlockSpin.Parent = S5
@@ -2289,6 +2307,11 @@ BoostX.Font = Enum.Font.SourceSans
 BoostX.Text = "0"
 BoostX.TextColor3 = Color3.fromRGB(0, 0, 0)
 BoostX.TextSize = 15.000
+BoostX.FocusLost:connect(function()
+if BoostX.Text == "" == true then
+BoostX.Text = "0"
+end
+end)
 
 BoostY.Name = "BoostY"
 BoostY.Parent = S6
@@ -2299,6 +2322,11 @@ BoostY.Font = Enum.Font.SourceSans
 BoostY.Text = "0"
 BoostY.TextColor3 = Color3.fromRGB(0, 0, 0)
 BoostY.TextSize = 15.000
+BoostY.FocusLost:connect(function()
+if BoostY.Text == "" == true then
+BoostY.Text = "0"
+end
+end)
 
 BoostZ.Name = "BoostZ"
 BoostZ.Parent = S6
@@ -2309,6 +2337,11 @@ BoostZ.Font = Enum.Font.SourceSans
 BoostZ.Text = "0"
 BoostZ.TextColor3 = Color3.fromRGB(0, 0, 0)
 BoostZ.TextSize = 15.000
+BoostZ.FocusLost:connect(function()
+if BoostZ.Text == "" == true then
+BoostZ.Text = "0"
+end
+end)
 
 BlockBoost.Name = "BlockBoost"
 BlockBoost.Parent = S6
@@ -2358,6 +2391,55 @@ end
 wait ()
 print "RotVelocity Changed!"
  
+end)
+
+
+BlockBoostTotal.Name = "BlockBoostTotal"
+BlockBoostTotal.Parent = S6
+BlockBoostTotal.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BlockBoostTotal.Position = UDim2.new(-1.86899996, 0, 0.799999952, 0)
+BlockBoostTotal.Size = UDim2.new(0, 140, 0, 15)
+BlockBoostTotal.Font = Enum.Font.SourceSans
+BlockBoostTotal.Text = "Change Total Velocity"
+BlockBoostTotal.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlockBoostTotal.TextSize = 14.000
+BlockBoostTotal.MouseButton1Click:Connect(function()
+
+local Velocityyy = Vector3.new(BoostX.Text,BoostY.Text,BoostZ.Text)
+for i,v in ipairs(workspace:GetDescendants()) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+       if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+           v.Velocity = Velocityyy
+       end
+   end
+end
+wait ()
+print "Total Velocity Changed!"
+
+end)
+
+BlockRotBoostTotal.Name = "BlockRotBoostTotal"
+BlockRotBoostTotal.Parent = S6
+BlockRotBoostTotal.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BlockRotBoostTotal.Position = UDim2.new(-1.86899996, 0, 2.26699996, 0)
+BlockRotBoostTotal.Size = UDim2.new(0, 140, 0, 15)
+BlockRotBoostTotal.Font = Enum.Font.SourceSans
+BlockRotBoostTotal.Text = "Change Total RotVelocity"
+BlockRotBoostTotal.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlockRotBoostTotal.TextSize = 14.000
+BlockRotBoostTotal.MouseButton1Click:Connect(function()
+
+local RotVelocityyy = Vector3.new(BoostX.Text,BoostY.Text,BoostZ.Text)
+for i,v in ipairs(workspace:GetDescendants()) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+       if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then
+           v.RotVelocity = RotVelocityyy
+       end
+   end
+end
+wait ()
+print "Total RotVelocity Changed!"
+
 end)
 
 Script7.Name = "Script7"
@@ -3407,6 +3489,115 @@ print "Finnished EarthQuake!"
 
 end)
 
+MiscMover4.Name = "MiscMover4"
+MiscMover4.Parent = S12
+MiscMover4.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+MiscMover4.Position = UDim2.new(-1.87399995, 0, -3.4, 0)
+MiscMover4.Size = UDim2.new(0, 140, 0, 15)
+MiscMover4.Font = Enum.Font.SourceSans
+MiscMover4.Text = "Get Btools"
+MiscMover4.TextColor3 = Color3.fromRGB(255, 255, 255)
+MiscMover4.TextSize = 14.000
+MiscMover4.MouseButton1Click:Connect(function()
+
+--[[
+    FE Custom BTools V2 | Script made by Cyclically
+    BTools will only replicate on unanchored parts
+    https://v3rmillion.net/member.php?action=profile&uid=785986
+    Don't edit script unless you know what you're doing. If you wanna add this into a script, please give credits and message me on discord that you added it in a script at Cyclically#4905
+]]
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local mouse = LocalPlayer:GetMouse()
+local movetool = Instance.new("Tool", LocalPlayer.Backpack)
+local deletetool = Instance.new("Tool", LocalPlayer.Backpack)
+local undotool = Instance.new("Tool", LocalPlayer.Backpack)
+local identifytool = Instance.new("Tool", LocalPlayer.Backpack)
+local movedetect = true
+local movingpart = nil
+local movetransparency = 0
+if editedparts == nil then
+    editedparts = {}
+    parentfix = {}
+    positionfix = {}
+end
+deletetool.Name = "Delete"
+undotool.Name = "Undo"
+identifytool.Name = "Identify"
+movetool.Name = "Move"
+undotool.CanBeDropped = false
+deletetool.CanBeDropped = false
+identifytool.CanBeDropped = false
+movetool.CanBeDropped = false
+undotool.RequiresHandle = false
+deletetool.RequiresHandle = false
+identifytool.RequiresHandle = false
+movetool.RequiresHandle = false
+local function createnotification(title, text)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = title;
+        Text = text;
+        Duration = 1;
+    })
+end
+deletetool.Activated:Connect(function()
+	createnotification("Delete Tool", "You have deleted "..mouse.Target.Name)
+	if mouse.Target.Anchored == false == true then
+    table.insert(parentfix, mouse.Target.Parent)
+    table.insert(positionfix, mouse.Target.CFrame)
+    spawn(function()
+        local deletedpart = mouse.Target
+        repeat
+           deletedpart.CFrame = CFrame.new(10000000, 10000000, 10000000)
+           wait()
+		   until deletedpart.CFrame ~= CFrame.new(10000000, 10000000, 10000000)
+	   end)
+	end
+end)
+undotool.Activated:Connect(function()
+    createnotification("Undo Tool", "You have undone "..editedparts[#editedparts].Name)
+    editedparts[#editedparts].Parent = parentfix[#parentfix]
+    editedparts[#editedparts].CFrame = positionfix[#positionfix]
+    table.remove(positionfix, #positionfix)
+    table.remove(editedparts, #editedparts)
+    table.remove(parentfix, #parentfix)
+end)
+identifytool.Activated:Connect(function()
+    createnotification("Identify Tool", "Instance: "..mouse.Target.ClassName.."\nName: "..mouse.Target.Name)
+end)
+movetool.Activated:Connect(function()
+	createnotification("Move Tool", "You are moving: "..mouse.Target.Name)
+    movingpart = mouse.Target
+	if movingpart.Anchored == false == true then
+	local Tan = mouse.Target.Transparency
+	movingpart.Massless = true
+    movedetect = true
+	wait()
+    movingpart.CanCollide = false
+    movingpart.Velocity = Vector3.new(0,15,0)
+    wait ()
+    mouse.TargetFilter = movingpart
+    table.insert(editedparts, movingpart)
+    table.insert(parentfix, movingpart.Parent)
+    table.insert(positionfix, movingpart.CFrame)
+    repeat
+        mouse.Move:Wait()
+        movingpart.CFrame = CFrame.new(mouse.Hit.p)
+        movingpart.Velocity = Vector3.new(0,20,0)
+    until movedetect == false
+    end
+end)
+movetool.Deactivated:Connect(function()
+    createnotification("Move Tool", "You have stopped moving: "..mouse.Target.Name)
+	movingpart.CanCollide = true
+	movingpart.Massless = false
+    movedetect = false
+    mouse.TargetFilter = nil
+    movingpart.Velocity = Vector3.new(0,30,0)
+end)
+
+end)
+
 Line.Name = "Line"
 Line.Parent = List
 Line.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
@@ -3528,7 +3719,7 @@ Version.BackgroundTransparency = 0.500
 Version.Position = UDim2.new(0.057, 0, 0, 0)
 Version.Size = UDim2.new(0, 142, 0, 91)
 Version.Font = Enum.Font.SourceSans
-Version.Text = VersionNumberV
+Version.Text = "V "..VersionNumberV
 Version.TextColor3 = Color3.fromRGB(255, 255, 255)
 Version.TextSize = 14.000
 Version.TextYAlignment = Enum.TextYAlignment.Top
