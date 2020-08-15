@@ -484,6 +484,7 @@ for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()
 end
 wait "0"
 BHGS.Visible = true
+Infoo.Visible = false
 end)
 
 BHGS.Name = "BHGS"
@@ -3225,7 +3226,7 @@ Script12.BorderColor3 = Color3.fromRGB(50, 50, 50)
 Script12.Position = UDim2.new(0, 0, 0.693, 0)
 Script12.Size = UDim2.new(0, 92, 0, 15)
 Script12.Font = Enum.Font.SourceSans
-Script12.Text = "Misc Laucher"
+Script12.Text = "Misc Luancher"
 Script12.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script12.TextSize = 14.000
 Script12.MouseButton1Click:Connect(function()
