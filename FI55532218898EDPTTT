@@ -119,7 +119,7 @@ end)
 local VersionNumberV = "2.08"
 local ChangeLine1 = "*Added Hidden Gui"
 local ChangeLine2 = "*Script Is Now Sneaky*"
-local ChangeLine3 = "*Added Anti Claim Patch"
+local ChangeLine3 = "*Added Anti Claim Patch!"
 local ChangeLine4 = ""
 -- Instances:
 local BlockHub = Instance.new("ScreenGui")
