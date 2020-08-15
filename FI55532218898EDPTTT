@@ -19,12 +19,12 @@ if Exploit == 'ProtoSmasher' then
     getgenv().sethiddenproperty = set_hidden_prop
 elseif Exploit == 'Sentinel' then
 	local Waiting = Instance.new("Message",workspace)
-	Waiting.Text = 'Sentinel May Not Be Supported'
+	Waiting.Text = 'Sentinel May Not Be Supported Contact Owner If Broken'
 	wait "2.5"
 	Waiting:Destroy()
 elseif Exploit == 'free' then
 	local Waiting = Instance.new("Message",workspace)
-	Waiting.Text = 'Expoit Not Supported'
+	Waiting.Text = 'Expoit Not Supported Contact Owner If Broken'
 	wait "2.5"
 	tsss:Teleport(game.PlaceId, pll)
 	print "Teleported"
