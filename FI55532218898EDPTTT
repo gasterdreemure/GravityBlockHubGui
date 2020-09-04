@@ -13,10 +13,10 @@ local pll = game:GetService("Players").LocalPlayer
 local Exploit = (secure_load and "Sentinel") or (pebc_execute and "ProtoSmasher") or (is_sirhurt_closure and "Sirhurt") or (syn and "SynapseX") or ('other')
 
 if Exploit == 'ProtoSmasher' then
-	print "Exploit: ProtoSmasher ( Nice )"
+	print "Exploit: ProtoSmasher (Nice)"
     getgenv().sethiddenproperty = set_hidden_prop
 elseif Exploit == 'SynapseX' then 
-	print "Exploit: Synapse X ( Nice x2 )"
+	print "Exploit: Synapse X (Nice x2)"
 elseif Exploit == 'Sentinel' then
 	print "Exploit: Sentinel "
 	local Waiting = Instance.new("Message",workspace)
