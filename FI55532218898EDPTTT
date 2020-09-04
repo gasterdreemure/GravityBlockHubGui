@@ -159,7 +159,7 @@ wait()
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
 local VersionNumberV = "2.35"
 local ChangeLine1 = "*Fixed Achor Blocks"
-local ChangeLine2 = ""
+local ChangeLine2 = "*Fixed Slow Teleport Lag"
 local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
@@ -1920,9 +1920,9 @@ for i = 1, 1 do
 	 	end
     end
 end
+end
+end
 print "Teleporting!"
-end
-end
 end)
 
 NPCTeleport.Name = "NPCTeleport"
