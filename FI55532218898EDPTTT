@@ -142,8 +142,8 @@ end
 --            /\ Part Made by TomQ
 wait()
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "2.4"
-local ChangeLine1 = "*Fixed Up Old Code"
+local VersionNumberV = "2.45"
+local ChangeLine1 = "*Added Anchor Block Noclip"
 local ChangeLine2 = ""
 local ChangeLine3 = ""
 local ChangeLine4 = ""
@@ -214,6 +214,7 @@ local Script9 = Instance.new("TextButton")
 local S9 = Instance.new("Frame")
 local UnAnchor = Instance.new("TextButton")
 local AnchorBlocks = Instance.new("TextButton")
+local AnchorBlocksNC = Instance.new("TextButton")
 local Script10 = Instance.new("TextButton")
 local S10 = Instance.new("Frame")
 local BlockPlayerName_2 = Instance.new("TextBox")
@@ -2743,7 +2744,7 @@ S9.Visible = false
 UnAnchor.Name = "UnAnchor"
 UnAnchor.Parent = S9
 UnAnchor.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-UnAnchor.Position = UDim2.new(-1.86916089, 0, -6.26666641, 0)
+UnAnchor.Position = UDim2.new(-1.869, 0, -5, 0)
 UnAnchor.Size = UDim2.new(0, 140, 0, 15)
 UnAnchor.Font = Enum.Font.SourceSans
 UnAnchor.Text = "Move Blocks!"
@@ -2751,17 +2752,18 @@ UnAnchor.TextColor3 = Color3.fromRGB(255, 255, 255)
 UnAnchor.TextSize = 14.000
 UnAnchor.MouseButton1Click:Connect(function()
 for _, instance in pairs(game.workspace:GetDescendants()) do
-    if instance:IsA("BodyPosition") then
+    if instance:IsA("BodyPosition") then 
         instance:Destroy()
     end
 end
 wait "0.05"
 for _, instance in pairs(game.workspace:GetDescendants()) do
-    if instance:IsA("BodyGyro") then
+    if instance:IsA("BodyGyro") then if instance.Name == "ANCNC" == true then
+		instance.Parent.CanCollide = true
 		instance:Destroy()
     end
 end
-
+end
 end)
 
 AnchorBlocks.Name = "AnchorBlocks"
@@ -2774,13 +2776,13 @@ AnchorBlocks.Text = "Stop the Blocks!"
 AnchorBlocks.TextColor3 = Color3.fromRGB(255, 255, 255)
 AnchorBlocks.TextSize = 14.000
 AnchorBlocks.MouseButton1Click:Connect(function()
-
+print "Freezing Blocks!"
 for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyPosition") then
 		instance:Destroy()
 	end
 end
-wait()
+
 for _, instance in pairs(game.workspace:GetDescendants()) do
 	if instance:IsA("BodyGyro") then
 		instance:Destroy()
@@ -2788,15 +2790,16 @@ for _, instance in pairs(game.workspace:GetDescendants()) do
 end
 wait()
 local function zeroGrav(part)
-   if part:FindFirstChild("BodyPosition") then return end
+    if part:FindFirstChild("BodyPosition") then return end
 		local bodypos = Instance.new("BodyPosition",part)
 		bodypos.Position = part.Position
 		bodypos.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
 		local bodygyro = Instance.new("BodyGyro",part)
 		bodygyro.CFrame = part.CFrame
 		bodygyro.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+	bodygyro.Name = "ANCNC"
 end
-
+wait()
 for i,v in ipairs(workspace:GetDescendants()) do
    if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
        if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "Head")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "Head")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")and(v.Name ~= "Handle")and(v.Name ~= "LeftUpperArm")then
@@ -2805,10 +2808,51 @@ for i,v in ipairs(workspace:GetDescendants()) do
    end
 end
 end
+end)
 
-wait"0.1"
-print "Freezing Blocks"
- 
+AnchorBlocksNC.Name = "AnchorBlocksNC"
+AnchorBlocksNC.Parent = S9
+AnchorBlocksNC.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+AnchorBlocksNC.Position = UDim2.new(-1.86916089, 0, -6.4000001, 0)
+AnchorBlocksNC.Size = UDim2.new(0, 140, 0, 15)
+AnchorBlocksNC.Font = Enum.Font.SourceSans
+AnchorBlocksNC.Text = "Stop the Blocks! (Noclip)"
+AnchorBlocksNC.TextColor3 = Color3.fromRGB(255, 255, 255)
+AnchorBlocksNC.TextSize = 14.000
+AnchorBlocksNC.MouseButton1Click:Connect(function()
+print "Freezing Blocks!"
+for _, instance in pairs(game.workspace:GetDescendants()) do
+	if instance:IsA("BodyPosition") then
+		instance:Destroy()
+	end
+end
+
+for _, instance in pairs(game.workspace:GetDescendants()) do
+	if instance:IsA("BodyGyro") then
+		instance:Destroy()
+	end
+end
+wait()
+local function zeroGrav(part)
+    if part:FindFirstChild("BodyPosition") then return end
+		local bodypos = Instance.new("BodyPosition",part)
+		bodypos.Position = part.Position
+		bodypos.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+		local bodygyro = Instance.new("BodyGyro",part)
+		bodygyro.CFrame = part.CFrame
+		bodygyro.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+		bodygyro.Name = "ANCNC"
+	part.CanCollide = false
+end
+wait()
+for i,v in ipairs(workspace:GetDescendants()) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+       if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "Head")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "Head")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")and(v.Name ~= "Handle")and(v.Name ~= "LeftUpperArm")then
+           zeroGrav(v)
+       end
+   end
+end
+end
 end)
 
 Script10.Name = "Script10"
@@ -3961,7 +4005,6 @@ end
 
 wait()
 
-if Exploit == 'SynapseX' then 
 for _, iinstance in pairs(game.Players:GetPlayers()) do
         if(iinstance ~= PL) then
             spawn(function()
@@ -3972,18 +4015,7 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
         end)
     end
 end
-else 
-for _, iinstance in pairs(game.Players:GetPlayers()) do
-        if(iinstance ~= PL) then
-            spawn(function()
-            while iinstance == true do
-            sethiddenproperty(iinstance, "SimulationRadius", -99999999999999)
-            game:GetService("RunService").Stepped:wait()
-            end
-        end)
-    end
-end
-end
+
 wait ()
 game.StarterGui:SetCore("SendNotification", {
 Title = "Block Hub"; 
