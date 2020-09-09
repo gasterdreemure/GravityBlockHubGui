@@ -58,29 +58,28 @@ game:GetService("Players").LocalPlayer.CameraMode = "Classic"
 game:GetService("Workspace").Camera.CameraType = "Custom"
 game:GetService("Workspace").StreamingEnabled = true
 game.workspace.FallenPartsDestroyHeight = DValue + (-4)
-game.Players.LocalPlayer.MaximumSimulationRadius = 999999999999999
 game.workspace.FilteringEnabled = false
 game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
-sethiddenproperty(game.Players.LocalPlayer, "MaximumSimulationRadius", "99999999999999")
+sethiddenproperty(game.Players.LocalPlayer, "MaximumSimulationRadius", 99999999999999999)
 game.Players.LocalPlayer.CameraMinZoomDistance = math.huge - math.huge
 game.Players.LocalPlayer.CameraMaxZoomDistance = math.huge - math.huge
 wait()
 if Exploit == 'SynapseX' then
 game:GetService("RunService").RenderStepped:Connect(function()
-setsimulationradius(99999999999999)
+setsimulationradius(99999999999999999)
 game.Players.LocalPlayer.DataComplexityLimit = 999999999
 sethiddenproperty(game.workspace, "StreamingMinRadius" , 2097087)
 sethiddenproperty(game.workspace, "StreamingTargetRadius" , 2097088)
 end)
 else 
 game:GetService("RunService").RenderStepped:Connect(function()
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
+sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
 game.Players.LocalPlayer.DataComplexityLimit = 999999999
 sethiddenproperty(game.workspace, "StreamingMinRadius" , 2097087)
 sethiddenproperty(game.workspace, "StreamingTargetRadius" , 2097088)
 end)
 end
-sethiddenproperty(game.Players.LocalPlayer,"MaximumSimulationRadius", "99999999999999")
+sethiddenproperty(game.Players.LocalPlayer,"MaximumSimulationRadius", 99999999999999999)
 -- \/ Part Of Riptxde's Script
 if Exploit == 'SynapseX' then
 local NetworkAcces = coroutine.create(function()
@@ -88,7 +87,7 @@ local NetworkAcces = coroutine.create(function()
     while true do
     game:GetService("RunService").Stepped:wait()
     settings().Physics.AllowSleep = false
-    setsimulationradius(99999999999999)
+    setsimulationradius(99999999999999999)
     end
     end)
     coroutine.resume(NetworkAcces)
@@ -99,7 +98,7 @@ local NetworkAcces = coroutine.create(function()
     while true do
     game:GetService("RunService").Stepped:wait()
     settings().Physics.AllowSleep = false
-    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
+    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
     end
     end)
     coroutine.resume(NetworkAcces)
@@ -115,11 +114,10 @@ local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
 local PL = game.Players.LocalPlayer
 
 for _, iinstance in pairs(game.Players:GetPlayers()) do
-        if(iinstance ~= PL) then
-			iinstance.MaximumSimulationRadius = (-99999999999999)
+        if(iinstance ~= game:GetService("Players").LocalPlayer) then
 			sethiddenproperty(iinstance, "MaximumSimulationRadius", -99999999999999)
             spawn(function()
-            while iinstance == true do
+            while iinstance do
             sethiddenproperty(iinstance, "SimulationRadius", -99999999999999)
             game:GetService("RunService").Stepped:wait()
             end
@@ -142,9 +140,9 @@ end
 --            /\ Part Made by TomQ
 wait()
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "2.45"
-local ChangeLine1 = "*Added Anchor Block Noclip"
-local ChangeLine2 = ""
+local VersionNumberV = "2.475"
+local ChangeLine1 = "*Fixed The Code I Broke"
+local ChangeLine2 = "*Im Was Dummy*"
 local ChangeLine3 = ""
 local ChangeLine4 = ""
 -- Instances:
@@ -324,7 +322,7 @@ local pll = game:GetService("Players").LocalPlayer
 if Exploit == 'SynapseX' then
 spawn(function()
 while true do
-setsimulationradius(99999999999999)
+setsimulationradius(99999999999999999)
 game.workspace.FilteringEnabled = false
 game:GetService("RunService").Stepped:wait()
 end
@@ -332,7 +330,7 @@ end)
 else 
 spawn(function()
 while true do
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
+sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
 game.workspace.FilteringEnabled = false
 game:GetService("RunService").Stepped:wait()
 end
@@ -350,14 +348,16 @@ Duration = 1;
 wait (0.8)
 
 local function Oof(iinstance)
-        if(iinstance ~= PL) then
+        if(iinstance ~= game:GetService("Players").LocalPlayer) then
 			iinstance.MaximumSimulationRadius = (-99999999999999)
 			sethiddenproperty(iinstance, "MaximumSimulationRadius", -99999999999999)
-            while iinstance == true do 
+            spawn(function()
+            while iinstance do
             sethiddenproperty(iinstance, "SimulationRadius", -99999999999999)
-			game:GetService("RunService").Stepped:wait()
+            game:GetService("RunService").Stepped:wait()
             end
-        end
+        end)
+    end
 end
 
 for _, iinstance in pairs(game.Players:GetPlayers()) do print ""
@@ -3957,7 +3957,7 @@ local NetworkAccesss = coroutine.create(function()
     spawn(function()
     while true do
     game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
-    setsimulationradius(99999999999999)
+    setsimulationradius(99999999999999999)
     end
     end)
     coroutine.resume(NetworkAccesss)
@@ -3967,7 +3967,7 @@ local NetworkAccesss = coroutine.create(function()
     spawn(function()
     while true do
     game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
-    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
+    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
     end
     end)
     coroutine.resume(NetworkAccesss)
@@ -3990,14 +3990,14 @@ wait()
 if Exploit == 'SynapseX' then
 spawn(function()
 while true do
-setsimulationradius(99999999999999)
+setsimulationradius(99999999999999999)
 game:GetService("RunService").Stepped:wait()
 end
 end)
 else 
 spawn(function()
 while true do
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", "99999999999999")
+sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
 game:GetService("RunService").Stepped:wait()
 end
 end)
@@ -4006,9 +4006,9 @@ end
 wait()
 
 for _, iinstance in pairs(game.Players:GetPlayers()) do
-        if(iinstance ~= PL) then
+        if(iinstance ~= game:GetService("Players").LocalPlayer) then
             spawn(function()
-            while iinstance == true do
+            while iinstance do
             sethiddenproperty(iinstance, "SimulationRadius", -99999999999999)
             game:GetService("RunService").Stepped:wait()
             end
