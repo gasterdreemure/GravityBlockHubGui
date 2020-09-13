@@ -10,6 +10,7 @@ wait ()
 -- Gui to Lua
 local tsss = game:GetService("TeleportService")
 local pll = game:GetService("Players").LocalPlayer
+local gethidden = gethiddenproperty or get_hidden_property or get_hidden_prop
 local Exploit = (secure_load and "Sentinel") or (pebc_execute and "ProtoSmasher") or (is_sirhurt_closure and "Sirhurt") or (syn and "SynapseX") or ('other')
 
 if Exploit == 'ProtoSmasher' then
@@ -32,6 +33,9 @@ elseif Exploit == 'other' then
 	print "Teleported"
 end
 
+local sethidden = sethiddenproperty or set_hidden_property or set_hidden_prop
+local setsimulationr = setsimulationradius or set_simulation_radius
+
 -- \/ From Infinite Yield
 if BH_LOADED then
 	warn ("Block Hub is already running")
@@ -52,34 +56,81 @@ local AdministratorPowers = game:GetService("Players").LocalPlayer
 local DValue = game.workspace.FallenPartsDestroyHeight
 game:GetService("Players").LocalPlayer.OsPlatform = "Administrator"
 game.Players.LocalPlayer.PlatformName = "Administrator"
+-- Credits to someone, will add once found
 wait (0.25)
+_G.objs = {}
+
+getgenv().spoof = function(obj, property, value)
+	local s = pcall(function()
+		local lol = obj[property]
+	end)
+	if s then
+		table.insert(_G.objs, {obj, property, value})
+	end
+end
+
+getgenv().findwithintable = function(o, p)
+	for i, v in pairs(_G.objs) do
+		if table.find(v, o) and table.find(v, p) then
+			return v
+		end
+	end
+	return nil
+end
+
+getgenv().unspoof = function(obj, property)
+	local lol = findwithintable(obj, property)
+	if lol then
+		table.remove(_G.objs, table.find(_G.objs, lol))
+	end
+end
+
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+old = mt.__index
+
+mt.__index = newcclosure(function(o, p)
+	local t = findwithintable(o, p)
+	if t ~= nil then
+		return t[3]
+	end
+	return old(o, p)
+end)
+wait ()
+-- ye
 print "Changed To Administrator Privilege"
 game:GetService("Players").LocalPlayer.CameraMode = "Classic"
 game:GetService("Workspace").Camera.CameraType = "Custom"
-game:GetService("Workspace").StreamingEnabled = true
+
+game.workspace.FallenPartsDestroyHeight = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position.Y + (10)
+wait(1)
 game.workspace.FallenPartsDestroyHeight = DValue + (-4)
 game.workspace.FilteringEnabled = false
 game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
-sethiddenproperty(game.Players.LocalPlayer, "MaximumSimulationRadius", 99999999999999999)
+-- ye
+spoof(game.Players.LocalPlayer, "MaximumSimulationRadius", 1000)
+-- same bit here too
+sethidden(game.Players.LocalPlayer, "MaximumSimulationRadius", 1000)
+wait()
 game.Players.LocalPlayer.CameraMinZoomDistance = math.huge - math.huge
 game.Players.LocalPlayer.CameraMaxZoomDistance = math.huge - math.huge
-wait()
+sethidden(game.Players.LocalPlayer,"MaximumSimulationRadius", 1/0)
 if Exploit == 'SynapseX' then
 game:GetService("RunService").RenderStepped:Connect(function()
-setsimulationradius(99999999999999999)
+setsimulationr(1e308)
 game.Players.LocalPlayer.DataComplexityLimit = 999999999
-sethiddenproperty(game.workspace, "StreamingMinRadius" , 2097087)
-sethiddenproperty(game.workspace, "StreamingTargetRadius" , 2097088)
+sethidden(game.workspace, "StreamingMinRadius" , 2097087)
+sethidden(game.workspace, "StreamingTargetRadius" , 2097088)
 end)
 else 
 game:GetService("RunService").RenderStepped:Connect(function()
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
+sethidden(game.Players.LocalPlayer, "SimulationRadius", 1e308)
 game.Players.LocalPlayer.DataComplexityLimit = 999999999
-sethiddenproperty(game.workspace, "StreamingMinRadius" , 2097087)
-sethiddenproperty(game.workspace, "StreamingTargetRadius" , 2097088)
+sethidden(game.workspace, "StreamingMinRadius" , 2097087)
+sethidden(game.workspace, "StreamingTargetRadius" , 2097088)
 end)
 end
-sethiddenproperty(game.Players.LocalPlayer,"MaximumSimulationRadius", 99999999999999999)
 -- \/ Part Of Riptxde's Script
 if Exploit == 'SynapseX' then
 local NetworkAcces = coroutine.create(function()
@@ -87,22 +138,22 @@ local NetworkAcces = coroutine.create(function()
     while true do
     game:GetService("RunService").Stepped:wait()
     settings().Physics.AllowSleep = false
-    setsimulationradius(99999999999999999)
+    setsimulationr(1e308)
     end
     end)
-    coroutine.resume(NetworkAcces)
 end)
+coroutine.resume(NetworkAcces)
 else 
 local NetworkAcces = coroutine.create(function()
     spawn(function()
     while true do
     game:GetService("RunService").Stepped:wait()
     settings().Physics.AllowSleep = false
-    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
+    sethidden(game.Players.LocalPlayer, "SimulationRadius", 1e308)
     end
     end)
-    coroutine.resume(NetworkAcces)
 end)
+coroutine.resume(NetworkAcces)
 end
 -- /\
 
@@ -115,10 +166,10 @@ local PL = game.Players.LocalPlayer
 
 for _, iinstance in pairs(game.Players:GetPlayers()) do
         if(iinstance ~= game:GetService("Players").LocalPlayer) then
-			sethiddenproperty(iinstance, "MaximumSimulationRadius", -99999999999999)
+			sethidden(iinstance, "MaximumSimulationRadius", -99999999999999)
             spawn(function()
             while iinstance do
-            sethiddenproperty(iinstance, "SimulationRadius", -99999999999999)
+            sethidden(iinstance, "SimulationRadius", -99999999999999)
             game:GetService("RunService").Stepped:wait()
             end
         end)
@@ -129,10 +180,10 @@ end
 for i,v in pairs(game.Players:GetPlayers()) do
     if v == game.Players.LocalPlayer == false then
 		v.MaximumSimulationRadius = (-99999999999999)
-		sethiddenproperty(v, "MaximumSimulationRadius", -99999999999999)
+		sethidden(v, "MaximumSimulationRadius", -99999999999999)
         spawn(function()
             while v == true do heartbeat:Wait()
-            sethiddenproperty(v, "SimulationRadius", -99999999999999)
+            sethidden(v, "SimulationRadius", -99999999999999)
             end
         end)
     end
@@ -140,10 +191,10 @@ end
 --            /\ Part Made by TomQ
 wait()
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "2.475"
-local ChangeLine1 = "*Fixed The Code I Broke"
-local ChangeLine2 = "*Im Was Dummy*"
-local ChangeLine3 = ""
+local VersionNumberV = "2.48"
+local ChangeLine1 = "*Added Tween Teleport"
+local ChangeLine2 = "Changed Bunch Of Code Will Run Better"
+local ChangeLine3 = "*Will Be Working On Area fling*"
 local ChangeLine4 = ""
 -- Instances:
 local BlockHub = Instance.new("ScreenGui")
@@ -173,6 +224,12 @@ local BlockMover = Instance.new("TextButton")
 local ForceRemover = Instance.new("TextButton")
 local Script3 = Instance.new("TextButton")
 local S3 = Instance.new("Frame")
+local NTTL = Instance.new("TextLabel")
+local NTRemoverBlocks = Instance.new("TextButton")
+local NTNPCTeleport = Instance.new("TextButton")
+local NTMiniGun = Instance.new("TextButton")
+local NTBlockTeleporter2 = Instance.new("TextButton")
+local NTBlockTeleporter = Instance.new("TextButton")
 local TelePlayerName = Instance.new("TextBox")
 local BlockTeleporter = Instance.new("TextButton")
 local BlockTeleporter2 = Instance.new("TextButton")
@@ -280,10 +337,19 @@ local MiscMover7 = Instance.new("TextButton")
 wait()
 --\/
 wait (0.001)
+function randomString()
+	local length = math.random(15,25)
+	local array = {}
+	for i = 1, length do
+		array[i] = string.char(math.random(32, 126))
+	end
+	return table.concat(array)
+end
+wait()
 BlockHub = nil
 if (not is_sirhurt_closure) and (syn and syn.protect_gui) then
 	local Main = Instance.new("ScreenGui")
-	Main.Name = "BlockHub"
+	Main.Name = ("B"..randomString().."H")
 	syn.protect_gui(Main)
 	Main.Parent = game:GetService("CoreGui")
 	Main.DisplayOrder = 999999997
@@ -291,14 +357,14 @@ if (not is_sirhurt_closure) and (syn and syn.protect_gui) then
 	BlockHub = Main
 elseif PROTOSMASHER_LOADED and get_hidden_gui then
 	local Main = Instance.new("ScreenGui")
-	Main.Name = "BlockHub"
+	Main.Name = ("B"..randomString().."H")
 	Main.Parent = get_hidden_gui()
 	Main.DisplayOrder = 999999997
 	Main.ResetOnSpawn = false
 	BlockHub = Main
 elseif elysianexecute and gethui then
 	local Main = Instance.new("ScreenGui")
-	Main.Name = "BlockHub"
+	Main.Name = ("B"..randomString().."H")
 	Main.Parent = gethui()
 	Main.DisplayOrder = 999999997
 	Main.ResetOnSpawn = false
@@ -307,7 +373,7 @@ elseif game:GetService("CoreGui"):FindFirstChild('RobloxGui') then
 	BlockHub = game:GetService("CoreGui").RobloxGui
 else
 	local Main = Instance.new("ScreenGui")
-	Main.Name = "BlockHub"
+	Main.Name = ("B"..randomString().."H")
 	Main.Parent = game:GetService("CoreGui")
 	Main.DisplayOrder = 999999997
 	Main.ResetOnSpawn = false
@@ -322,7 +388,7 @@ local pll = game:GetService("Players").LocalPlayer
 if Exploit == 'SynapseX' then
 spawn(function()
 while true do
-setsimulationradius(99999999999999999)
+setsimulationr(1e308)
 game.workspace.FilteringEnabled = false
 game:GetService("RunService").Stepped:wait()
 end
@@ -330,7 +396,7 @@ end)
 else 
 spawn(function()
 while true do
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
+sethidden(game.Players.LocalPlayer, "SimulationRadius", 1e308)
 game.workspace.FilteringEnabled = false
 game:GetService("RunService").Stepped:wait()
 end
@@ -349,12 +415,12 @@ wait (0.8)
 
 local function Oof(iinstance)
         if(iinstance ~= game:GetService("Players").LocalPlayer) then
-			iinstance.MaximumSimulationRadius = (-99999999999999)
-			sethiddenproperty(iinstance, "MaximumSimulationRadius", -99999999999999)
+			sethidden(iinstance, "MaximumSimulationRadius", -99999999999999)
             spawn(function()
             while iinstance do
-            sethiddenproperty(iinstance, "SimulationRadius", -99999999999999)
+            sethidden(iinstance, "SimulationRadius", -99999999999999)
             game:GetService("RunService").Stepped:wait()
+			wait()
             end
         end)
     end
@@ -501,7 +567,7 @@ BlockSettings.Text = "Lag Settings"
 BlockSettings.TextColor3 = Color3.fromRGB(255, 255, 255)
 BlockSettings.TextSize = 14.000
 BlockSettings.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -1278,7 +1344,7 @@ Script1.Text = "Gravity Changer"
 Script1.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script1.TextSize = 14.000
 Script1.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -1479,7 +1545,7 @@ Script2.Text = "Block Mover"
 Script2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script2.TextSize = 14.000
 Script2.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -1787,7 +1853,7 @@ Script3.Text = "Block Teleporter"
 Script3.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script3.TextSize = 14.000
 Script3.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -1807,7 +1873,7 @@ S3.Visible = false
 RemoverBlocks.Name = "RemoverBlocks"
 RemoverBlocks.Parent = S3
 RemoverBlocks.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-RemoverBlocks.Position = UDim2.new(-1.86903882, 0, 6, 0)
+RemoverBlocks.Position = UDim2.new(-1.86903882, 0, 5.2, 0)
 RemoverBlocks.Size = UDim2.new(0, 140, 0, 15)
 RemoverBlocks.Font = Enum.Font.SourceSans
 RemoverBlocks.Text = "Remove All Blocks"
@@ -1821,8 +1887,8 @@ for i = 1, 2 do
     for i, v in ipairs(check) do
         if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
         if not (v:IsDescendantOf(PLRS.Character)) then
- 				v.CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+20,v.CFrame.Z)
-                v.Velocity = Vector3.new(0,-250,0)
+				game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Linear), {CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+20,v.CFrame.Z)}):Play()
+                v.Velocity = Vector3.new(0,-200,0)
 			end
 	 	end
     end
@@ -1865,8 +1931,9 @@ for i = 1, 1 do
        for i, v in ipairs(check) do
         if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
         if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")then
- 				v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+				game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Linear), {CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)}):Play()
                 v.Velocity = Vector3.new(0,0,0)
+				v.RotVelocity = Vector3.new(0,0,0)
 			end
 	 	end
     end
@@ -1900,8 +1967,9 @@ for i = 1, 1 do
        for i, v in ipairs(check) do
         if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
         if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")then
- 				v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)
+				game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Linear), {CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)}):Play()
                 v.Velocity = Vector3.new(0,0,0)
+				v.RotVelocity = Vector3.new(0,0,0)
  				wait ""
 			end
 	 	end
@@ -1930,7 +1998,7 @@ for i = 1, 1 do
        for i, v in ipairs(check) do
         if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
             if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then if (v.Name == "Torso") then
-                v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 7, 0)
+				game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Linear), {CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 7, 0)}):Play()
               v.Velocity = Vector3.new(0,1,0)
 			end
 	 	  end
@@ -1958,16 +2026,109 @@ wait (1)
 message:Destroy()
 end)
 
-local character = game.Players.LocalPlayer.Character
-    if noclipp then
-        for _, v in pairs(character:GetDescendants()) do
-            pcall(function()
-                if v:IsA("BasePart") then
-                    v.CanCollide = false
-                end
-            end)
-        end
+wait "0.05"
+print "Firing!"
+game.workspace.Camera.CameraType = "Custom"
+local ca = game.workspace.Camera
+local cam = Vector3.new(ca.CFrame.X+-ca.Focus.X , 3, ca.CFrame.Z+-ca.Focus.Z)
+local arget = game.Players.LocalPlayer
+local check = game.workspace:GetDescendants()
+for i = 1, 1 do
+       for i, v in ipairs(check) do
+        if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+			if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")then
+			v.CanCollide = false
+			game:GetService("TweenService"):Create(v, TweenInfo.new(1, Enum.EasingStyle.Linear), {CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)}):Play()
+			v.Velocity = -cam*0.5*v:GetMass()*0.4
+            v.RotVelocity = Vector3.new(0,0,0)
+			v.CanCollide = true
+ 			wait ()
+		  end
+	 	end
+      end
     end
+  end
+end)
+
+NTTL.Parent = S3
+NTTL.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+NTTL.Position = UDim2.new(-1.86899996, 0, 6.5999999, 0)
+NTTL.Size = UDim2.new(0, 140, 0, 15)
+NTTL.Font = Enum.Font.SourceSans
+NTTL.Text = "\\/-- Non Tween Teleport--\\/"
+NTTL.TextColor3 = Color3.fromRGB(255, 255, 255)
+NTTL.TextSize = 14.000
+
+NTRemoverBlocks.Name = "NTRemoverBlocks"
+NTRemoverBlocks.Parent = NTTL
+NTRemoverBlocks.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NTRemoverBlocks.Position = UDim2.new(-0, 0, 5.06666708, 0)
+NTRemoverBlocks.Size = UDim2.new(0, 140, 0, 15)
+NTRemoverBlocks.Font = Enum.Font.SourceSans
+NTRemoverBlocks.Text = "Remove All Blocks (NT)"
+NTRemoverBlocks.TextColor3 = Color3.fromRGB(255, 255, 255)
+NTRemoverBlocks.TextSize = 14.000
+NTRemoverBlocks.MouseButton1Click:Connect(function()
+local PLRS = game.Players.LocalPlayer
+local check = game.workspace:GetDescendants()
+local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
+for i = 1, 2 do
+    for i, v in ipairs(check) do
+        if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+        if not (v:IsDescendantOf(PLRS.Character)) then
+ 				v.CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+20,v.CFrame.Z)
+                v.Velocity = Vector3.new(0,-200,0)
+			end
+	 	end
+    end
+end
+end)
+
+NTNPCTeleport.Name = "NTNPCTeleport"
+NTNPCTeleport.Parent = NTTL
+NTNPCTeleport.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NTNPCTeleport.Position = UDim2.new(-0, 0, 4.06666708, 0)
+NTNPCTeleport.Size = UDim2.new(0, 140, 0, 15)
+NTNPCTeleport.Font = Enum.Font.SourceSans
+NTNPCTeleport.Text = "Teleport NPCs (NT)"
+NTNPCTeleport.TextColor3 = Color3.fromRGB(255, 255, 255)
+NTNPCTeleport.TextSize = 14.000
+NTNPCTeleport.MouseButton1Click:Connect(function()
+local PLRS = game.Players.LocalPlayer
+local targetname = TelePlayerName.Text
+local arget = game:GetService("Players")[targetname]
+local check = game.workspace:GetDescendants()
+for i = 1, 1 do
+       for i, v in ipairs(check) do
+        if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+            if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then if (v.Name == "Torso") then
+                v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 7, 0)
+              v.Velocity = Vector3.new(0,1,0)
+			end
+	 	  end
+        end
+      end
+    end
+  end
+end)
+
+
+NTMiniGun.Name = "NTMiniGun"
+NTMiniGun.Parent = NTTL
+NTMiniGun.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NTMiniGun.Position = UDim2.new(-0, 0, 3.06666708, 0)
+NTMiniGun.Size = UDim2.new(0, 140, 0, 15)
+NTMiniGun.Font = Enum.Font.SourceSans
+NTMiniGun.Text = "Mini Gun Mode! (NT)"
+NTMiniGun.TextColor3 = Color3.fromRGB(255, 255, 255)
+NTMiniGun.TextSize = 14.000
+NTMiniGun.MouseButton1Click:Connect(function()
+spawn(function()
+local message = Instance.new("Message",workspace)
+message.Text = "Starting Mini Gun Please Wait"
+wait (1)
+message:Destroy()
+end)
 
 wait "0.05"
 print "Firing!"
@@ -1980,15 +2141,85 @@ for i = 1, 1 do
        for i, v in ipairs(check) do
         if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
 			if not (v:IsDescendantOf(game.Players.LocalPlayer.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")then
-            v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)
- 			 v.Velocity = -cam*0.5*v:GetMass()*0.4
-              v.RotVelocity = Vector3.new(0,0,0)
- 			wait ""
+			v.CanCollide = false
+			v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)
+			v.Velocity = -cam*0.5*v:GetMass()*0.4
+            v.RotVelocity = Vector3.new(0,0,0)
+			v.CanCollide = true
+ 			wait ()
 		  end
 	 	end
       end
     end
   end
+end)
+
+NTBlockTeleporter2.Name = "NTBlockTeleporter2"
+NTBlockTeleporter2.Parent = NTTL
+NTBlockTeleporter2.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NTBlockTeleporter2.Position = UDim2.new(-0, 0, 1.99966657, 0)
+NTBlockTeleporter2.Size = UDim2.new(0, 140, 0, 15)
+NTBlockTeleporter2.Font = Enum.Font.SourceSans
+NTBlockTeleporter2.Text = "Slow Teleport (NT)"
+NTBlockTeleporter2.TextColor3 = Color3.fromRGB(255, 255, 255)
+NTBlockTeleporter2.TextSize = 14.000
+NTBlockTeleporter2.MouseButton1Click:Connect(function()
+spawn(function()
+local message = Instance.new("Message",workspace)
+message.Text = "Slow Teleporting Please Wait"
+wait (1)
+message:Destroy()
+end)
+
+local PLRS = game.Players.LocalPlayer
+local targetname = TelePlayerName.Text
+local arget = game:GetService("Players")[targetname]
+local check = game.workspace:GetDescendants()
+for i = 1, 1 do
+       for i, v in ipairs(check) do
+        if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+        if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")then
+ 				v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)
+                v.Velocity = Vector3.new(0,0,0)
+				v.RotVelocity = Vector3.new(0,0,0)
+ 				wait ""
+			end
+	 	end
+    end
+end
+end
+end
+print "Teleporting!"
+end)
+
+NTBlockTeleporter.Name = "NTBlockTeleporter"
+NTBlockTeleporter.Parent = NTTL
+NTBlockTeleporter.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NTBlockTeleporter.Position = UDim2.new(-0, 0, 0.999666631, 0)
+NTBlockTeleporter.Size = UDim2.new(0, 140, 0, 15)
+NTBlockTeleporter.Font = Enum.Font.SourceSans
+NTBlockTeleporter.Text = "Blocks Be Teleporting (NT)"
+NTBlockTeleporter.TextColor3 = Color3.fromRGB(255, 255, 255)
+NTBlockTeleporter.TextSize = 14.000
+NTBlockTeleporter.MouseButton1Click:Connect(function()
+
+local PLRS = game.Players.LocalPlayer
+local targetname = TelePlayerName.Text
+local arget = game:GetService("Players")[targetname]
+local check = game.workspace:GetDescendants()
+for i = 1, 1 do
+       for i, v in ipairs(check) do
+        if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+        if not (v:IsDescendantOf(PLRS.Character)) then if not (v:IsDescendantOf(arget.Character)) then if(v.Name ~= "HumanoidRootPart")and(v.Name ~= "LeftArm")and(v.Name ~= "RightArm")and(v.Name ~= "Tip")and(v.Name ~= "Weld")and(v.Name ~= "light")and(v.Name ~= "Ammo")and(v.Name ~= "Body")and(v.Name ~= "Center")and(v.Name ~= "Taser")and(v.Name ~= "Handcuffs")and(v.Name ~= "UpperTorso")and(v.Name ~= "LowerTorso")and(v.Name ~= "LeftFoot")and(v.Name ~= "RightFoot")and(v.Name ~= "LeftHand")and(v.Name ~= "RightHand")and(v.Name ~= "RightUpperArm")and(v.Name ~= "LeftLowerArm")and(v.Name ~= "RightLowerArm")and(v.Name ~= "RightUpperLeg")and(v.Name ~= "LeftUpperLeg")and(v.Name ~= "LeftLowerLeg")and(v.Name ~= "RightLowerLeg")and(v.Name ~= "HumanoidRootPart")and(v.Name ~= "Torso")and(v.Name ~= "Right Leg")and(v.Name ~= "Right Arm")and(v.Name ~= "Left Arm")and(v.Name ~= "Left Leg")then
+ 				v.CFrame = arget.Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 0)
+                v.Velocity = Vector3.new(0,0,0)
+				v.RotVelocity = Vector3.new(0,0,0)
+			end
+	 	end
+    end
+end
+end
+end
 end)
 
 Script4.Name = "Script4"
@@ -2003,7 +2234,7 @@ Script4.Text = "Block Gyro Fixer"
 Script4.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script4.TextSize = 14.000
 Script4.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -2115,7 +2346,7 @@ Script5.Text = "Block Spiner Gui"
 Script5.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script5.TextSize = 14.000
 Script5.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -2279,7 +2510,7 @@ Script6.Text = "Booster Gui"
 Script6.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script6.TextSize = 14.000
 Script6.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -2452,7 +2683,7 @@ Script7.Text = "0 Gravity (Less Lag)"
 Script7.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script7.TextSize = 13.000
 Script7.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -2578,7 +2809,7 @@ Script8.Text = "Speedy Gui"
 Script8.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script8.TextSize = 14.000
 Script8.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -2724,7 +2955,7 @@ Script9.Text = "Anchor Gui"
 Script9.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script9.TextSize = 14.000
 Script9.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -2867,7 +3098,7 @@ Script10.Text = "Hat Luancher"
 Script10.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script10.TextSize = 14.000
 Script10.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -3044,7 +3275,7 @@ Script11.Text = "BlackHole Maker"
 Script11.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script11.TextSize = 14.000
 Script11.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -3109,13 +3340,17 @@ local function BlackHole(part)
 end
 
 spawn(function()
-while _G.BlackHoleKey == true do
-wait ()
-	local region = Region3.new(
-	  Vector3.new(tor.Position.X - tor.Size.X/2 - attackrange, tor.Position.Y - tor.Size.Y/2 - attackrange, tor.Position.Z - tor.Size.Z/2 - attackrange),
-	  Vector3.new(tor.Position.X + tor.Size.X/2 + attackrange, tor.Position.Y + tor.Size.Y/2 + attackrange, tor.Position.Z + tor.Size.Z/2 + attackrange)
+while _G.BlackHoleKey == true do wait ()
+	_G.region = Region3.new(
+	  Vector3.new(tor.Position.X - attackrange, tor.Position.Y - attackrange, tor.Position.Z - attackrange),
+	  Vector3.new(tor.Position.X + attackrange, tor.Position.Y + attackrange, tor.Position.Z + attackrange)
 	)
-for i,v in ipairs(workspace:FindPartsInRegion3(region)) do
+end
+end)
+wait()
+spawn(function()
+while _G.BlackHoleKey == true do wait ()
+for i,v in ipairs(workspace:FindPartsInRegion3(_G.region)) do
    if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
        if not (v:IsDescendantOf(PLRS.Character)) then if not v:FindFirstChild("BlackHoleForce") then
            BlackHole(v)
@@ -3125,9 +3360,7 @@ end
 end
 end
 end)
-
 print "BlackHole Created"
-
 end)
 
 BlackHoleClip.Name = "BlackHoleClip"
@@ -3160,13 +3393,17 @@ local function BlackHolee(part)
 end
 
 spawn(function()
-while _G.BlackHoleKey == true do
-wait ()
-    local region = Region3.new(
-	  Vector3.new(tor.Position.X - tor.Size.X/2 - attackrange, tor.Position.Y - tor.Size.Y/2 - attackrange, tor.Position.Z - tor.Size.Z/2 - attackrange),
-	  Vector3.new(tor.Position.X + tor.Size.X/2 + attackrange, tor.Position.Y + tor.Size.Y/2 + attackrange, tor.Position.Z + tor.Size.Z/2 + attackrange)
+while _G.BlackHoleKey == true do wait ()
+	_G.region = Region3.new(
+	  Vector3.new(tor.Position.X - attackrange, tor.Position.Y - attackrange, tor.Position.Z - attackrange),
+	  Vector3.new(tor.Position.X + attackrange, tor.Position.Y + attackrange, tor.Position.Z + attackrange)
 	)
-for i,v in ipairs(workspace:FindPartsInRegion3(region)) do
+end
+end)
+wait()
+spawn(function()
+while _G.BlackHoleKey == true do wait ()
+for i,v in ipairs(workspace:FindPartsInRegion3(_G.region)) do
    if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
        if not (v:IsDescendantOf(PLRS.Character)) then if not v:FindFirstChild("BlackHoleForce") then
            BlackHolee(v)
@@ -3176,9 +3413,7 @@ end
 end
 end
 end)
-
 print "BlackHole Created"
-
 end)
 
 NoBlackHole.Name = "NoBlackHole"
@@ -3254,7 +3489,7 @@ Script12.Text = "Misc Luancher"
 Script12.TextColor3 = Color3.fromRGB(255, 255, 255)
 Script12.TextSize = 14.000
 Script12.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -3746,7 +3981,7 @@ Info.Text = "Information"
 Info.TextColor3 = Color3.fromRGB(255, 255, 255)
 Info.TextSize = 14.000
 Info.MouseButton1Click:Connect(function()
-for _, instance in pairs(game.CoreGui.BlockHub.Title.Scrip.List:GetDescendants()) do
+for _, instance in pairs(List:GetDescendants()) do
 	if instance:IsA("Frame") then
 		instance.Visible = false
 	end
@@ -3957,7 +4192,7 @@ local NetworkAccesss = coroutine.create(function()
     spawn(function()
     while true do
     game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
-    setsimulationradius(99999999999999999)
+    setsimulationr(1e308)
     end
     end)
     coroutine.resume(NetworkAccesss)
@@ -3967,7 +4202,7 @@ local NetworkAccesss = coroutine.create(function()
     spawn(function()
     while true do
     game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
-    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
+    sethidden(game.Players.LocalPlayer, "SimulationRadius", 1e308)
     end
     end)
     coroutine.resume(NetworkAccesss)
@@ -3990,14 +4225,14 @@ wait()
 if Exploit == 'SynapseX' then
 spawn(function()
 while true do
-setsimulationradius(99999999999999999)
+setsimulationr(1e308)
 game:GetService("RunService").Stepped:wait()
 end
 end)
 else 
 spawn(function()
 while true do
-sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 99999999999999999)
+sethidden(game.Players.LocalPlayer, "SimulationRadius", 1e308)
 game:GetService("RunService").Stepped:wait()
 end
 end)
@@ -4009,7 +4244,7 @@ for _, iinstance in pairs(game.Players:GetPlayers()) do
         if(iinstance ~= game:GetService("Players").LocalPlayer) then
             spawn(function()
             while iinstance do
-            sethiddenproperty(iinstance, "SimulationRadius", -99999999999999)
+            sethidden(iinstance, "SimulationRadius", -99999999999999)
             game:GetService("RunService").Stepped:wait()
             end
         end)
