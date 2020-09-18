@@ -102,10 +102,8 @@ wait ()
 print "Changed To Administrator Privilege"
 game:GetService("Players").LocalPlayer.CameraMode = "Classic"
 game:GetService("Workspace").Camera.CameraType = "Custom"
-
-game.workspace.FallenPartsDestroyHeight = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position.Y + (10)
+game.workspace.FallenPartsDestroyHeight = (1/0)
 wait(1)
-game.workspace.FallenPartsDestroyHeight = DValue + (-4)
 game.workspace.FilteringEnabled = false
 game:GetService("Players").LocalPlayer.ReplicationFocus = workspace
 -- ye
@@ -156,7 +154,6 @@ end)
 coroutine.resume(NetworkAcces)
 end
 -- /\
-
 wait ()
 local player = game.Players.LocalPlayer
 local PLRS = game.Players.LocalPlayer
@@ -179,7 +176,6 @@ end
 --             \/
 for i,v in pairs(game.Players:GetPlayers()) do
     if v == game.Players.LocalPlayer == false then
-		v.MaximumSimulationRadius = (0/0)
 		sethidden(v, "MaximumSimulationRadius", 0/0)
         spawn(function()
             while v == true do heartbeat:Wait()
@@ -189,13 +185,14 @@ for i,v in pairs(game.Players:GetPlayers()) do
     end
 end
 --            /\ Part Made by TomQ
+game.workspace.FallenPartsDestroyHeight = DValue + (-4)
 wait()
 -- Version: 3.2 (Note To Self:REMEMBER TO CHANGE UPDATE LOG!)
-local VersionNumberV = "2.48"
-local ChangeLine1 = "*Added Tween Teleport"
-local ChangeLine2 = "*Will Run Bit Better"
-local ChangeLine3 = "*Will Be Working On Area fling*"
-local ChangeLine4 = "*Fixed Semi Player Teleport"
+local VersionNumberV = "2.6"
+local ChangeLine1 = "*Added 2nd Page"
+local ChangeLine2 = "*Added Invisibility/God"
+local ChangeLine3 = "*Added Area Fling (Needs Some Fixing)"
+local ChangeLine4 = "*Fixed Up Bugs"
 -- Instances:
 local BlockHub = Instance.new("ScreenGui")
 local Title = Instance.new("TextLabel")
@@ -277,6 +274,7 @@ local HatLuanch = Instance.new("TextButton")
 local UnHatLuanch = Instance.new("TextButton")
 local ForceRemover_2 = Instance.new("TextButton")
 local Line = Instance.new("Frame")
+local Line2 = Instance.new("Frame")
 local ClosedList = Instance.new("TextButton")
 local Line_2 = Instance.new("Frame")
 local OpenedList = Instance.new("TextButton")
@@ -333,6 +331,18 @@ local MiscMover4 = Instance.new("TextButton")
 local MiscMover5 = Instance.new("TextButton")
 local MiscMover6 = Instance.new("TextButton")
 local MiscMover7 = Instance.new("TextButton")
+local List2 = Instance.new("Frame")
+local Script13 = Instance.new("TextButton")
+local S13 = Instance.new("Frame")
+local AreaPlayerName = Instance.new("TextBox")
+local AreaFling = Instance.new("TextButton")
+local NoAreaFling = Instance.new("TextButton")
+local AreaFlingLable = Instance.new("TextLabel")
+local AreaFlingRange = Instance.new("TextBox")
+local Script14 = Instance.new("TextButton")
+local S14 = Instance.new("Frame")
+local Invison = Instance.new("TextButton")
+local Invisoff = Instance.new("TextButton")
 -- /\
 wait()
 --\/
@@ -390,14 +400,16 @@ spawn(function()
 while true do
 setsimulationr(1e308)
 game.workspace.FilteringEnabled = false
-game:GetService("RunService").Stepped:wait()
+game:GetService("NetworkClient"):SetOutgoingKBPSLimit(1/0)
+wait()
 end
 end)
-else 
+else
 spawn(function()
 while true do
 sethidden(game.Players.LocalPlayer, "SimulationRadius", 1e308)
 game.workspace.FilteringEnabled = false
+game:GetService("NetworkClient"):SetOutgoingKBPSLimit(1/0)
 game:GetService("RunService").Stepped:wait()
 end
 end)
@@ -405,7 +417,7 @@ end
 
 -- i know FilteringEnabled = false dose nothing but just becuase
 
-wait "0.01"
+wait ()
 game.StarterGui:SetCore("SendNotification", {
 Title = "Block Hub"; 
 Text = "Bypassing The Matrix Please Wait"; 
@@ -504,237 +516,15 @@ update(input)
 end
 end)
 
-Scrip.Name = "Scrip"
-Scrip.Parent = Title
-Scrip.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Scrip.BorderColor3 = Color3.fromRGB(30, 30, 30)
-Scrip.Position = UDim2.new(0, 0, 1, 0)
-Scrip.Size = UDim2.new(0, 197, 0, 238)
-
-List.Name = "List"
-List.Parent = Scrip
-List.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-List.BorderColor3 = Color3.fromRGB(50, 50, 50)
-List.Position = UDim2.new(0.998254836, 0, 0, 0)
-List.Size = UDim2.new(0, 92, 0, 238)
-List.Visible = false
-
-PList.Name = "PList"
-PList.Parent = List
-PList.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-PList.BackgroundTransparency = 0.500
-PList.BorderColor3 = Color3.fromRGB(50, 50, 50)
-PList.Position = UDim2.new(0.186508894, 0, 0.936974823, 0)
-PList.Size = UDim2.new(0, 57, 0, 15)
-PList.Font = Enum.Font.SourceSans
-PList.Text = "List 1"
-PList.TextColor3 = Color3.fromRGB(255, 255, 255)
-PList.TextSize = 14.000
-
-Next.Name = "Next"
-Next.Parent = PList
-Next.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-Next.BackgroundTransparency = 0.600
-Next.BorderColor3 = Color3.fromRGB(50, 50, 50)
-Next.Position = UDim2.new(1, 0, 0, 0)
-Next.Size = UDim2.new(0, 17, 0, 15)
-Next.Font = Enum.Font.SourceSans
-Next.Text = ">"
-Next.TextColor3 = Color3.fromRGB(255, 255, 255)
-Next.TextSize = 14.000
-
-Back.Name = "Back"
-Back.Parent = PList
-Back.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-Back.BackgroundTransparency = 0.600
-Back.BorderColor3 = Color3.fromRGB(50, 50, 50)
-Back.Position = UDim2.new(-0.298245668, 0, 0, 0)
-Back.Size = UDim2.new(0, 17, 0, 15)
-Back.Font = Enum.Font.SourceSans
-Back.Text = "<"
-Back.TextColor3 = Color3.fromRGB(255, 255, 255)
-Back.TextSize = 14.000
-
-BlockSettings.Name = "BlockSettings"
-BlockSettings.Parent = List
-BlockSettings.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-BlockSettings.BorderColor3 = Color3.fromRGB(50, 50, 50)
-BlockSettings.BorderSizePixel = 0
-BlockSettings.Position = UDim2.new(0, 0, 0.87369746, 0)
-BlockSettings.Size = UDim2.new(0, 92, 0, 15)
-BlockSettings.Font = Enum.Font.SourceSans
-BlockSettings.Text = "Lag Settings"
-BlockSettings.TextColor3 = Color3.fromRGB(255, 255, 255)
-BlockSettings.TextSize = 14.000
-BlockSettings.MouseButton1Click:Connect(function()
-for _, instance in pairs(List:GetDescendants()) do
-	if instance:IsA("Frame") then
-		instance.Visible = false
-	end
-end
-wait "0"
-BHGS.Visible = true
-Infoo.Visible = false
-end)
-
-BHGS.Name = "BHGS"
-BHGS.Parent = BlockSettings
-BHGS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-BHGS.BackgroundTransparency = 1.000
-BHGS.Size = UDim2.new(0, 90, 0, 15)
-BHGS.Visible = false
-
-ScriptRemover.Name = "ScriptRemover"
-ScriptRemover.Parent = BHGS
-ScriptRemover.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-ScriptRemover.Position = UDim2.new(-1.86899996, 0, -9.80000019, 0)
-ScriptRemover.Size = UDim2.new(0, 140, 0, 15)
-ScriptRemover.Font = Enum.Font.SourceSans
-ScriptRemover.Text = "Go Undercover (Antidetection)"
-ScriptRemover.TextColor3 = Color3.fromRGB(255, 255, 255)
-ScriptRemover.TextSize = 13.000
-ScriptRemover.MouseButton1Click:Connect(function()
-WarningBoxUnder.Visible = true
-end)
-
-WarningBoxUnder.Name = "WarningBoxUnder"
-WarningBoxUnder.Parent = BHGS
-WarningBoxUnder.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
-WarningBoxUnder.BorderColor3 = Color3.fromRGB(30, 30, 30)
-WarningBoxUnder.Position = UDim2.new(-1.97777772, 0, -7.86666679, 0)
-WarningBoxUnder.Size = UDim2.new(0, 159, 0, 75)
-WarningBoxUnder.Visible = false
-
-WarningLableUnder.Name = "WarningLableUnder"
-WarningLableUnder.Parent = WarningBoxUnder
-WarningLableUnder.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-WarningLableUnder.BackgroundTransparency = 0.800
-WarningLableUnder.BorderColor3 = Color3.fromRGB(30, 30, 30)
-WarningLableUnder.Size = UDim2.new(0, 159, 0, 45)
-WarningLableUnder.Font = Enum.Font.SourceSans
-WarningLableUnder.Text = "Warning: Using Antidetection Will Cause You To Lose Block Stability!"
-WarningLableUnder.TextColor3 = Color3.fromRGB(255, 255, 255)
-WarningLableUnder.TextSize = 14.000
-WarningLableUnder.TextWrapped = true
-
-TheYesButtonUnder.Name = "TheYesButtonUnder"
-TheYesButtonUnder.Parent = WarningBoxUnder
-TheYesButtonUnder.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-TheYesButtonUnder.Position = UDim2.new(0.0566037744, 0, 0.706666648, 0)
-TheYesButtonUnder.Size = UDim2.new(0, 70, 0, 15)
-TheYesButtonUnder.Font = Enum.Font.SourceSans
-TheYesButtonUnder.Text = "Yes"
-TheYesButtonUnder.TextColor3 = Color3.fromRGB(255, 255, 255)
-TheYesButtonUnder.TextSize = 14.000
-TheYesButtonUnder.MouseButton1Click:Connect(function()
-for _, instance in pairs(game:GetService("Workspace"):GetDescendants()) do
-	if instance:IsA("LocalScript") then if(instance.Name == "Animate" == false) then
-        instance:Destroy()
-	end
-end
+function getRoot(char)
+	local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') or char:FindFirstChild('UpperTorso')
+	return rootPart
 end
 
-spawn(function()
-while true do
-for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-	if instance:IsA("LocalScript") then if(instance.Name == "Animate" == false) then
-        instance:Destroy()
-	end
-end
-end
-
-for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-	if instance:IsA("Script") then if(instance.Name == "Health" == false)and(instance.Name == "Animate" == false) then
-        instance:Destroy()
-	end
-end
-end
-wait (1)
-end
-end)
-
-spawn(function()
-while true do
-wait "2"
-for _, instance in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
-	if instance:IsA("LocalScript") then if(instance.Name ~= "ChatScript")and(instance.Name == "Animate" == false)and(instance.Name ~= "BubbleChat")and(instance.Name ~= "FindItemsAndAssignListeners")and(instance.Name ~= "SetUpRagdollLS")and(instance.Name ~= "PlayerScriptsLoader")and(instance.Name ~= "RbxCharacterSounds")and(instance.Name ~= "RequestRecievedScript")and(instance.Name ~= "RequestRecievedScript") then
-        instance.RobloxLocked = true
-        instance:Destroy()
-	  end
-   end
-end
-end
-end)
-
-game.Players.LocalPlayer.Character:BreakJoints()
-game.Players.LocalPlayer.Character.Humanoid.Health = "0"
-game.Players.LocalPlayer.Character.Humanoid.MaxHealth = "0"
-
-WarningBoxUnder.Visible = false
-end)
-
-TheNoButtonUnder.Name = "TheNoButtonUnder"
-TheNoButtonUnder.Parent = WarningBoxUnder
-TheNoButtonUnder.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-TheNoButtonUnder.Position = UDim2.new(0.490962267, 0, 0.706666648, 0)
-TheNoButtonUnder.Size = UDim2.new(0, 70, 0, 15)
-TheNoButtonUnder.Font = Enum.Font.SourceSans
-TheNoButtonUnder.Text = "No"
-TheNoButtonUnder.TextColor3 = Color3.fromRGB(255, 255, 255)
-TheNoButtonUnder.TextSize = 14.000
-TheNoButtonUnder.MouseButton1Click:Connect(function()
-WarningBoxUnder.Visible = false
-end)
-
-BetterFPSButton.Name = "BetterFPSButton"
-BetterFPSButton.Parent = BHGS
-BetterFPSButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-BetterFPSButton.Position = UDim2.new(-1.86899996, 0, -12.8670006, 0)
-BetterFPSButton.Size = UDim2.new(0, 140, 0, 15)
-BetterFPSButton.Font = Enum.Font.SourceSans
-BetterFPSButton.Text = "FPS Helper(Semi-Perm)"
-BetterFPSButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-BetterFPSButton.TextSize = 14.000
-BetterFPSButton.MouseButton1Click:Connect(function()
-WarningBox.Visible = true
-end)
-
-BlockDiscarder.Name = "BlockDiscarder"
-BlockDiscarder.Parent = BHGS
-BlockDiscarder.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-BlockDiscarder.Position = UDim2.new(-1.86899996, 0, -11.3336678, 0)
-BlockDiscarder.Size = UDim2.new(0, 140, 0, 15)
-BlockDiscarder.Font = Enum.Font.SourceSans
-BlockDiscarder.Text = "Recover All FPS(Temp)"
-BlockDiscarder.TextColor3 = Color3.fromRGB(255, 255, 255)
-BlockDiscarder.TextSize = 14.000
-BlockDiscarder.MouseButton1Click:Connect(function()
-local PLRS = game.Players.LocalPlayer
-local check = game.workspace:GetDescendants()
-local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
-for i = 1, 1 do
-       wait "0.1"
-       for i, v in ipairs(check) do
-        if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
-        if not (v:IsDescendantOf(PLRS.Character)) then
- 				v.CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+-20,v.CFrame.Z)
-			end
-	 	end
-    end
-end
-end)
-
-FreeCam.Name = "FreeCam"
-FreeCam.Parent = BHGS
-FreeCam.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-FreeCam.Position = UDim2.new(-1.86899996, 0, -2.8670001, 0)
-FreeCam.Size = UDim2.new(0, 140, 0, 15)
-FreeCam.Font = Enum.Font.SourceSans
-FreeCam.Text = "Cinematic Free Fly Cam"
-FreeCam.TextColor3 = Color3.fromRGB(255, 255, 255)
-FreeCam.TextSize = 14.000
-FreeCam.MouseButton1Click:Connect(function()
-
+_G.objsf = false
+local function FreeCamms()
+_G.objsf = true
+wait()
 spawn(function()
 local message = Instance.new("Message",workspace)
 message.Text = "Press LeftShift And P At The Same Time To Get In And Out Of Free Cam"
@@ -1215,9 +1005,265 @@ do
 
 	ContextActionService:BindActionAtPriority("FreecamToggle", HandleActivationInput, false, TOGGLE_INPUT_PRIORITY, FREECAM_MACRO_KB[#FREECAM_MACRO_KB])
 end
+wait()
+end
 
+Scrip.Name = "Scrip"
+Scrip.Parent = Title
+Scrip.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Scrip.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Scrip.Position = UDim2.new(0, 0, 1, 0)
+Scrip.Size = UDim2.new(0, 197, 0, 238)
+
+List.Name = "List"
+List.Parent = Scrip
+List.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+List.BorderColor3 = Color3.fromRGB(50, 50, 50)
+List.Position = UDim2.new(0.998254836, 0, 0, 0)
+List.Size = UDim2.new(0, 92, 0, 238)
+List.Visible = false
+
+PList.Name = "PList"
+PList.Parent = Title
+PList.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+PList.BackgroundTransparency = 0.200
+PList.BorderColor3 = Color3.fromRGB(50, 50, 50)
+PList.Position = UDim2.new(1.08499992, 0, 12.1260014, 0)
+PList.Size = UDim2.new(0, 58, 0, 15)
+PList.Font = Enum.Font.SourceSans
+PList.Text = "List 1"
+PList.Visible = false
+PList.TextColor3 = Color3.fromRGB(255, 255, 255)
+PList.TextSize = 14.000
+
+Next.Name = "Next"
+Next.Parent = PList
+Next.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Next.BackgroundTransparency = 0.200
+Next.BorderColor3 = Color3.fromRGB(50, 50, 50)
+Next.Position = UDim2.new(1, 0, 0, 0)
+Next.Size = UDim2.new(0, 17, 0, 15)
+Next.Font = Enum.Font.SourceSans
+Next.Text = ">"
+Next.TextColor3 = Color3.fromRGB(255, 255, 255)
+Next.TextSize = 14.000
+Next.MouseButton1Click:Connect(function()
+if List.Visible == true then
+List.Visible = false
+List2.Visible = true
+PList.Text = "List 2"
+else
+wait()
+end
+end)
+
+Back.Name = "Back"
+Back.Parent = PList
+Back.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Back.BackgroundTransparency = 0.200
+Back.BorderColor3 = Color3.fromRGB(50, 50, 50)
+Back.Position = UDim2.new(-0.298246175, 0, 0, 0)
+Back.Size = UDim2.new(0, 17, 0, 15)
+Back.Font = Enum.Font.SourceSans
+Back.Text = "<"
+Back.TextColor3 = Color3.fromRGB(255, 255, 255)
+Back.TextSize = 14.000
+Back.MouseButton1Click:Connect(function()
+if List2.Visible == true then
+List.Visible = true
+List2.Visible = false
+PList.Text = "List 1"
+else
+wait()
+end
+end)
+
+BlockSettings.Name = "BlockSettings"
+BlockSettings.Parent = List
+BlockSettings.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+BlockSettings.BorderColor3 = Color3.fromRGB(50, 50, 50)
+BlockSettings.BorderSizePixel = 0
+BlockSettings.Position = UDim2.new(0, 0, 0.87369746, 0)
+BlockSettings.Size = UDim2.new(0, 92, 0, 15)
+BlockSettings.Font = Enum.Font.SourceSans
+BlockSettings.Text = "Lag Settings"
+BlockSettings.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlockSettings.TextSize = 14.000
+BlockSettings.MouseButton1Click:Connect(function()
+for _, instance in pairs(List:GetDescendants()) do
+	if instance:IsA("Frame") then
+		instance.Visible = false
+	end
+end
+wait "0"
+BHGS.Visible = true
+Infoo.Visible = false
+end)
+
+BHGS.Name = "BHGS"
+BHGS.Parent = BlockSettings
+BHGS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BHGS.BackgroundTransparency = 1.000
+BHGS.Size = UDim2.new(0, 90, 0, 15)
+BHGS.Visible = false
+
+ScriptRemover.Name = "ScriptRemover"
+ScriptRemover.Parent = BHGS
+ScriptRemover.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+ScriptRemover.Position = UDim2.new(-1.86899996, 0, -9.80000019, 0)
+ScriptRemover.Size = UDim2.new(0, 140, 0, 15)
+ScriptRemover.Font = Enum.Font.SourceSans
+ScriptRemover.Text = "Go Undercover (Antidetection)"
+ScriptRemover.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScriptRemover.TextSize = 13.000
+ScriptRemover.MouseButton1Click:Connect(function()
+WarningBoxUnder.Visible = true
+end)
+
+WarningBoxUnder.Name = "WarningBoxUnder"
+WarningBoxUnder.Parent = BHGS
+WarningBoxUnder.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
+WarningBoxUnder.BorderColor3 = Color3.fromRGB(30, 30, 30)
+WarningBoxUnder.Position = UDim2.new(-1.97777772, 0, -7.86666679, 0)
+WarningBoxUnder.Size = UDim2.new(0, 159, 0, 75)
+WarningBoxUnder.Visible = false
+
+WarningLableUnder.Name = "WarningLableUnder"
+WarningLableUnder.Parent = WarningBoxUnder
+WarningLableUnder.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+WarningLableUnder.BackgroundTransparency = 0.800
+WarningLableUnder.BorderColor3 = Color3.fromRGB(30, 30, 30)
+WarningLableUnder.Size = UDim2.new(0, 159, 0, 45)
+WarningLableUnder.Font = Enum.Font.SourceSans
+WarningLableUnder.Text = "Warning: Using Antidetection Will Cause You To Lose Block Stability!"
+WarningLableUnder.TextColor3 = Color3.fromRGB(255, 255, 255)
+WarningLableUnder.TextSize = 14.000
+WarningLableUnder.TextWrapped = true
+
+TheYesButtonUnder.Name = "TheYesButtonUnder"
+TheYesButtonUnder.Parent = WarningBoxUnder
+TheYesButtonUnder.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+TheYesButtonUnder.Position = UDim2.new(0.0566037744, 0, 0.706666648, 0)
+TheYesButtonUnder.Size = UDim2.new(0, 70, 0, 15)
+TheYesButtonUnder.Font = Enum.Font.SourceSans
+TheYesButtonUnder.Text = "Yes"
+TheYesButtonUnder.TextColor3 = Color3.fromRGB(255, 255, 255)
+TheYesButtonUnder.TextSize = 14.000
+TheYesButtonUnder.MouseButton1Click:Connect(function()
+for _, instance in pairs(game:GetService("Workspace"):GetDescendants()) do
+	if instance:IsA("LocalScript") then if(instance.Name == "Animate" == false) then
+        instance:Destroy()
+	end
+end
+end
+
+spawn(function()
+while true do
+for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+	if instance:IsA("LocalScript") then if(instance.Name == "Animate" == false) then
+        instance:Destroy()
+	end
+end
+end
+
+for _, instance in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+	if instance:IsA("Script") then if(instance.Name == "Health" == false)and(instance.Name == "Animate" == false) then
+        instance:Destroy()
+	end
+end
+end
+wait (1)
+end
+end)
+
+spawn(function()
+while true do
+wait "2"
+for _, instance in pairs(game:GetService("Players").LocalPlayer:GetDescendants()) do
+	if instance:IsA("LocalScript") then if(instance.Name ~= "ChatScript")and(instance.Name == "Animate" == false)and(instance.Name ~= "BubbleChat")and(instance.Name ~= "FindItemsAndAssignListeners")and(instance.Name ~= "SetUpRagdollLS")and(instance.Name ~= "PlayerScriptsLoader")and(instance.Name ~= "RbxCharacterSounds")and(instance.Name ~= "RequestRecievedScript")and(instance.Name ~= "RequestRecievedScript") then
+        instance.RobloxLocked = true
+        instance:Destroy()
+	  end
+   end
+end
+end
+end)
+
+game.Players.LocalPlayer.Character:BreakJoints()
+game.Players.LocalPlayer.Character.Humanoid.Health = "0"
+game.Players.LocalPlayer.Character.Humanoid.MaxHealth = "0"
+
+WarningBoxUnder.Visible = false
+end)
+
+TheNoButtonUnder.Name = "TheNoButtonUnder"
+TheNoButtonUnder.Parent = WarningBoxUnder
+TheNoButtonUnder.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+TheNoButtonUnder.Position = UDim2.new(0.490962267, 0, 0.706666648, 0)
+TheNoButtonUnder.Size = UDim2.new(0, 70, 0, 15)
+TheNoButtonUnder.Font = Enum.Font.SourceSans
+TheNoButtonUnder.Text = "No"
+TheNoButtonUnder.TextColor3 = Color3.fromRGB(255, 255, 255)
+TheNoButtonUnder.TextSize = 14.000
+TheNoButtonUnder.MouseButton1Click:Connect(function()
+WarningBoxUnder.Visible = false
+end)
+
+BetterFPSButton.Name = "BetterFPSButton"
+BetterFPSButton.Parent = BHGS
+BetterFPSButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BetterFPSButton.Position = UDim2.new(-1.86899996, 0, -12.8670006, 0)
+BetterFPSButton.Size = UDim2.new(0, 140, 0, 15)
+BetterFPSButton.Font = Enum.Font.SourceSans
+BetterFPSButton.Text = "FPS Helper(Semi-Perm)"
+BetterFPSButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+BetterFPSButton.TextSize = 14.000
+BetterFPSButton.MouseButton1Click:Connect(function()
+WarningBox.Visible = true
+end)
+
+BlockDiscarder.Name = "BlockDiscarder"
+BlockDiscarder.Parent = BHGS
+BlockDiscarder.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+BlockDiscarder.Position = UDim2.new(-1.86899996, 0, -11.3336678, 0)
+BlockDiscarder.Size = UDim2.new(0, 140, 0, 15)
+BlockDiscarder.Font = Enum.Font.SourceSans
+BlockDiscarder.Text = "Recover All FPS(Temp)"
+BlockDiscarder.TextColor3 = Color3.fromRGB(255, 255, 255)
+BlockDiscarder.TextSize = 14.000
+BlockDiscarder.MouseButton1Click:Connect(function()
+local PLRS = game.Players.LocalPlayer
+local check = game.workspace:GetDescendants()
+local BlockNumberCheck = game.workspace.FallenPartsDestroyHeight
+for i = 1, 1 do
+       wait "0.1"
+       for i, v in ipairs(check) do
+        if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+        if not (v:IsDescendantOf(PLRS.Character)) then
+ 				v.CFrame = CFrame.new(v.CFrame.X,BlockNumberCheck+-20,v.CFrame.Z)
+			end
+	 	end
+    end
+end
+end)
+
+FreeCam.Name = "FreeCam"
+FreeCam.Parent = BHGS
+FreeCam.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+FreeCam.Position = UDim2.new(-1.86899996, 0, -2.8670001, 0)
+FreeCam.Size = UDim2.new(0, 140, 0, 15)
+FreeCam.Font = Enum.Font.SourceSans
+FreeCam.Text = "Cinematic Free Fly Cam"
+FreeCam.TextColor3 = Color3.fromRGB(255, 255, 255)
+FreeCam.TextSize = 14.000
+FreeCam.MouseButton1Click:Connect(function()
 FreeCam.Visible = false
 FreeHelper.Visible = true
+if _G.objsf == false then
+FreeCamms()
+else
+print "Free Cam Already Activated Press LeftShift And P At The Same To Use Free Cam"
+end
 end)
 
 FreeHelper.Name = "FreeHelper"
@@ -2029,9 +2075,10 @@ end)
 wait "0.05"
 print "Firing!"
 game.workspace.Camera.CameraType = "Custom"
+local targetname = TelePlayerName.Text
 local ca = game.workspace.Camera
 local cam = Vector3.new(ca.CFrame.X+-ca.Focus.X , 3, ca.CFrame.Z+-ca.Focus.Z)
-local arget = game.Players.LocalPlayer
+local arget = game:GetService("Players")[targetname]
 local check = game.workspace:GetDescendants()
 for i = 1, 1 do
        for i, v in ipairs(check) do
@@ -2133,9 +2180,10 @@ end)
 wait "0.05"
 print "Firing!"
 game.workspace.Camera.CameraType = "Custom"
+local targetname = TelePlayerName.Text
 local ca = game.workspace.Camera
 local cam = Vector3.new(ca.CFrame.X+-ca.Focus.X , 3, ca.CFrame.Z+-ca.Focus.Z)
-local arget = game.Players.LocalPlayer
+local arget = game:GetService("Players")[targetname]
 local check = game.workspace:GetDescendants()
 for i = 1, 1 do
        for i, v in ipairs(check) do
@@ -3291,7 +3339,7 @@ S11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 S11.BackgroundTransparency = 1.000
 S11.Size = UDim2.new(0, 90, 0, 15)
 S11.Visible = false
-_G.BlockCheck = "false"
+_G.BlockCheck = false
 BlackHolePlayerName.Name = "BlackHolePlayerName"
 BlackHolePlayerName.Parent = S11
 BlackHolePlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3350,7 +3398,7 @@ end)
 wait()
 spawn(function()
 while _G.BlackHoleKey == true do wait ()
-for i,v in ipairs(workspace:FindPartsInRegion3(_G.region)) do
+for i,v in ipairs(workspace:FindPartsInRegion3(_G.region,nil,1000)) do
    if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
        if not (v:IsDescendantOf(PLRS.Character)) then if not v:FindFirstChild("BlackHoleForce") then
            BlackHole(v)
@@ -3403,9 +3451,9 @@ end)
 wait()
 spawn(function()
 while _G.BlackHoleKey == true do wait ()
-for i,v in ipairs(workspace:FindPartsInRegion3(_G.region)) do
+for i,v in ipairs(workspace:FindPartsInRegion3(_G.region,nil,1000)) do
    if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
-       if not (v:IsDescendantOf(PLRS.Character)) then if not v:FindFirstChild("BlackHoleForce") then
+       if not (v:IsDescendantOf(PLRS.Character)) then if not v:FindFirstChild("BlackHoleForceClip") then
            BlackHolee(v)
        end
    end
@@ -3892,12 +3940,236 @@ wait()
 loadstring(game:HttpGetAsync("https://pastebin.com/raw/SDH25FfT"))()
 end)
 
+List2.Name = "List2"
+List2.Parent = Scrip
+List2.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+List2.BorderColor3 = Color3.fromRGB(50, 50, 50)
+List2.Position = UDim2.new(0.998000026, 0, 0, 0)
+List2.Size = UDim2.new(0, 92, 0, 238)
+List2.Visible = false
+
+Script13.Name = "Script13"
+Script13.Parent = List2
+Script13.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Script13.BackgroundTransparency = 0.200
+Script13.BorderColor3 = Color3.fromRGB(50, 50, 50)
+Script13.Position = UDim2.new(0, 0, -7.4505806e-09, 0)
+Script13.Size = UDim2.new(0, 92, 0, 15)
+Script13.Font = Enum.Font.SourceSans
+Script13.Text = "Area Fling"
+Script13.TextColor3 = Color3.fromRGB(255, 255, 255)
+Script13.TextSize = 14.000
+Script13.MouseButton1Click:Connect(function()
+for _, instance in pairs(List2:GetDescendants()) do
+	if instance:IsA("Frame") then
+		instance.Visible = false
+	end
+end
+wait "0"
+S13.Visible = true
+Infoo.Visible = false
+end)
+
+S13.Name = "S13"
+S13.Parent = Script13
+S13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+S13.BackgroundTransparency = 1.000
+S13.Position = UDim2.new(0.00373707642, 0, 0, 0)
+S13.Size = UDim2.new(0, 91, 0, 15)
+
+AreaPlayerName.Name = "AreaPlayerName"
+AreaPlayerName.Parent = S13
+AreaPlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AreaPlayerName.Position = UDim2.new(-1.87411141, 0, 0.562667847, 0)
+AreaPlayerName.Size = UDim2.new(0, 141, 0, 27)
+AreaPlayerName.Font = Enum.Font.SourceSans
+AreaPlayerName.Text = "Short Player Name Here"
+AreaPlayerName.TextColor3 = Color3.fromRGB(0, 0, 0)
+AreaPlayerName.TextSize = 15.000
+AreaPlayerName.FocusLost:connect(function()
+for i,v in pairs(game.Players:GetChildren()) do
+if (string.sub(string.lower(v.Name),1,string.len(AreaPlayerName.Text))) == string.lower(AreaPlayerName.Text) then
+AreaPlayerName.Text = v.Name
+end
+end
+end)
+
+AreaFling.Name = "AreaFling"
+AreaFling.Parent = S13
+AreaFling.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+AreaFling.Position = UDim2.new(-1.85202193, 0, 2.84766674, 0)
+AreaFling.Size = UDim2.new(0, 140, 0, 15)
+AreaFling.Font = Enum.Font.SourceSans
+AreaFling.Text = "Its Fling Time!"
+AreaFling.TextColor3 = Color3.fromRGB(255, 255, 255)
+AreaFling.TextSize = 14.000
+AreaFling.MouseButton1Click:Connect(function()
+_G.AreaFling = true
+local targetname = AreaPlayerName.Text
+local arget = game:GetService("Players")[targetname]
+local tor = arget.Character.HumanoidRootPart
+local PLRS = game.Players.LocalPlayer
+local attackrange = AreaFlingRange.Text
+
+spawn(function()
+while _G.AreaFling == true do wait ()
+	_G.region = Region3.new(
+	  Vector3.new(tor.Position.X - attackrange, tor.Position.Y - attackrange, tor.Position.Z - attackrange),
+	  Vector3.new(tor.Position.X + attackrange, tor.Position.Y + attackrange, tor.Position.Z + attackrange)
+	)
+end
+end)
+wait()
+spawn(function()
+while _G.AreaFling == true do wait ()
+for i,v in ipairs(workspace:FindPartsInRegion3(_G.region,nil,10)) do
+   if v:IsA("BasePart" or "UnionOperation" or "Model"or "MeshPart"or "Part") and v.Anchored == false then
+       if not (v:IsDescendantOf(PLRS.Character)) then wait ()
+           v.Velocity = v:GetMass()* Vector3.new(v.Velocity.X,v.Velocity.Y + math.random(10,20),v.Velocity.Z)
+		   v.RotVelocity = v:GetMass()* Vector3.new((v.RotVelocity.X + math.random(1,4)),(v.RotVelocity.Y + math.random(1,4)),(v.RotVelocity.Z + math.random(1,4)))
+       end
+   end
+end
+end
+end)
+print "Fling Time!"
+end)
+
+NoAreaFling.Name = "NoAreaFling"
+NoAreaFling.Parent = S13
+NoAreaFling.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+NoAreaFling.Position = UDim2.new(-1.85202193, 0, 4.33333349, 0)
+NoAreaFling.Size = UDim2.new(0, 140, 0, 15)
+NoAreaFling.Font = Enum.Font.SourceSans
+NoAreaFling.Text = "Stop The Fling"
+NoAreaFling.TextColor3 = Color3.fromRGB(255, 255, 255)
+NoAreaFling.TextSize = 14.000
+NoAreaFling.MouseButton1Click:Connect(function()
+_G.AreaFling = false
+print "Stopped!"
+end)
+
+AreaFlingLable.Name = "AreaFlingLable"
+AreaFlingLable.Parent = S13
+AreaFlingLable.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+AreaFlingLable.Position = UDim2.new(-1.85202169, 0, 5.86666679, 0)
+AreaFlingLable.Size = UDim2.new(0, 140, 0, 15)
+AreaFlingLable.Font = Enum.Font.SourceSans
+AreaFlingLable.Text = "Recommended Range is 40"
+AreaFlingLable.TextColor3 = Color3.fromRGB(255, 255, 255)
+AreaFlingLable.TextSize = 14.000
+AreaFlingLable.TextWrapped = true
+
+AreaFlingRange.Name = "AreaFlingRange"
+AreaFlingRange.Parent = S13
+AreaFlingRange.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AreaFlingRange.Position = UDim2.new(-1.84098923, 0, 6.89600039, 0)
+AreaFlingRange.Size = UDim2.new(0, 139, 0, 21)
+AreaFlingRange.Font = Enum.Font.SourceSans
+AreaFlingRange.Text = "40"
+AreaFlingRange.TextColor3 = Color3.fromRGB(0, 0, 0)
+AreaFlingRange.TextSize = 16.000
+
+Script14.Name = "Script14"
+Script14.Parent = List2
+Script14.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Script14.BackgroundTransparency = 0.200
+Script14.BorderColor3 = Color3.fromRGB(50, 50, 50)
+Script14.Position = UDim2.new(0, 0, 0.0630252063, 0)
+Script14.Size = UDim2.new(0, 92, 0, 15)
+Script14.Font = Enum.Font.SourceSans
+Script14.Text = "Invisibility God"
+Script14.TextColor3 = Color3.fromRGB(255, 255, 255)
+Script14.TextSize = 14.000
+Script14.MouseButton1Click:Connect(function()
+for _, instance in pairs(List2:GetDescendants()) do
+	if instance:IsA("Frame") then
+		instance.Visible = false
+	end
+end
+wait "0"
+S14.Visible = true
+Infoo.Visible = false
+end)
+
+S14.Name = "S14"
+S14.Parent = Script14
+S14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+S14.BackgroundTransparency = 1.000
+S14.Position = UDim2.new(0.00373707642, 0, 0, 0)
+S14.Size = UDim2.new(0, 91, 0, 15)
+S14.Visible = false
+
+Invison.Name = "Invison"
+Invison.Parent = S14
+Invison.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+Invison.Position = UDim2.new(-1.85202193, 0, -0.018999815, 0)
+Invison.Size = UDim2.new(0, 140, 0, 15)
+Invison.Font = Enum.Font.SourceSans
+Invison.Text = "Spooky Mode On"
+Invison.TextColor3 = Color3.fromRGB(255, 255, 255)
+Invison.TextSize = 14.000
+Invison.MouseButton1Click:Connect(function()
+game:GetService("Players").LocalPlayer.Character.Parent = nil
+wait ()
+local Player = game.Players.LocalPlayer
+local CCFrame = Player.Character.HumanoidRootPart.CFrame
+local CFrameX = (CCFrame.X + 1)
+local CFrameY = (CCFrame.Y + 100)
+local CFrameZ = (CCFrame.Z + 1)
+wait()
+_G.God = true
+spawn(function()
+while _G.God == true do
+wait()
+Player.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+if CCFrame ~= CFrame.new(CFrameX,CFrameY,CFrameZ) then
+wait()
+game:GetService("TweenService"):Create(getRoot(Player.Character), TweenInfo.new(1, Enum.EasingStyle.Linear), {CFrame = CFrame.new(CFrameX,CFrameY,CFrameZ)}):Play()
+end
+end
+end)
+FreeCam.Visible = false
+FreeHelper.Visible = true
+wait()
+if _G.objsf == false then
+FreeCamms()
+print "God Mode On Press LeftShift And P At The Same Time To Get In And Out Of FreeCam"
+else
+print "God Mode On, Free Cam Already Activated Press LeftShift And P At The Same To Use Free Cam"
+end
+wait()
+end)
+
+Invisoff.Name = "Invisoff"
+Invisoff.Parent = S14
+Invisoff.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+Invisoff.Position = UDim2.new(-1.85202193, 0, 1.46666694, 0)
+Invisoff.Size = UDim2.new(0, 140, 0, 15)
+Invisoff.Font = Enum.Font.SourceSans
+Invisoff.Text = "Spooky Mode Off"
+Invisoff.TextColor3 = Color3.fromRGB(255, 255, 255)
+Invisoff.TextSize = 14.000
+Invisoff.MouseButton1Click:Connect(function()
+game:GetService("Players").LocalPlayer.Character.Parent = game.Workspace
+_G.God = false
+print "God Mode Off"
+end)
+
 Line.Name = "Line"
-Line.Parent = List
-Line.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Line.Parent = Title
+Line.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 Line.BorderColor3 = Color3.fromRGB(40, 40, 40)
-Line.Position = UDim2.new(0, 0, 0.928571403, 0)
-Line.Size = UDim2.new(0, 92, 0, 2)
+Line.Position = UDim2.new(0.0152284205, -2, 12.0290012, 0)
+Line.Size = UDim2.new(0, 193, 0, 0)
+
+Line2.Name = "Line2"
+Line2.Parent = Title
+Line2.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Line2.BackgroundTransparency = 0.250
+Line2.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Line2.Position = UDim2.new(1.00507641, -2, 1, 0)
+Line2.Size = UDim2.new(0, 0, 0, 238)
 
 ClosedList.Name = "ClosedList"
 ClosedList.Parent = Scrip
@@ -3916,7 +4188,9 @@ ClosedList.Visible = false
 ClosedList.MouseButton1Click:Connect(function()
 OpenedList.Visible = true
 ClosedList.Visible = false
+PList.Visible = false
 List.Visible = false
+List2.Visible = false
 end)
 
 Line_2.Name = "Line"
@@ -3944,7 +4218,9 @@ OpenedList.Visible = true
 OpenedList.MouseButton1Click:Connect(function()
 OpenedList.Visible = false
 ClosedList.Visible = true
+PList.Visible = true
 List.Visible = true
+List2.Visible = false
 Infoo.Visible = false
 end)
 
@@ -4242,6 +4518,7 @@ wait()
 
 for _, iinstance in pairs(game.Players:GetPlayers()) do
         if(iinstance ~= game:GetService("Players").LocalPlayer) then
+			sethidden(iinstance, "MaximumSimulationRadius", 0/0)
             spawn(function()
             while iinstance do
             sethidden(iinstance, "SimulationRadius", 0/0)
